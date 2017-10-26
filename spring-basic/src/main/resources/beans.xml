@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd ">
+    <context:component-scan base-package="annotation"/>
+    <bean id="student" class="cn.crabime.Student"/>
+    <bean id="teacher" class="cn.crabime.Teacher">
+        <property name="student" ref="student"/>
+    </bean>
+    <bean id="leader" class="cn.crabime.Leader">
+        <constructor-arg value="Nicolas"/>
+    </bean>
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="messages"/>
+    </bean>
+    <!-- 注册邮件事件 -->
+    <bean class="cn.crabime.EmailNotifier"/>
+
+    <!-- spring容器中为具有复合属性bean赋值 -->
+    <bean id="assembleBean" class="cn.crabime.AssemblePropertyBean">
+        <property name="person.name" value="Crabime"/>
+    </bean>
+
+    <bean id="threadPool" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="3"/>
+        <property name="maxPoolSize" value="10"/>
+        <property name="queueCapacity" value="25"/>
+        <property name="keepAliveSeconds" value="300"/>
+        <property name="rejectedExecutionHandler">
+            <bean class="java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy"/>
+        </property>
+    </bean>
+    <bean id="applicationAwareTest" class="cn.crabime.ApplicationContextAwareTest"/>
+
+    <!-- 这里使用阿里Druid数据源 -->
+    <bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource"
+          init-method="init" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc.mysql://localhost:3306/test?useSSL=false"/>
+        <property name="username" value="root"/>
+        <property name="password" value="songshaoxian0520"/>
+        <property name="maxActive" value="10"/>
+        <property name="connectionProperties" value="druid.stat.mergeSql=true"/>
+        <property name="proxyFilters">
+            <list>
+                <ref bean="statFilter"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="statFilter" class="com.alibaba.druid.filter.stat.StatFilter">
+        <property name="logSlowSql" value="true"/>
+        <property name="slowSqlMillis" value="1000"/>
+    </bean>
+
+    <bean id="druidPluginProxy" class="jfinal.DruidPluginProxy"
+          c:dataSourceName="druidDataSource"
+          c:url="jdbc.mysql://localhost:3306/test?useSSL=false"
+          c:username="root"
+          c:password="songshaoxian0520"
+          c:driverClass="com.mysql.jdbc.Driver"/>
+    <bean id="multipleDruidPluginProxy" class="jfinal.MultipleDataSourceModelProxy" init-method="start"
+          destroy-method="stop">
+        <constructor-arg ref="druidPluginProxy"/>
+        <constructor-arg index="1">
+            <list>
+                <value>jfinal.dao</value>
+            </list>
+        </constructor-arg>
+    </bean>
+</beans>

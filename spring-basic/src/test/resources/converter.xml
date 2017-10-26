@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Spring converter使用之前 -->
+    <bean id="dummyReservation" class="converter.Reservation">
+        <property name="duration" value="12"/>
+        <property name="time" value="11-11-2011"/>
+        <property name="player">
+            <bean class="converter.Player">
+                <property name="name" value="Prasanth"/>
+                <property name="phone" value="92131233124"/>
+                <property name="gender" value="M"/>
+                <property name="habits" value="ED"/>
+                <property name="icon" value="images/me.jpg"/>
+            </bean>
+        </property>
+        <property name="type" value="1, TENNIS"/>
+        <!-- 如果使用常规Spring配置,可以配置嵌套bean,也可以使用PropertyEditorSupport实现 -->
+        <!--<bean class="converter.SportType" />
+            <property name="id" value="1"/>
+            <property name="name" value="TENNIS"/>
+        </bean>
+        </property>-->
+    </bean>
+    <bean id="classArrayBean" class="converter.ClassArrayEditorBean">
+        <property name="classes" value="converter.Player, converter.SportType"/>
+    </bean>
+
+    <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="propertyEditorRegistrars">
+            <list>
+                <bean class="converter.CustomDateRegistrar"/>
+            </list>
+        </property>
+    </bean>
+</beans>

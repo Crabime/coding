@@ -25,12 +25,14 @@
         <module name="coding" />
         <module name="crypto" />
         <module name="spring.basic" />
+        <module name="yml" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="coding" target="1.5" />
       <module name="crypto" target="1.5" />
       <module name="spring.basic" target="1.8" />
+      <module name="yml" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

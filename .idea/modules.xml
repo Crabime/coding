@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/coding.iml" filepath="$PROJECT_DIR$/coding.iml" />
+      <module fileurl="file://$PROJECT_DIR$/crypto/crypto.iml" filepath="$PROJECT_DIR$/crypto/crypto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-basic/spring.basic.iml" filepath="$PROJECT_DIR$/spring-basic/spring.basic.iml" />
     </modules>
   </component>
 </project>

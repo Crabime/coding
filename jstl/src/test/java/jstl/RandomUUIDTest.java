@@ -2,6 +2,8 @@ package jstl;
 
 import junit.framework.TestCase;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.UUID;
 
@@ -10,8 +12,10 @@ import java.util.UUID;
  */
 public class RandomUUIDTest extends TestCase {
 
+    private static final Logger logger = LoggerFactory.getLogger(RandomUUIDTest.class);
+
     @Test
     public void testUUID(){
-        System.out.println(UUID.randomUUID().toString());
+        logger.info(UUID.randomUUID().toString());
     }
 }

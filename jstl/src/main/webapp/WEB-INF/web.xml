@@ -5,5 +5,9 @@
          version="2.5">
     <display-name>QTLDB</display-name>
 
-
+    <servlet>
+        <servlet-name>configServlet</servlet-name>
+        <servlet-class>jstl.controller.ConfigServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 </web-app>

@@ -41,6 +41,10 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/jstl" />
+    <file type="web" url="file://$PROJECT_DIR$/mockmvctest" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
@@ -49,6 +53,8 @@
         <option value="$PROJECT_DIR$/spring-basic/pom.xml" />
         <option value="$PROJECT_DIR$/yml/pom.xml" />
         <option value="$PROJECT_DIR$/jstl/pom.xml" />
+        <option value="$PROJECT_DIR$/mockmvctest/pom.xml" />
+        <option value="$PROJECT_DIR$/jayway/pom.xml" />
       </list>
     </option>
   </component>

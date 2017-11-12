@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/coding.iml" filepath="$PROJECT_DIR$/coding.iml" />
       <module fileurl="file://$PROJECT_DIR$/crypto/crypto.iml" filepath="$PROJECT_DIR$/crypto/crypto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jayway/jayway.iml" filepath="$PROJECT_DIR$/jayway/jayway.iml" />
       <module fileurl="file://$PROJECT_DIR$/jstl/jstl.iml" filepath="$PROJECT_DIR$/jstl/jstl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mockmvctest/mockmvctest.iml" filepath="$PROJECT_DIR$/mockmvctest/mockmvctest.iml" />
       <module fileurl="file://$PROJECT_DIR$/regular-expression/regular-expression.iml" filepath="$PROJECT_DIR$/regular-expression/regular-expression.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-basic/spring.basic.iml" filepath="$PROJECT_DIR$/spring-basic/spring.basic.iml" />
       <module fileurl="file://$PROJECT_DIR$/yml/yml.iml" filepath="$PROJECT_DIR$/yml/yml.iml" />

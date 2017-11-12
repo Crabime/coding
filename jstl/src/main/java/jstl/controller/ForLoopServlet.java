@@ -1,4 +1,4 @@
-package jstl;
+package jstl.controller;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

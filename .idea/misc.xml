@@ -55,6 +55,8 @@
         <option value="$PROJECT_DIR$/jstl/pom.xml" />
         <option value="$PROJECT_DIR$/mockmvctest/pom.xml" />
         <option value="$PROJECT_DIR$/jayway/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/aspectj/pom.xml" />
       </list>
     </option>
   </component>

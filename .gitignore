@@ -1,5 +1,5 @@
 *.class
-
+*.iml
 # Log file
 *.log
 

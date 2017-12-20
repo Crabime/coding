@@ -57,6 +57,7 @@
         <option value="$PROJECT_DIR$/jayway/pom.xml" />
         <option value="$PROJECT_DIR$/mybatis/pom.xml" />
         <option value="$PROJECT_DIR$/aspectj/pom.xml" />
+        <option value="$PROJECT_DIR$/thread/pom.xml" />
       </list>
     </option>
   </component>

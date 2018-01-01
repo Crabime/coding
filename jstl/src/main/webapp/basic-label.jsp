@@ -19,7 +19,9 @@
     </c:forEach>
     <p>下面是自定义tag标签内容:<span class="tag"><myTag:helloWorld /></span></p>
     <p>${num}</p>
-
-
+    <button id="sendArrayAjax">Ajax发送数组</button>
+    <script type="text/javascript">
+        
+    </script>
 </body>
 </html>

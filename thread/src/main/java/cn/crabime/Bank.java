@@ -7,21 +7,25 @@ package cn.crabime;
 public class Bank {
     private int count = 0; //账户余额
 
-    public synchronized void addMoney(int money){
+    public void addMoney(int money){
         count += money;
-        System.out.println(System.currentTimeMillis() + "存进" + money);
+        System.out.println(currentThread() + "存进" + money);
     }
 
-    public synchronized void subMoney(int money){
+    public void subMoney(int money){
         if (count - money < 0){
-            System.out.println("余额不足");
+            System.out.println(currentThread() + "余额不足");
             return;
         }
         count -= money;
-        System.out.println(System.currentTimeMillis() + "取出" + money);
+        System.out.println(currentThread() + "取出" + money);
     }
 
     public void lookMoney(){
-        System.out.println("账户余额" + count);
+        System.out.println(currentThread() + "账户余额" + count);
+    }
+
+    private String currentThread(){
+        return Thread.currentThread().getName() + "\t";
     }
 }

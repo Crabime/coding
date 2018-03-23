@@ -1,0 +1,10 @@
+server:
+  port: 8080
+spring:
+  redis:
+    host: localhost
+security:
+  oauth2:
+    resource:
+      filter-order: 3
+

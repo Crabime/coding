@@ -34,6 +34,9 @@
         <module name="jstl" />
         <module name="mockmvctest" />
         <module name="mybatis" />
+        <module name="oauth2" />
+        <module name="redis" />
+        <module name="spring-data" />
         <module name="spring.basic" />
         <module name="thread" />
         <module name="yml" />
@@ -47,6 +50,9 @@
       <module name="jstl" target="1.5" />
       <module name="mockmvctest" target="1.8" />
       <module name="mybatis" target="1.5" />
+      <module name="oauth2" target="1.6" />
+      <module name="redis" target="1.5" />
+      <module name="spring-data" target="1.5" />
       <module name="spring.basic" target="1.8" />
       <module name="thread" target="1.5" />
       <module name="yml" target="1.8" />

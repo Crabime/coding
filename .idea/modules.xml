@@ -10,7 +10,10 @@
       <module fileurl="file://$PROJECT_DIR$/jstl/jstl.iml" filepath="$PROJECT_DIR$/jstl/jstl.iml" />
       <module fileurl="file://$PROJECT_DIR$/mockmvctest/mockmvctest.iml" filepath="$PROJECT_DIR$/mockmvctest/mockmvctest.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybatis/mybatis.iml" filepath="$PROJECT_DIR$/mybatis/mybatis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oauth2/oauth2.iml" filepath="$PROJECT_DIR$/oauth2/oauth2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/redis/redis.iml" filepath="$PROJECT_DIR$/redis/redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/regular-expression/regular-expression.iml" filepath="$PROJECT_DIR$/regular-expression/regular-expression.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-data/spring-data.iml" filepath="$PROJECT_DIR$/spring-data/spring-data.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-basic/spring.basic.iml" filepath="$PROJECT_DIR$/spring-basic/spring.basic.iml" />
       <module fileurl="file://$PROJECT_DIR$/thread/thread.iml" filepath="$PROJECT_DIR$/thread/thread.iml" />
       <module fileurl="file://$PROJECT_DIR$/yml/yml.iml" filepath="$PROJECT_DIR$/yml/yml.iml" />

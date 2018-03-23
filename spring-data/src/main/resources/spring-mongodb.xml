@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="cn.crabime"/>
+    <mongo:mongo-client id="mongo" replica-set="localhost:27017,localhost:27018,localhost:27019">
+        <mongo:client-options
+                min-connections-per-host="2"
+                connections-per-host="100"
+                connect-timeout="10000"
+                max-wait-time="120000"
+                heartbeat-frequency="2000"
+                heartbeat-connect-timeout="10000"
+                max-connection-life-time="3000"
+                socket-keep-alive="true"
+                socket-timeout="20000"
+                read-preference="PRIMARY_PREFERRED"
+                threads-allowed-to-block-for-connection-multiplier="5"
+                write-concern="SAFE"/>
+    </mongo:mongo-client>
+
+    <mongo:db-factory id="mongoDbFactory" dbname="test" mongo-ref="mongo" />
+
+
+    <bean id="mappingContext"
+          class="org.springframework.data.mongodb.core.mapping.MongoMappingContext"/>
+
+    <bean id="defaultMongoTypeMapper"
+          class="org.springframework.data.mongodb.core.convert.DefaultMongoTypeMapper">
+        <constructor-arg name="typeKey">
+            <null/>
+        </constructor-arg>
+    </bean>
+
+    <bean id="mappingMongoConverter"
+          class="org.springframework.data.mongodb.core.convert.MappingMongoConverter">
+        <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
+        <constructor-arg name="mappingContext" ref="mappingContext"/>
+        <property name="typeMapper" ref="defaultMongoTypeMapper"/>
+    </bean>
+
+
+    <!-- 只要使用这个调用相应的方法操作 -->
+    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
+        <constructor-arg name="mongoConverter" ref="mappingMongoConverter"/>
+    </bean>
+
+    <mongo:repositories base-package="cn.crabime.dao"/>
+
+    <bean class="org.springframework.data.mongodb.core.mapping.event.LoggingEventListener"/>
+
+</beans>

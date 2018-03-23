@@ -62,9 +62,13 @@ public class NonCaptureGroupTest extends TestCase {
      */
     @Test
     public void testPositiveLookAhead(){
-        String regex = "(\\d+){4}(?=[A-Z])";
+        String regex = "(\\d+){4}(?=[A-Z])*";
         Pattern compile = Pattern.compile(regex);
         Matcher matcher = compile.matcher("3211A");
+        while (matcher.find()){
+            System.out.println(matcher.group());
+        }
+        matcher = compile.matcher("3211AZ");
         while (matcher.find()){
             System.out.println(matcher.group());
         }

@@ -16,6 +16,7 @@
         <module>jdk-basic</module>
         <module>spring</module>
         <module>nosql</module>
+        <module>mq</module>
     </modules>
 
     <properties>
@@ -40,6 +41,7 @@
         <lang3.version>3.6</lang3.version>
         <mongo.version>1.10.4.RELEASE</mongo.version>
         <mongo.driver.version>3.4.2</mongo.driver.version>
+        <activemq.version>5.8.0</activemq.version>
     </properties>
 
 
@@ -75,6 +77,11 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-expression</artifactId>
                 <version>${spring.version}</version>
             </dependency>
             <dependency>
@@ -206,6 +213,21 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-web</artifactId>
+                <version>${activemq.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-spring</artifactId>
+                <version>${activemq.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-pool</artifactId>
+                <version>${activemq.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

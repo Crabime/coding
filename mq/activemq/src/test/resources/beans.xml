@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.1.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <description>ActiveMQ application test configuration</description>
+
+    <context:component-scan base-package="cn.crabime" />
+
+    <bean id="activemqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://localhost:61616"/>
+	</bean>
+    
+    <!-- 创建一个Topic -->
+    <bean id="destination" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg index="0">
+            <util:constant static-field="cn.crabime.common.Constants.TOPICOBJECT" />
+        </constructor-arg>
+    </bean>
+    
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+    	<property name="connectionFactory" ref="activemqConnectionFactory"/>
+    	<property name="defaultDestination" ref="destination"/>
+    	<property name="messageConverter">
+    		<bean class="org.springframework.jms.support.converter.SimpleMessageConverter"/>
+    	</property>
+    </bean>
+
+    <bean id="demoTopicReceiver" class="cn.crabime.topic.MQDemoTopicListener" />
+
+    <bean id="defaultMessageListenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="activemqConnectionFactory" />
+        <property name="destination" ref="destination" />
+        <property name="pubSubDomain" value="true" />
+        <property name="messageListener" ref="demoTopicReceiver" />
+    </bean>
+    
+    <bean id="person" class="cn.crabime.springsupport.Person"/>
+
+
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="cn.crabime.db" />
+        <property name="annotationClass" value="cn.crabime.utils.MyBatisDao" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean" />
+    </bean>
+
+    <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="pooledDataSource" />
+        <property name="mapperLocations" value="classpath:/mapping/*.xml" />
+        <property name="configLocation" value="classpath:mybatis-config.xml" />
+    </bean>
+
+    <bean id="pooledDataSource" class="org.apache.ibatis.datasource.pooled.PooledDataSource">
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/mqtest?useUnicode=true&amp;characterEncoding=utf-8" />
+    </bean>
+ </beans>

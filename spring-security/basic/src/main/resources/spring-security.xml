@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:sec="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/security
+                        http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <sec:global-method-security secured-annotations="enabled"/>
+
+    <bean id="builder" class="cn.crabime.security.JdbcRequestMapBuilder">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="resourceQuery"
+                  value="SELECT rc.resc_name, r.role_name FROM resc rc, role r, role_resc rr WHERE r.id = rr.role_id AND rc.id = rr.resc_id"/>
+    </bean>
+
+    <!--<bean id="accessDecisionManager" class="cn.crabime.security.MyAccessDecisionManager" />-->
+
+    <bean id="roleHierarchy" class="org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl">
+        <property name="hierarchy">
+            <value>
+                ROLE_ADMIN > ROLE_USER
+                ROLE_USER > ROLE_ANONYMOUS
+            </value>
+        </property>
+    </bean>
+
+    <bean id="roleVoter" class="org.springframework.security.access.vote.RoleHierarchyVoter">
+        <constructor-arg ref="roleHierarchy"/>
+    </bean>
+
+    <bean id="accessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
+        <constructor-arg>
+            <list>
+                <ref bean="roleVoter"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <sec:authentication-manager alias="authenticationManager">
+        <sec:authentication-provider>
+            <sec:jdbc-user-service data-source-ref="dataSource"
+                                   users-by-username-query="select username,password,status as enabled from user where username = ?"
+                                   authorities-by-username-query="SELECT a.username, c.role_name FROM user a
+LEFT JOIN user_role b ON a.id = b.user_id
+LEFT JOIN role c ON c.id = b.role_id WHERE a.username = ?"/>
+        </sec:authentication-provider>
+    </sec:authentication-manager>
+
+    <!--自定义的切入点-->
+    <bean id="securityMetadataSource" class="cn.crabime.security.MyFilterInvocationSecurityMetadataSource">
+        <property name="builder" ref="builder"/>
+    </bean>
+
+    <!-- 执行HTTP请求资源的安全处理 -->
+    <bean id="filterSecurityInterceptor"
+          class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">
+        <!-- 用户拥有的权限 -->
+        <property name="accessDecisionManager" ref="accessDecisionManager"/>
+        <!-- 用户是否拥有所请求资源的权限 -->
+        <property name="authenticationManager" ref="authenticationManager"/>
+        <!-- 资源与权限对应关系 -->
+        <property name="securityMetadataSource" ref="securityMetadataSource"/>
+    </bean>
+
+
+    <sec:http auto-config='false'>
+        <!-- 只有管理员才能看到的admin界面 -->
+        <sec:form-login login-processing-url="/j_spring_security_check" login-page="/login/a"
+                        default-target-url="/common/index"
+                        authentication-failure-url="/login/a?error=true"/>
+        <sec:csrf disabled="true"/>
+        <sec:remember-me key="basic" remember-me-parameter="remember-me"/>
+        <sec:logout invalidate-session="true" logout-success-url="/login/a" logout-url="/j_spring_security_logout"/>
+        <sec:custom-filter ref="filterSecurityInterceptor" before="FILTER_SECURITY_INTERCEPTOR"/>
+    </sec:http>
+</beans>

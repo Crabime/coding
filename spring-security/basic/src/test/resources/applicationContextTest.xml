@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+                destroy-method="close">
+        <property name="driverClass" value="com.mysql.jdbc.Driver" />
+
+        <property name="jdbcUrl"
+                        value="jdbc:mysql://localhost:3306/yuanqin?useUnicode=true" />
+        <property name="user" value="root" />
+        <property name="password" value="songshaoxian0520" />
+        <property name="maxPoolSize" value="50" />
+        <property name="minPoolSize" value="10" />
+        <property name="initialPoolSize" value="10" />
+        <property name="maxIdleTime" value="25000" />
+        <property name="acquireIncrement" value="1" />
+        <property name="acquireRetryAttempts" value="30" />
+        <property name="acquireRetryDelay" value="1000" />
+        <property name="idleConnectionTestPeriod" value="18000" />
+        <property name="checkoutTimeout" value="5000" />
+    </bean>
+</beans>

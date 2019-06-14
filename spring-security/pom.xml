@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>coding</artifactId>
+        <groupId>cn.crabime</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>spring-security</artifactId>
+
+    <properties>
+        <c3p0.version>0.9.5.2</c3p0.version>
+        <cas.client.version>3.4.1</cas.client.version>
+        <ehcache.version>2.10.5</ehcache.version>
+    </properties>
+    <modules>
+
+        <module>basic</module>
+        <module>cas-one</module>
+        <module>cas-two</module>
+        <module>expression</module>
+        <module>javaconfig</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.mchange</groupId>
+                <artifactId>c3p0</artifactId>
+                <version>${c3p0.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jasig.cas.client</groupId>
+                <artifactId>cas-client-core</artifactId>
+                <version>${cas.client.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.ehcache</groupId>
+                <artifactId>ehcache</artifactId>
+                <version>${ehcache.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

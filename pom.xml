@@ -17,12 +17,14 @@
         <module>spring</module>
         <module>nosql</module>
         <module>mq</module>
+        <module>spring-security</module>
     </modules>
 
     <properties>
         <aspectj.version>1.8.9</aspectj.version>
         <spring.version>4.3.9.RELEASE</spring.version>
         <spring.core.version>4.3.18.RELEASE</spring.core.version>
+        <spring.security.version>5.0.0.BUILD-SNAPSHOT</spring.security.version>
         <slf4j.version>1.7.7</slf4j.version>
         <log4j.version>1.2.12</log4j.version>
         <mybatis.version>3.4.3</mybatis.version>
@@ -43,6 +45,9 @@
         <mongo.version>1.10.4.RELEASE</mongo.version>
         <mongo.driver.version>3.4.2</mongo.driver.version>
         <activemq.version>5.8.0</activemq.version>
+        <webapi.version>7.0</webapi.version>
+        <jackson.version>2.7.4</jackson.version>
+        <pageHelper.version>4.2.1</pageHelper.version>
     </properties>
 
 
@@ -92,6 +97,11 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
                 <artifactId>spring-tx</artifactId>
                 <version>${spring.version}</version>
             </dependency>
@@ -120,6 +130,11 @@
                 <artifactId>spring-test</artifactId>
                 <version>${spring.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-oxm</artifactId>
+                <version>${spring.version}</version>
             </dependency>
 
             <!-- MyBatis -->
@@ -171,6 +186,11 @@
                 <artifactId>javax.servlet-api</artifactId>
                 <version>${servlet-api.version}</version>
                 <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-web-api</artifactId>
+                <version>${webapi.version}</version>
             </dependency>
             <dependency>
                 <groupId>taglibs</groupId>
@@ -229,6 +249,59 @@
                 <groupId>org.apache.activemq</groupId>
                 <artifactId>activemq-pool</artifactId>
                 <version>${activemq.version}</version>
+            </dependency>
+
+            <!-- spring cn.crabime.security -->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-core</artifactId>
+                <version>${spring.security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-web</artifactId>
+                <version>${spring.security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-config</artifactId>
+                <version>${spring.security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-crypto</artifactId>
+                <version>${spring.security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-taglibs</artifactId>
+                <version>${spring.security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-cas</artifactId>
+                <version>${spring.security.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-xml</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${pageHelper.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

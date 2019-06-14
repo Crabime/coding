@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:sec="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/security
+http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <bean id="defaultMethodSecurityExpressionHandler" class="org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler" />
+
+    <bean id="expressionBasedAnnotationAttributeFactory" class="org.springframework.security.access.expression.method.ExpressionBasedAnnotationAttributeFactory">
+        <constructor-arg ref="defaultMethodSecurityExpressionHandler" />
+    </bean>
+
+    <sec:global-method-security pre-post-annotations="enabled" secured-annotations="enabled" />
+
+    <bean id="accessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
+        <constructor-arg>
+            <list>
+                <bean class="org.springframework.security.web.access.expression.WebExpressionVoter" />
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <sec:user-service id="userService">
+        <sec:user name="crabime" password="123" authorities="ROLE_ADMIN" />
+        <sec:user name="bill" password="123" authorities="ROLE_USER" />
+    </sec:user-service>
+
+    <sec:authentication-manager alias="authenticationManager">
+        <sec:authentication-provider user-service-ref="userService" />
+    </sec:authentication-manager>
+
+    <!-- 执行HTTP请求资源的安全处理 -->
+    <bean id="filterSecurityInterceptor" class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">
+        <!-- 用户拥有的权限 -->
+        <property name="accessDecisionManager" ref="accessDecisionManager" />
+        <!-- 用户是否拥有所请求资源的权限 -->
+        <property name="authenticationManager" ref="authenticationManager" />
+        <!-- 资源与权限对应关系 -->
+            <property name="securityMetadataSource">
+            <sec:filter-security-metadata-source use-expressions="true">
+                <sec:intercept-url pattern="/admin/denyAll" access="denyAll" />
+                <sec:intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />
+                <sec:intercept-url pattern="/common/**" access="hasAnyRole('USER', 'ADMIN')" />
+                <sec:intercept-url pattern="/login/**" access="hasAnyRole('USER', 'ADMIN', 'ANONYMOUS')" />
+            </sec:filter-security-metadata-source>
+        </property>
+    </bean>
+
+    <sec:http auto-config='false'>
+        <!-- 只有管理员才能看到的admin界面 -->
+        <sec:form-login login-processing-url="/j_spring_security_check" login-page="/login/a" default-target-url="/common/"
+                        authentication-failure-url="/login/a?error=true" />
+        <sec:csrf disabled="true" />
+        <sec:remember-me key="expression" remember-me-parameter="remember-me" />
+        <sec:logout invalidate-session="true" logout-success-url="/login/a" logout-url="/j_spring_security_logout" />
+        <sec:custom-filter ref="filterSecurityInterceptor" before="FILTER_SECURITY_INTERCEPTOR" />
+
+    </sec:http>
+</beans>

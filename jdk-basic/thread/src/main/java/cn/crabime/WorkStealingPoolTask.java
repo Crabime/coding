@@ -1,11 +1,9 @@
 package cn.crabime;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
-import java.util.concurrent.RecursiveTask;
 
 /**
  * 演示如何使用jdk1.8新增的WorkStealingPool
@@ -37,6 +35,30 @@ public class WorkStealingPoolTask extends RecursiveAction {
         }
     }
 
+    public static void quickSort(int[] nums, int left, int right) {
+        if (left + CUTOFF < right) {
+            int pivot = median3(nums, left, right);
+            int i = left, j = right - 1;
+            for (;;) {
+                while (nums[++i] < pivot) {}
+                while (nums[--j] > pivot) {}
+                if (i < j) {
+                    swap(nums, i, j);
+                } else {
+                    // i >= j情况即可直接跳出循环
+                    break;
+                }
+            }
+
+            // i此时在j右侧，将num[i]值与pivot进行互换
+            swap(nums, i, right - 1);
+            quickSort(nums, left, i - 1);
+            quickSort(nums, i + 1, right);
+        } else {
+            insertSort(nums);
+        }
+    }
+
     /**
      * 三数中值法获取pivot值
      */
@@ -65,7 +87,7 @@ public class WorkStealingPoolTask extends RecursiveAction {
 
     public static void main(String[] args) {
         ForkJoinPool forkJoinPool = new ForkJoinPool();
-        List<Integer> list = MillionNumberGenerator.generateNumbers(300000);
+        List<Integer> list = MillionNumberGenerator.generateNumbers(30000000);
         int[] num = new int[list.size()];
         for (int i = 0; i < list.size(); i++) {
             num[i] = list.get(i);

@@ -1,10 +1,9 @@
 package cn.crabime;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
- * 直接使用快排（单线程）对一千万数字进行排序
+ * 直接使用快排（单线程）进行排序
  */
 public class NonWorkStealingPoolTask {
 
@@ -56,7 +55,7 @@ public class NonWorkStealingPoolTask {
     }
 
     public static void main(String[] args) {
-        List<Integer> list = MillionNumberGenerator.generateNumbers(3000000);
+        List<Integer> list = MillionNumberGenerator.generateNumbers(30000000);
         int[] num = new int[list.size()];
         for (int i = 0; i < list.size(); i++) {
             num[i] = list.get(i);

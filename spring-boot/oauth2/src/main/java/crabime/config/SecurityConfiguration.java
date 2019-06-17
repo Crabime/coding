@@ -1,4 +1,4 @@
-package com.crabime.config;
+package crabime.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

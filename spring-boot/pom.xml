@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>oauth2</module>
-        <module>redis-main</module>
+        <module>redis.readwritesep</module>
     </modules>
 
     <parent>

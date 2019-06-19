@@ -1,6 +1,6 @@
 package cn.crabime.redis.rwsep.service;
 
-public interface MyDbService {
+public interface RedisService {
 
     void insert(String key, Object value);
 

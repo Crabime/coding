@@ -6,8 +6,10 @@ import cn.crabime.redis.rwsep.service.RedisService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.Cursor;
+import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ScanOptions;
 import org.springframework.stereotype.Controller;
@@ -42,20 +44,61 @@ public class DbController {
      * 将数据库中数据全量写入Redis数据库中，这里只包含geneId、locus
      * hash key规则：hash:pig:gene
      */
-    @RequestMapping(value = "/batchinsert", method = RequestMethod.GET)
+    @RequestMapping(value = "/bipg", method = RequestMethod.POST)
     @ResponseBody
-    public String insertValue(HttpServletRequest request) {
+    public String batchInsertPigGene(HttpServletRequest request) {
         String species = request.getParameter("species");
         if (species == null || species.equals("")) {
             return "传入species不能为空";
         }
+
         int pageSize = 100;
-        StringBuilder hashKey = new StringBuilder("hash:pig:gene:").append(species);
+        StringBuilder hashKey = new StringBuilder("hash:pig:gene:1:").append(species);
+        // 判断hash中key是否达到10000
+        if (redisTemplate.hasKey(hashKey.toString())){
+            if (redisTemplate.boundHashOps(hashKey.toString()).size() == 10000) {
+                logger.warn("{} key已达到10000万个，暂停插入", hashKey.toString());
+                return "Full Now";
+            }
+        }
         for (int i = 0; i < 100; i++) {
             int pageStart = i * pageSize;
             List<PGene> pGeneList = pGeneService.findGeneBySpecies(species, pageStart, pageSize);
             Map<String, String> geneIdAndLocus = pGeneList.stream().collect(Collectors.toMap(PGene::getGeneId, PGene::getLocus));
             redisTemplate.opsForHash().putAll(hashKey.toString(), geneIdAndLocus);
+            if (pGeneList.size() < pageSize) break;
+        }
+        return "插入成功";
+    }
+
+    @RequestMapping(value = "/bipgup", method = RequestMethod.POST)
+    @ResponseBody
+    public String batchInsertPigGeneUsingPipeline(HttpServletRequest request) {
+        String species = request.getParameter("species");
+        if (species == null || species.equals("")) {
+            return "传入species不能为空";
+        }
+
+        int pageSize = 100;
+        StringBuilder hashKey = new StringBuilder("hash:pig:gene:2:").append(species);
+        // 判断hash中key是否达到10000
+        if (redisTemplate.hasKey(hashKey.toString())){
+            if (redisTemplate.boundHashOps(hashKey.toString()).size() == 10000) {
+                logger.warn("{} key已达到10000万个，暂停插入", hashKey.toString());
+                return "Full Now";
+            }
+        }
+        for (int i = 100; i < 200; i++) {
+            int pageStart = i * pageSize;
+            List<PGene> pGeneList = pGeneService.findGeneBySpecies(species, pageStart, pageSize);
+            Map<String, String> geneIdAndLocus = pGeneList.stream().collect(Collectors.toMap(PGene::getGeneId, PGene::getLocus));
+            redisTemplate.executePipelined(new RedisCallback<Void>() {
+                @Override
+                public Void doInRedis(RedisConnection connection) throws DataAccessException {
+                    geneIdAndLocus.forEach((k, v) -> connection.hSet(hashKey.toString().getBytes(), k.getBytes(), v.getBytes()));
+                    return null;
+                }
+            });
             if (pGeneList.size() < pageSize) break;
         }
         return "插入成功";
@@ -107,7 +150,7 @@ public class DbController {
             logger.warn("传入的locus不存在");
             return result;
         }
-        hashKey = new StringBuffer("hash:pig:gene:").append(species).toString();
+        hashKey = "hash:pig:gene:" + species;
         ScanOptions keyScanOptions = ScanOptions.scanOptions().match(hashKey).build();
         Cursor<byte[]> scanRes = redisTemplate.getConnectionFactory().getConnection().scan(keyScanOptions);
         if (scanRes.hasNext()) {

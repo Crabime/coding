@@ -122,7 +122,9 @@ public class DbController {
             cursor = connection.scan(scanOptions);
         } else {
             ScanOptions scanOptions = ScanOptions.scanOptions().match(key).build();
+            long startTime = System.currentTimeMillis();
             cursor = connection.scan(scanOptions);
+            logger.info("获取{}对应的事件为:{}", key, (System.currentTimeMillis() - startTime));
         }
 
         while (cursor.hasNext()) {

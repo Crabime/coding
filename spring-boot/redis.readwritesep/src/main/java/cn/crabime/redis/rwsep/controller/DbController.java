@@ -1,12 +1,12 @@
 package cn.crabime.redis.rwsep.controller;
 
 import cn.crabime.redis.rwsep.beans.PGene;
-import cn.crabime.redis.rwsep.service.RedisService;
 import cn.crabime.redis.rwsep.service.PGeneService;
+import cn.crabime.redis.rwsep.service.RedisService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.BoundHashOperations;
+import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ScanOptions;
@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -49,7 +50,7 @@ public class DbController {
             return "传入species不能为空";
         }
         int pageSize = 100;
-        StringBuilder hashKey = new StringBuilder("hash:pig:gene").append(species);
+        StringBuilder hashKey = new StringBuilder("hash:pig:gene:").append(species);
         for (int i = 0; i < 100; i++) {
             int pageStart = i * pageSize;
             List<PGene> pGeneList = pGeneService.findGeneBySpecies(species, pageStart, pageSize);
@@ -60,17 +61,60 @@ public class DbController {
         return "插入成功";
     }
 
-    @RequestMapping(value = "/batchdelete", method = RequestMethod.POST)
+    /**
+     * 获取Redis中key
+     * @param key 匹配的key，如果传入的，如果传入的key为空，这里使用scan获取前10个，否则通过scan匹配获取前10个
+     * @return redis中匹配为传入key的结果
+     */
+    @RequestMapping(value = "/gak", method = RequestMethod.POST)
     @ResponseBody
-    public String deleteHash(@RequestParam("hkey") String hashKey) {
-        // TODO: 6/19/19 增加hscan使用和hdel功能 
-        BoundHashOperations<Object, Object, Object> boundHashOperations = redisTemplate.boundHashOps(hashKey);
-        Cursor<Map.Entry<Object, Object>> cursor = boundHashOperations.scan(ScanOptions.scanOptions().count(20).build());
-        while (cursor.hasNext()) {
-            Map.Entry<Object, Object> next = cursor.next();
-            logger.info("key={}, value={}", next.getKey(), next.getValue());
+    public List<String> getAllKey(@RequestParam("key") String key) {
+        List<String> result = new ArrayList<>();
+        RedisConnection connection = redisTemplate.getConnectionFactory().getConnection();
+        Cursor<byte[]> cursor = null;
+
+        if (null == key || key.equals("")) {
+            logger.warn("gak方法中传入的key为空");
+            ScanOptions scanOptions = ScanOptions.scanOptions().build();
+            cursor = connection.scan(scanOptions);
+        } else {
+            ScanOptions scanOptions = ScanOptions.scanOptions().match(key).build();
+            cursor = connection.scan(scanOptions);
         }
-        return "操作成功";
+
+        while (cursor.hasNext()) {
+            byte[] next = cursor.next();
+            result.add(new String(next, Charset.forName("UTF-8")));
+            logger.info("key={}", new String(next, Charset.forName("UTF-8")));
+        }
+        return result;
+    }
+
+    /**
+     * 根据传入的geneId和species，找到值在Redis hash中的值
+     * @return 如果传入的species为空，找到的值也为空，否则为该基因对应的位置locus
+     */
+    @RequestMapping(value = "/glbg", method = RequestMethod.GET)
+    @ResponseBody
+    public List<String> getLocusByGene(@RequestParam("gid") String geneId, @RequestParam("species") String species) {
+        List<String> result = new ArrayList<>();
+        String hashKey;
+        if (null == geneId || geneId.equals("")) {
+            logger.warn("传入的geneId不存在");
+            return result;
+        }
+        if (null == species || species.equals("")) {
+            logger.warn("传入的locus不存在");
+            return result;
+        }
+        hashKey = new StringBuffer("hash:pig:gene:").append(species).toString();
+        ScanOptions keyScanOptions = ScanOptions.scanOptions().match(hashKey).build();
+        Cursor<byte[]> scanRes = redisTemplate.getConnectionFactory().getConnection().scan(keyScanOptions);
+        if (scanRes.hasNext()) {
+            String matchLocus = (String) redisTemplate.boundHashOps(hashKey).get(geneId);
+            result.add(matchLocus);
+        }
+        return result;
     }
 
 

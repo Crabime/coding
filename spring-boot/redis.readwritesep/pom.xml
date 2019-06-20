@@ -16,12 +16,20 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
-            <version>1.5.3.RELEASE</version>
+        </dependency>
+
+        <!-- Spring Boot应用热部署，在Idea中还要把Build->Compiler->build project automatically打开
+            同时打开registry(ctrl + alt + shift + /)，开启compiler.automake.allow.when.app.running选项，
+            测试：修改java源文件时，直接recompiler xxx.java文件，Idea就会restart应用，这个过程很快，与第一次启动不一样
+         -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>1.5.3.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

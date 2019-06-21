@@ -1,7 +1,10 @@
 package cn.crabime.redis.rwsep.config;
 
+import cn.crabime.redis.rwsep.listener.SessionCountListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -42,5 +45,16 @@ public class RedisCacheConfig {
         template.setDefaultSerializer(new StringRedisSerializer());
         template.setConnectionFactory(redisConnectionFactory);
         return template;
+    }
+
+    /**
+     * 将Listener注册到Spring容器中
+     */
+    @Bean
+    public ServletListenerRegistrationBean sessionCountListener() {
+        ServletListenerRegistrationBean<SessionCountListener> registrationBean =
+                new ServletListenerRegistrationBean<>();
+        registrationBean.setListener(new SessionCountListener());
+        return registrationBean;
     }
 }

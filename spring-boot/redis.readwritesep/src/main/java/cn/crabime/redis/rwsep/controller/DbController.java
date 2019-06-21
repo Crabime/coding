@@ -20,9 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
@@ -37,6 +35,7 @@ public class DbController {
     @Autowired
     private PGeneService pGeneService;
 
+    // TODO: 2019/6/21 这里复现启动时连接超时问题
     @Autowired
     private RedisTemplate<Object, Object> redisTemplate;
 
@@ -154,8 +153,10 @@ public class DbController {
         }
         hashKey = "hash:pig:gene:" + species;
         ScanOptions keyScanOptions = ScanOptions.scanOptions().match(hashKey).build();
+        // TODO: 2019/6/21 如何查看这个时候线程池中有多少个空闲连接
         Cursor<byte[]> scanRes = redisTemplate.getConnectionFactory().getConnection().scan(keyScanOptions);
         if (scanRes.hasNext()) {
+            // TODO: 2019/6/21 启动时直接从一个大key中查找，复杂度不能为O(1)，保证查询有足够的时间从而查询超时
             String matchLocus = (String) redisTemplate.boundHashOps(hashKey).get(geneId);
             result.add(matchLocus);
         }
@@ -163,9 +164,30 @@ public class DbController {
     }
 
 
+    /**
+     * 启动时做一次hmget操作，由于hmget是一个O(N)的操作，时间足够长
+     * @return gene、locus对应map
+     */
+    @RequestMapping(value = "/gmpg", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, String> getMultipleLocusByGene(@RequestParam("gl") String geneList,
+                                                      @RequestParam("species") String species) {
+        Map<String, String> result = new HashMap<>();
+        List<Object> inputGeneList = Arrays.asList(geneList.split(","));
+        String hashKey = "hash:pig:gene:" + species;
+        long startTime = System.currentTimeMillis();
+        List<Object> locusList = redisTemplate.boundHashOps(hashKey).multiGet(inputGeneList);
+        logger.info("hmget总耗时{}", (System.currentTimeMillis() - startTime));
+        for (int i = 0; i < inputGeneList.size(); i++) {
+            result.put((String) inputGeneList.get(i), (String) locusList.get(i));
+        }
+        return result;
+    }
+
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     @ResponseBody
-    public Object getVal(@RequestParam(name = "key") String key) {
+    public Object getVal(HttpServletRequest request) {
+        String key = request.getParameter("key");
         String value = (String) redisService.get(key);
         logger.info("这里为了获取堆栈信息，key={}返回值为{}", key, value);
         return value;

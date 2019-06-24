@@ -7,22 +7,23 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.redis.connection.DataType;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ScanOptions;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.nio.charset.Charset;
 import java.util.*;
 import java.util.stream.Collectors;
 
+// TODO: 2019/6/24 增加redis HyperLogLog功能统计登录的session个数
 @Controller
 @RequestMapping(value = "/db")
 public class DbController {
@@ -184,12 +185,20 @@ public class DbController {
         return result;
     }
 
-    @RequestMapping(value = "/get", method = RequestMethod.GET)
+    /**
+     * @param httpSession 在注解中增加HttpSession，Spring MVC会自动给我们创建session
+     */
+    @RequestMapping(value = "/gk", method = RequestMethod.GET)
     @ResponseBody
-    public Object getVal(HttpServletRequest request) {
+    public Object getVal(HttpServletRequest request, HttpSession httpSession) {
         String key = request.getParameter("key");
-        String value = (String) redisService.get(key);
-        logger.info("这里为了获取堆栈信息，key={}返回值为{}", key, value);
+        String sessionId = httpSession.getId();
+        logger.info("当前session id为：{}", sessionId);
+        String value = null;
+        if (redisTemplate.type("key").equals(DataType.STRING)) {
+            value = (String) redisService.get(key);
+            logger.info("这里为了获取堆栈信息，key={}返回值为{}", key, value);
+        }
         return value;
     }
 

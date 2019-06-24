@@ -1,10 +1,7 @@
 package cn.crabime.redis.rwsep.config;
 
-import cn.crabime.redis.rwsep.listener.SessionCountListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
-import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -12,6 +9,9 @@ import org.springframework.data.redis.connection.RedisNode;
 import org.springframework.data.redis.connection.RedisSentinelConfiguration;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 public class RedisCacheConfig {
@@ -47,14 +47,23 @@ public class RedisCacheConfig {
         return template;
     }
 
+    @Bean
+    public ViewResolver getViewResolver() {
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setPrefix("/WEB-INF/views/");
+        resolver.setSuffix(".jsp");
+        resolver.setViewClass(JstlView.class);
+        return resolver;
+    }
+
     /**
      * 将Listener注册到Spring容器中
      */
-    @Bean
-    public ServletListenerRegistrationBean sessionCountListener() {
-        ServletListenerRegistrationBean<SessionCountListener> registrationBean =
-                new ServletListenerRegistrationBean<>();
-        registrationBean.setListener(new SessionCountListener());
-        return registrationBean;
-    }
+//    @Bean
+//    public ServletListenerRegistrationBean sessionCountListener() {
+//        ServletListenerRegistrationBean<SessionCountListener> registrationBean =
+//                new ServletListenerRegistrationBean<>();
+//        registrationBean.setListener(new SessionCountListener());
+//        return registrationBean;
+//    }
 }

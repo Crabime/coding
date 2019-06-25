@@ -24,7 +24,7 @@
         <aspectj.version>1.8.9</aspectj.version>
         <spring.version>4.3.9.RELEASE</spring.version>
         <spring.core.version>4.3.18.RELEASE</spring.core.version>
-        <spring.security.version>5.0.0.BUILD-SNAPSHOT</spring.security.version>
+        <spring.security.version>5.0.6.RELEASE</spring.security.version>
         <spring.security.core.version>4.2.2</spring.security.core.version>
         <slf4j.version>1.7.7</slf4j.version>
         <log4j.version>1.2.12</log4j.version>
@@ -50,6 +50,7 @@
         <jackson.version>2.7.8</jackson.version>
         <jackson.databind.version>2.9.9</jackson.databind.version>
         <pageHelper.version>4.2.1</pageHelper.version>
+        <netty.version>5.0.0.Alpha1</netty.version>
     </properties>
 
 
@@ -305,6 +306,12 @@
                 <artifactId>pagehelper</artifactId>
                 <version>${pageHelper.version}</version>
             </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

@@ -50,6 +50,7 @@
         <jackson.version>2.7.8</jackson.version>
         <jackson.databind.version>2.9.9</jackson.databind.version>
         <pageHelper.version>4.2.1</pageHelper.version>
+        <netty.version>5.0.0.Alpha1</netty.version>
     </properties>
 
 
@@ -305,6 +306,12 @@
                 <artifactId>pagehelper</artifactId>
                 <version>${pageHelper.version}</version>
             </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

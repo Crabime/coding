@@ -11,5 +11,10 @@
     <description>Netty权威指南学习篇</description>
     <artifactId>netty.practice</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+        </dependency>
+    </dependencies>
 </project>

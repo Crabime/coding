@@ -57,11 +57,9 @@ public class NioTimerClient {
                         // 当有就绪的Channel时，执行handleInput处理
                         handleInput(key);
 
-                        if (key != null) {
-                            key.cancel();
-                            if (key.channel() != null) {
-                                key.channel().close();
-                            }
+                        key.cancel();
+                        if (key.channel() != null) {
+                            key.channel().close();
                         }
                     }
                 } catch (IOException e) {
@@ -95,25 +93,25 @@ public class NioTimerClient {
                         // 连接失败
                         System.exit(1);
                     }
+                }
 
-                    if (key.isReadable()) {
-                        ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
-                        int readBytes = sc.read(byteBuffer);
-                        if (readBytes > 0) {
+                if (key.isReadable()) {
+                    ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
+                    int readBytes = sc.read(byteBuffer);
+                    if (readBytes > 0) {
 
-                            byteBuffer.flip();
-                            byte[] bytes = new byte[byteBuffer.remaining()];
-                            byteBuffer.get(bytes);
+                        byteBuffer.flip();
+                        byte[] bytes = new byte[byteBuffer.remaining()];
+                        byteBuffer.get(bytes);
 
-                            String body = new String(bytes, "UTF-8");
-                            System.out.println("Now is : " + body);
-                            this.stop = true;
-                        } else if (readBytes < 0) {
-                            key.cancel();
-                            sc.close();
-                        } else {
-                            ;
-                        }
+                        String body = new String(bytes, "UTF-8");
+                        System.out.println("Now is : " + body);
+                        this.stop = true;
+                    } else if (readBytes < 0) {
+                        key.cancel();
+                        sc.close();
+                    } else {
+                        ;
                     }
                 }
             }

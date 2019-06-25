@@ -1,11 +1,11 @@
-package cn.crabime.netty.practice;
+package cn.crabime.netty.practice.bio;
 
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
 
-public class TimerServer {
+public class BioTimerServer {
 
     private static class TimerHandler implements Runnable {
         private Socket socket;

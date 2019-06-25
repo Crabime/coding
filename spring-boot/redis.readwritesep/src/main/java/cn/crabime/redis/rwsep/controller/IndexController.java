@@ -26,7 +26,6 @@ public class IndexController {
         return "index";
     }
 
-    // TODO: 2019/6/24 解决spring boot中404问题
     @RequestMapping(value = "/us", method = RequestMethod.GET)
     public ModelAndView usPage() {
         ModelAndView view = new ModelAndView("uvpage");

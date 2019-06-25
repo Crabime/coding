@@ -17,6 +17,7 @@
         <module>nosql</module>
         <module>mq</module>
         <module>spring-security</module>
+        <module>netty-practice</module>
     </modules>
 
     <properties>

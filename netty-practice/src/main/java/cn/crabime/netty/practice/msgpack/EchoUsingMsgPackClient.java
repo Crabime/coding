@@ -9,7 +9,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
-// TODO: 6/26/19 完善MessagePack在Netty中应用示例 
+// TODO: 6/26/19 完善MessagePack在Netty中应用示例
 public class EchoUsingMsgPackClient {
 
     public void connect(String ip, int port, int sendNumber) {

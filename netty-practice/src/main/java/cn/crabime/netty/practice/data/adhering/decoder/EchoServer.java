@@ -30,10 +30,10 @@ public class EchoServer {
                             ByteBuf delimiterBuf = Unpooled.copiedBuffer("$_".getBytes());
                             // 对消息进行特殊字符解码，后续ChannelHandler接收到的消息就是完整的数据包
                             socketChannel.pipeline().addLast(new DelimiterBasedFrameDecoder(1024, delimiterBuf));
-
+                            socketChannel.pipeline().addLast(new LoggingHandler());
                             // StringDecoder将ByteBuf对象转换为字符串
                             socketChannel.pipeline().addLast(new StringDecoder());
-                            socketChannel.pipeline().addLast(new EchoServerHandler());
+                            socketChannel.pipeline().addLast(new TestServerUncaughtExceptionInsideChannelHandler());
                         }
                     });
 
@@ -54,28 +54,5 @@ public class EchoServer {
     public static void main(String[] args) {
         int port = 8080;
         new EchoServer().bind(port);
-    }
-
-    private class EchoServerHandler extends ChannelHandlerAdapter {
-
-        int counter = 0;
-
-        /**
-         * 从对端收到数据包时触发该方法
-         */
-        @Override
-        public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-            String body = (String) msg;
-            System.out.println("The is " + ++counter + " times server receive message [" + body + "]");
-            body += "$_";
-            ByteBuf byteBuf = Unpooled.copiedBuffer(body.getBytes());
-            ctx.writeAndFlush(byteBuf);
-        }
-
-        @Override
-        public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-            cause.printStackTrace();
-            ctx.close();
-        }
     }
 }

@@ -4,7 +4,8 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.LineBasedFrameDecoder;
+import io.netty.util.Attribute;
+import io.netty.util.AttributeKey;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,12 +20,29 @@ public class ClientChannelHandler extends ChannelHandlerAdapter {
 
     int counter = 0;
 
+    private static final AttributeKey<String> onum = AttributeKey.valueOf("onum");
+
     /**
      * 通道打开时，触发该方法，向对端发送十次消息
      */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-
+        String channelId = ctx.channel().id().asLongText();
+        logger.info("当前channel ID为：" + channelId);
+        System.out.print("你的登录号码：");
+        BufferedReader initReader = new BufferedReader(new InputStreamReader(System.in));
+        String num = initReader.readLine();
+        if (num == null || "".equals(num)) {
+            throw new IllegalArgumentException("必须输入你的分享号码");
+        }
+        Attribute<String> attr = ctx.attr(onum);
+        String originNum = attr.get();
+        if (originNum == null || "".equals(originNum)) {
+            logger.info("设置当前用户onum值为：" + onum);
+            attr.setIfAbsent(num);
+        }
+        Thread.sleep(10);
+//        initReader.close();
         new Thread(() -> {
                 System.out.println("可以开始输入您想要的内容了：");
                 Channel channel = ctx.channel();
@@ -48,7 +66,6 @@ public class ClientChannelHandler extends ChannelHandlerAdapter {
                     channel.close();
                 }
             }).start();
-
     }
 
     /**
@@ -58,8 +75,6 @@ public class ClientChannelHandler extends ChannelHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         String message = msg.toString().replace(System.getProperty("line.separator"), "");
         logger.info("The is " + ++counter + " times client receive message [" + message + "]");
-        // 这里没必要人为去创建InBound IO异常，抛出的异常可以被exceptionCaught捕获
-//        throw new IOException("模拟这里IO异常");
     }
 
     @Override

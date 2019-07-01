@@ -8,8 +8,9 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.LineBasedFrameDecoder;
-import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.serialization.ClassResolvers;
+import io.netty.handler.codec.serialization.ObjectDecoder;
+import io.netty.handler.codec.serialization.ObjectEncoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 
@@ -29,9 +30,9 @@ public class EchoServer {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
                             socketChannel.pipeline().addLast(new LoggingHandler());
-                            // StringDecoder将ByteBuf对象转换为字符串
-                            socketChannel.pipeline().addLast(new StringDecoder());
-                            socketChannel.pipeline().addLast(new LineBasedFrameDecoder(1024));
+                            socketChannel.pipeline().addLast(new ObjectDecoder(1024*1024,
+                                    ClassResolvers.weakCachingResolver(this.getClass().getClassLoader())));
+                            socketChannel.pipeline().addLast(new ObjectEncoder());
                             socketChannel.pipeline().addLast(new ServerChannelHandler());
                         }
                     });

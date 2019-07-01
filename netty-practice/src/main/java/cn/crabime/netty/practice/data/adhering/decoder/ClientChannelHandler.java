@@ -1,16 +1,14 @@
 package cn.crabime.netty.practice.data.adhering.decoder;
 
-import io.netty.buffer.Unpooled;
-import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.util.Attribute;
-import io.netty.util.AttributeKey;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.logging.Logger;
+
+import static cn.crabime.netty.practice.data.adhering.decoder.MyConstant.AUTH_MES;
 
 /**
  * 测试在netty中消息IO异常时的捕获
@@ -20,39 +18,40 @@ public class ClientChannelHandler extends ChannelHandlerAdapter {
 
     int counter = 0;
 
-    private static final AttributeKey<String> onum = AttributeKey.valueOf("onum");
-
     /**
      * 通道打开时，触发该方法，向对端发送十次消息
      */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        String channelId = ctx.channel().id().asLongText();
-        logger.info("当前channel ID为：" + channelId);
         System.out.print("你的登录号码：");
         BufferedReader initReader = new BufferedReader(new InputStreamReader(System.in));
         String num = initReader.readLine();
         if (num == null || "".equals(num)) {
             throw new IllegalArgumentException("必须输入你的分享号码");
         }
-        Attribute<String> attr = ctx.attr(onum);
-        String originNum = attr.get();
-        if (originNum == null || "".equals(originNum)) {
-            logger.info("设置当前用户onum值为：" + onum);
-            attr.setIfAbsent(num);
-        }
-        Thread.sleep(10);
-//        initReader.close();
+        ChatMessage authMes = new ChatMessage();
+        authMes.setType(AUTH_MES);
+        authMes.setMessage(num);
+        // 为什么这个地方执行结束了，服务端没有触发channelRead事件呢？
+        ctx.writeAndFlush(authMes);
+
         new Thread(() -> {
-                System.out.println("可以开始输入您想要的内容了：");
-                Channel channel = ctx.channel();
+                System.out.print("开始聊天了，请输入你要私聊的onum：");
+                ChatMessage message = new ChatMessage();
                 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-                String in = null;
+                String onum = null;
                 try {
-                    in = br.readLine();
-                    while (!in.equals("再见")) {
-                        channel.writeAndFlush(Unpooled.copiedBuffer(in.getBytes()));
-                        in = br.readLine();
+                    onum = br.readLine();
+                    // 设置要聊天的onum
+                    message.setToNum(onum);
+                    System.out.print("聊天消息：");
+                    String doneMessage = br.readLine();
+                    while (doneMessage != null && !doneMessage.equals("bye")) {
+                        message.setMessage(doneMessage);
+                        message.setType(MyConstant.NORMAL_MES);
+                        ctx.writeAndFlush(message);
+                        System.out.print("聊天消息：");
+                        doneMessage = br.readLine();
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -62,8 +61,7 @@ public class ClientChannelHandler extends ChannelHandlerAdapter {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    channel.writeAndFlush(in);
-                    channel.close();
+                    ctx.close();
                 }
             }).start();
     }

@@ -16,8 +16,6 @@ import static cn.crabime.netty.practice.data.adhering.decoder.MyConstant.AUTH_ME
 public class ClientChannelHandler extends ChannelHandlerAdapter {
     private final Logger logger = Logger.getLogger(getClass().getName());
 
-    int counter = 0;
-
     /**
      * 通道打开时，触发该方法，向对端发送十次消息
      */
@@ -44,13 +42,12 @@ public class ClientChannelHandler extends ChannelHandlerAdapter {
                     onum = br.readLine();
                     // 设置要聊天的onum
                     message.setToNum(onum);
-                    System.out.print("聊天消息：");
+                    System.out.println("开始聊天吧：");
                     String doneMessage = br.readLine();
                     while (doneMessage != null && !doneMessage.equals("bye")) {
                         message.setMessage(doneMessage);
                         message.setType(MyConstant.NORMAL_MES);
                         ctx.writeAndFlush(message);
-                        System.out.print("聊天消息：");
                         doneMessage = br.readLine();
                     }
                 } catch (IOException e) {
@@ -71,8 +68,8 @@ public class ClientChannelHandler extends ChannelHandlerAdapter {
      */
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        String message = msg.toString().replace(System.getProperty("line.separator"), "");
-        logger.info("The is " + ++counter + " times client receive message [" + message + "]");
+        String message = msg.toString();
+        System.out.println(message);
     }
 
     @Override

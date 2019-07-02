@@ -4,14 +4,11 @@ import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 public class ServerChannelHandler extends ChannelHandlerAdapter {
 
     private final Logger logger = Logger.getLogger(getClass().getName());
-
-    int counter = 0;
 
     /**
      * 从对端收到数据包时触发该方法
@@ -29,7 +26,14 @@ public class ServerChannelHandler extends ChannelHandlerAdapter {
                 String toNum = message.getToNum(), mes = message.getMessage();
 
                 Channel toChannel = ServerChannelMapping.getInstance().getChannelByNum(toNum);
-                toChannel.writeAndFlush(mes);
+                // 对方不在线
+                if (toChannel == null) {
+                    ctx.writeAndFlush("系统消息：" + toNum + "目前不在线...");
+                } else {
+                    // 获取到当前channel的onum
+                    String onum = ServerChannelMapping.getInstance().getONumByChannel(ctx.channel());
+                    toChannel.writeAndFlush(onum + "说：" + mes);
+                }
                 break;
             default:
                 logger.info("未知的消息类型");

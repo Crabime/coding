@@ -3,6 +3,7 @@ package cn.crabime.netty.practice.data.adhering.decoder;
 import io.netty.channel.Channel;
 
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
 
 /**
  * 由于ServerChannelHandler每建立一个Channel连接时，均会创建一个该对象，
@@ -32,5 +33,15 @@ public class ServerChannelMapping {
 
     public Channel getChannelByNum(String onum) {
         return this.map.get(onum);
+    }
+
+    public String getONumByChannel(Channel c) {
+        return map.search(1, (k, v) -> {
+            if (c.id().asLongText().equals(v.id().asLongText())) {
+                return k;
+            } else {
+                return null;
+            }
+        });
     }
 }

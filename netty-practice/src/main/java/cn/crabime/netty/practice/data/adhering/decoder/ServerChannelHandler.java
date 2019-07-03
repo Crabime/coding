@@ -28,6 +28,7 @@ public class ServerChannelHandler extends ChannelHandlerAdapter {
                 Channel toChannel = ServerChannelMapping.getInstance().getChannelByNum(toNum);
                 // 对方不在线
                 if (toChannel == null) {
+
                     ctx.writeAndFlush("系统消息：" + toNum + "目前不在线...");
                 } else {
                     // 获取到当前channel的onum

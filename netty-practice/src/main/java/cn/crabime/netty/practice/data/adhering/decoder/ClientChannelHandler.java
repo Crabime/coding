@@ -79,7 +79,6 @@ public class ClientChannelHandler extends ChannelHandlerAdapter {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        logger.warning("来到这里了!");
         cause.printStackTrace();
         ctx.close();
     }

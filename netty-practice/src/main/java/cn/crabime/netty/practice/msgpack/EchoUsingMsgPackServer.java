@@ -1,14 +1,10 @@
 package cn.crabime.netty.practice.msgpack;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.DelimiterBasedFrameDecoder;
-import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 
@@ -29,6 +25,7 @@ public class EchoUsingMsgPackServer {
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
                             socketChannel.pipeline().addLast("msg decoder", new MsgPackDecoder());
                             socketChannel.pipeline().addLast("msg encoder", new MsgPackEncoder());
+                            socketChannel.pipeline().addLast(new EchoServerHandler());
                         }
                     });
 
@@ -53,14 +50,12 @@ public class EchoUsingMsgPackServer {
 
     private class EchoServerHandler extends ChannelHandlerAdapter {
 
-        int counter = 0;
-
         /**
          * 从对端收到数据包时触发该方法
          */
         @Override
         public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-            System.out.println("Server receive the msgpack message : " + msg);
+            System.out.println("Server receive the MessagePack message : " + msg);
         }
 
         @Override

@@ -1,9 +1,6 @@
 package cn.crabime.netty.practice.msgpack;
 
-import cn.crabime.netty.practice.codec.UserInfo;
 import io.netty.bootstrap.Bootstrap;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
@@ -40,7 +37,7 @@ public class EchoUsingMsgPackClient {
     public static void main(String[] args) {
         int port = 8080;
 
-        new EchoUsingMsgPackClient().connect("127.0.0.1", port, 1);
+        new EchoUsingMsgPackClient().connect("127.0.0.1", port, 10);
     }
 
     private class EchoClientHandler extends ChannelHandlerAdapter {
@@ -56,26 +53,25 @@ public class EchoUsingMsgPackClient {
          */
         @Override
         public void channelActive(ChannelHandlerContext ctx) throws Exception {
-            UserInfo[] info = userInfoGen();
-            for (UserInfo i : info) {
+            MessagePackUserInfo[] info = userInfoGen();
+            for (MessagePackUserInfo i : info) {
                 // 将当前对象写入到Channel中
                 ctx.write(i);
             }
-            // 将缓冲区中内容发送出去
+            // 为什么不能将前面所有MessagePackUserInfo对象写入到一个ByteBuf中呢？
             ctx.flush();
         }
 
-        private UserInfo[] userInfoGen() {
-            UserInfo[] info = new UserInfo[this.sendNumber];
+        private MessagePackUserInfo[] userInfoGen() {
+            MessagePackUserInfo[] info = new MessagePackUserInfo[this.sendNumber];
 
-            UserInfo userInfo = null;
+            MessagePackUserInfo userInfo = null;
             for (int i = 0; i < sendNumber; i++) {
-                userInfo = new UserInfo();
-                userInfo.buildUserID(i);
-                userInfo.buildUserName("ABCDEFG---->");
+                userInfo = new MessagePackUserInfo();
+                userInfo.setUserID(i);
+                userInfo.setUserName("ABCDEFG---->");
                 info[i] = userInfo;
             }
-
             return info;
         }
 
@@ -84,7 +80,7 @@ public class EchoUsingMsgPackClient {
          */
         @Override
         public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-            System.out.println("Client receive the msgpack message : " + msg);
+            System.out.println("Client receive the MessagePack message : " + msg);
             ctx.write(msg);
         }
 

@@ -1,9 +1,8 @@
-package cn.crabime.netty.practice.data.adhering.decoder;
+package cn.crabime.chat;
 
 import io.netty.channel.Channel;
 
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Function;
 
 /**
  * 由于ServerChannelHandler每建立一个Channel连接时，均会创建一个该对象，

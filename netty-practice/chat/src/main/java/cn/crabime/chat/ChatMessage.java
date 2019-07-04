@@ -1,4 +1,4 @@
-package cn.crabime.netty.practice.data.adhering.decoder;
+package cn.crabime.chat;
 
 import java.io.Serializable;
 

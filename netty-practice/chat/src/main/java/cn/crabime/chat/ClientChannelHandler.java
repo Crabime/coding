@@ -1,4 +1,4 @@
-package cn.crabime.netty.practice.data.adhering.decoder;
+package cn.crabime.chat;
 
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
@@ -7,8 +7,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.logging.Logger;
-
-import static cn.crabime.netty.practice.data.adhering.decoder.MyConstant.AUTH_MES;
 
 /**
  * 测试在netty中消息IO异常时的捕获
@@ -28,7 +26,7 @@ public class ClientChannelHandler extends ChannelHandlerAdapter {
             throw new IllegalArgumentException("必须输入你的分享号码");
         }
         ChatMessage authMes = new ChatMessage();
-        authMes.setType(AUTH_MES);
+        authMes.setType(MyConstant.AUTH_MES);
         authMes.setMessage(num);
         // 为什么这个地方执行结束了，服务端没有触发channelRead事件呢？
         ctx.writeAndFlush(authMes);

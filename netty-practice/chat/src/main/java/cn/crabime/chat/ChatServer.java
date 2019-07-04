@@ -1,4 +1,4 @@
-package cn.crabime.netty.practice.data.adhering.decoder;
+package cn.crabime.chat;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -14,7 +14,7 @@ import io.netty.handler.codec.serialization.ObjectEncoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 
-public class EchoServer {
+public class ChatServer {
 
     public void bind(int port) {
 
@@ -52,6 +52,6 @@ public class EchoServer {
 
     public static void main(String[] args) {
         int port = 8080;
-        new EchoServer().bind(port);
+        new ChatServer().bind(port);
     }
 }

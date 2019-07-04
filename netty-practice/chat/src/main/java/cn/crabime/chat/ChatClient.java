@@ -1,4 +1,4 @@
-package cn.crabime.netty.practice.data.adhering.decoder;
+package cn.crabime.chat;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
@@ -13,7 +13,7 @@ import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
 import io.netty.handler.logging.LoggingHandler;
 
-public class EchoClient {
+public class ChatClient {
 
     public void connect(String ip, int port) {
         EventLoopGroup g = new NioEventLoopGroup();
@@ -48,7 +48,7 @@ public class EchoClient {
     public static void main(String[] args) {
         int port = 8080;
 
-        new EchoClient().connect("127.0.0.1", port);
+        new ChatClient().connect("127.0.0.1", port);
     }
 
 }

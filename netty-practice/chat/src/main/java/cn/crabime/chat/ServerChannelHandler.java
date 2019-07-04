@@ -1,4 +1,4 @@
-package cn.crabime.netty.practice.data.adhering.decoder;
+package cn.crabime.chat;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerAdapter;

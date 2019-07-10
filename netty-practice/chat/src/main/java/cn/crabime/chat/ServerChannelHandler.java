@@ -17,7 +17,7 @@ public class ServerChannelHandler extends ChannelHandlerAdapter {
      * 从对端收到数据包时触发该方法
      */
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+    public void channelRead(ChannelHandlerContext ctx, Object msg) {
         ChatMessage message = (ChatMessage) msg;
         switch (message.getType()) {
             case MyConstant.AUTH_MES:

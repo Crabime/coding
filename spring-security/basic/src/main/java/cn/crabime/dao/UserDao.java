@@ -2,6 +2,7 @@ package cn.crabime.dao;
 
 import cn.crabime.beans.User;
 import cn.crabime.service.MyBatisDao;
+import org.springframework.security.access.annotation.Secured;
 
 import java.util.List;
 

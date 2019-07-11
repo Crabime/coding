@@ -11,13 +11,13 @@ public class Main {
     private World world;
 
     public void start() {
-        world.sayHello("中国");
+        world.sayHello();
     }
 
     public static void main(String[] args) {
         AnnotationConfigApplicationContext atx = new AnnotationConfigApplicationContext();
         atx.register(AppConfig.class);
-        atx.getEnvironment().addActiveProfile("test");
+//        atx.getEnvironment().addActiveProfile("prod");
         atx.refresh();
         Main main = atx.getBean(Main.class);
         main.start();

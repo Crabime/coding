@@ -1,0 +1,38 @@
+package cn.crabime.set;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class NonConcurrentSetTest {
+    private final static int SIZE = 100;
+
+    public static void main(String[] args) throws InterruptedException {
+        Set<String> set = new HashSet<>();
+
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(SIZE, new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("set集合为：" + set.size());
+            }
+        });
+        Thread[] threads = new Thread[SIZE];
+        final AtomicInteger atomicInteger = new AtomicInteger(0);
+        for (int i = 0; i < SIZE; i++) {
+            threads[i] = new Thread(() -> {
+                set.add(String.valueOf(atomicInteger.getAndIncrement()));
+                try {
+                    cyclicBarrier.await();
+                } catch (InterruptedException | BrokenBarrierException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+        for (Thread t : threads) {
+            t.start();
+        }
+
+    }
+}

@@ -18,6 +18,7 @@
         <module>mq</module>
         <module>spring-security</module>
         <module>netty-practice</module>
+        <module>cglib</module>
     </modules>
 
     <properties>
@@ -51,6 +52,7 @@
         <pageHelper.version>4.2.1</pageHelper.version>
         <netty.version>5.0.0.Alpha1</netty.version>
         <msgpack.version>0.6.12</msgpack.version>
+        <cglib.version>3.2.5</cglib.version>
     </properties>
 
 
@@ -320,6 +322,11 @@
                 <groupId>org.msgpack</groupId>
                 <artifactId>msgpack</artifactId>
                 <version>${msgpack.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib</artifactId>
+                <version>${cglib.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

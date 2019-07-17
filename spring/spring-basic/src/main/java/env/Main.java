@@ -1,18 +1,10 @@
 package env;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.stereotype.Component;
 
-@Component
+import java.util.Arrays;
+
 public class Main {
-
-    @Autowired
-    private World world;
-
-    public void start() {
-        world.sayHello();
-    }
 
     public static void main(String[] args) throws InterruptedException {
         AnnotationConfigApplicationContext atx = new AnnotationConfigApplicationContext();
@@ -20,9 +12,12 @@ public class Main {
         atx.addApplicationListener(new ApplicationStartedListener());
         atx.addApplicationListener(new ApplicationClosedListener());
 //        atx.getEnvironment().addActiveProfile("prod");
+        String[] activeProfiles = atx.getEnvironment().getActiveProfiles().length == 0 ?
+                atx.getEnvironment().getDefaultProfiles() : atx.getEnvironment().getActiveProfiles();
+        System.out.println("当前启动的profile有：" + Arrays.toString(activeProfiles));
         atx.refresh();
-        Main main = atx.getBean(Main.class);
-        main.start();
+        World main = atx.getBean(World.class);
+        main.sayHello();
         Thread.sleep(2000);
         atx.registerShutdownHook();
     }

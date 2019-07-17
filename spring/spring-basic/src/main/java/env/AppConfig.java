@@ -16,7 +16,7 @@ public class AppConfig {
     }
 
     @Bean
-    @Profile("prod")
+    @Profile({"prod", "default"})
     public World formalWorld() {
         return new ChinaWorld();
     }

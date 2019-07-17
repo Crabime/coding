@@ -1,14 +1,15 @@
 package autowire;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import javax.inject.Inject;
 
 @Component
 public class Teacher {
 
     private Student student;
 
-    @Autowired
+    @Inject
     public Teacher(Student student) {
         this.student = student;
     }

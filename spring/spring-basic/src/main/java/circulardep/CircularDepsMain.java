@@ -6,9 +6,7 @@ public class CircularDepsMain {
 
     public static void main(String[] args) {
         try {
-            AnnotationConfigApplicationContext atx = new AnnotationConfigApplicationContext("circulardep");
-//            Woodpecker woodpecker = atx.getBean(Woodpecker.class);
-//            woodpecker.watchTree();
+            AnnotationConfigApplicationContext atx = new AnnotationConfigApplicationContext(CircularConfig.class);
             WoodpeckerNormal woodpecker = atx.getBean(WoodpeckerNormal.class);
             woodpecker.watchTree();
         } catch (Exception e) {

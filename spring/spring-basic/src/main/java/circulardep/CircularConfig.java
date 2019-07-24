@@ -2,11 +2,11 @@ package circulardep;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @PropertySource("classpath:p1.properties")
-@ComponentScan(basePackages = "circulardep")
+@ComponentScan(basePackages = "circulardep", excludeFilters = @ComponentScan.Filter(type = FilterType.CUSTOM, classes = ExcludeTypeFilter.class))
 public class CircularConfig {
-// TODO: 2019/7/24 增加excludeFilter配置
 }

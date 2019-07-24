@@ -9,6 +9,6 @@ import java.io.IOException;
 public class ExcludeTypeFilter implements TypeFilter {
     @Override
     public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory) throws IOException {
-        return metadataReader.getClassMetadata().getClassName().endsWith("Normal");
+        return !metadataReader.getClassMetadata().getClassName().endsWith("Normal");
     }
 }

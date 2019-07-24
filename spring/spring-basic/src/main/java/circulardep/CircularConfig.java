@@ -8,5 +8,5 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource("classpath:p1.properties")
 @ComponentScan(basePackages = "circulardep")
 public class CircularConfig {
-
+// TODO: 2019/7/24 增加excludeFilter配置
 }

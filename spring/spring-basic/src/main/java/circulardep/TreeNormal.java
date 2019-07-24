@@ -4,15 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-//@Component
-public class Tree {
-
-    private Woodpecker woodpecker;
+@Component
+public class TreeNormal {
 
     @Autowired
-    public Tree(Woodpecker woodpecker) {
-        this.woodpecker = woodpecker;
-    }
+    private WoodpeckerNormal woodpecker;
 
     @Value("${tree.name}")
     private String treeName;

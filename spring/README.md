@@ -16,4 +16,4 @@ Spring源码学习过程写的一些DEMO及心得
 
 ### 源码分析spring如何解决循环依赖
 这里我通过上面circulardep包下类debug源码，进一步分析spring如何帮助我们解决循环依赖问题。
-详情见：
+详情见：[spring如何解决循环依赖原理](spring如何解决循环依赖.md)

@@ -14,17 +14,6 @@
     <packaging>war</packaging>
     <description>ActiveMQ学习笔记</description>
 
-    <properties>
-        <activemq.version>5.8.0</activemq.version>
-        <mybatis.version>3.2.8</mybatis.version>
-        <mybatis-spring.version>1.2.2</mybatis-spring.version>
-        <mysql.driver.version>5.1.47</mysql.driver.version>
-        <spring.version>4.3.2.RELEASE</spring.version>
-        <slf4j.version>1.7.5</slf4j.version>
-
-        <junit.version>4.12</junit.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>junit</groupId>

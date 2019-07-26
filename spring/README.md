@@ -16,3 +16,6 @@
 ### 源码分析spring如何解决循环依赖
 这里我通过上面circulardep包下类debug源码，进一步分析spring如何帮助我们解决循环依赖问题。
 详情见：[spring如何解决循环依赖原理](spring如何解决循环依赖.md)
+
+### IDEA中项目部署无任务异常抛出，且首页404
+[IDEA中项目部署无任务异常抛出，且首页404](spring-mvc/IDEA启动web项目无任务报错且启动页面404.md)

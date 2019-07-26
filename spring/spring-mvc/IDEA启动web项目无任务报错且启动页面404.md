@@ -1,10 +1,11 @@
 IDEA中项目部署无任务异常抛出，且首页404
 ===
-相信很多使用IDEA的用户都碰到题目说的情况，启动时控制台一切正常，浏览器首页显示404。这里我写了一个[微型web项目](/spring/spring-mvc),
+相信很多使用IDEA的用户都碰到题目说的情况，启动时控制台一切正常，浏览器首页显示404。这里我写了一个微型web项目[参见spring/spring-mvc模块](/spring/spring-mvc),
 采用全注解的方式，先创建一个artifact，然后"edit configuration" -> "add new 'Tomcat Server' configuration" -> 'local' -> ...
 上面步骤执行完后开始运行项目：
 
 ### 运行的console界面
+
 <img src="http://pv89or3o8.bkt.clouddn.com/error-tomcat.png" />
 可以发现项目很快就结束了，spring日志输出竟然没有，然后弹出的web界面显示404，相信很多人在这个时候显得有点束手无策。
 

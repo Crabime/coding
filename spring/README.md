@@ -2,7 +2,6 @@
 
 ### Spring如何解决环形引用
 那什么是环形引用呢？见如下图：
-
 <img src="http://pv89or3o8.bkt.clouddn.com/circular-deps.png" />
 也就是说beanA中使用@Autowire注解注入beanB，同时在beanB
 中又使用@Autowire注解注入了beanA，那spring在初始化bean时，先初始化beanA发现beanA中有依赖beanB，

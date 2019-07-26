@@ -10,10 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>spring</artifactId>
+    <packaging>pom</packaging>
     <description>spring模块学习笔记</description>
 
     <modules>
         <module>spring-basic</module>
+        <module>spring-mvc</module>
     </modules>
 
 

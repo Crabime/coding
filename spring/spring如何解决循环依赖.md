@@ -210,7 +210,7 @@ protected Object getSingleton(String beanName, boolean allowEarlyReference) {
 到此，spring的循环依赖问题就解决完了。
 
 ### 循环依赖的全过程流程图
-![环形引用流程图]("http://pv89or3o8.bkt.clouddn.com/circular-flowchart.jpg")
+<img src="http://pv89or3o8.bkt.clouddn.com/circular-flowchart.jpg" />
 
 ### spring无法解决的循环依赖方式：构造器注入
 前面我们讲解了spring如何解决循环依赖及原理，那是不是spring可以解决一切循环依赖呢？答案当然是错的。先看下面一个demo：

@@ -33,4 +33,5 @@
 ## <div id="9">Spring源码学习</div>
 * [Spring UML模型](/spring/spring.mdj)
 * [IDEA中项目部署无任务异常抛出，且首页404](/spring/spring-mvc/IDEA启动web项目无任务报错且启动页面404.md)
+* [`@EnableWebMvc`注解工作原理篇](/spring/spring-mvc/EnableWebMvc注解工作原理.md)
 * [spring如何解决循环依赖原理](/spring/spring如何解决循环依赖.md)

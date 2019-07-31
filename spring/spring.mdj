@@ -41,7 +41,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 2105,
-									"top": 1406,
+									"top": 913,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -62,7 +62,7 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"left": 2090,
-									"top": 1406,
+									"top": 913,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -83,7 +83,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 2135,
-									"top": 1407,
+									"top": 914,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -101,7 +101,7 @@
 							"tail": {
 								"$ref": "AAAAAAFsAu4bLw7GOdE="
 							},
-							"points": "2816:1840;2120:1840;2120:987;1988:987",
+							"points": "2816:1840;2120:1840;2120:989.9690721649484;1988:989.9690721649484",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFsAu99uQ8CtSI="
@@ -1291,7 +1291,7 @@
 											"font": "Arial;13;1",
 											"left": 3029,
 											"top": 1183,
-											"width": 231.587890625,
+											"width": 216,
 											"height": 13,
 											"text": "DefaultResourceLoader"
 										},
@@ -1326,7 +1326,7 @@
 									"font": "Arial;13;0",
 									"left": 3024,
 									"top": 1176,
-									"width": 241.587890625,
+									"width": 226,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFr9kCLm0xD5HM="
@@ -1379,7 +1379,7 @@
 											"font": "Arial;13;0",
 											"left": 3029,
 											"top": 1206,
-											"width": 231.587890625,
+											"width": 216,
 											"height": 13,
 											"text": "+Resource getResource(String location)",
 											"horizontalAlignment": 0
@@ -1428,7 +1428,7 @@
 							"containerChangeable": true,
 							"left": 3024,
 							"top": 1176,
-							"width": 241.587890625,
+							"width": 226,
 							"height": 48,
 							"autoResize": true,
 							"nameCompartment": {
@@ -1691,7 +1691,7 @@
 											"font": "Arial;13;1",
 											"left": 3069,
 											"top": 766,
-											"width": 231.587890625,
+											"width": 216,
 											"height": 13,
 											"text": "ResourceLoader"
 										},
@@ -1726,7 +1726,7 @@
 									"font": "Arial;13;0",
 									"left": 3064,
 									"top": 759,
-									"width": 241.587890625,
+									"width": 226,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFr9kIgokz6sbM="
@@ -1779,7 +1779,7 @@
 											"font": "Arial;13;0",
 											"left": 3069,
 											"top": 789,
-											"width": 231.587890625,
+											"width": 216,
 											"height": 13,
 											"text": "+Resource getResource(String location)",
 											"horizontalAlignment": 0
@@ -1796,7 +1796,7 @@
 											"font": "Arial;13;0",
 											"left": 3069,
 											"top": 804,
-											"width": 231.587890625,
+											"width": 216,
 											"height": 13,
 											"text": "+ClassLoader getClassLoader()",
 											"horizontalAlignment": 0
@@ -1845,7 +1845,7 @@
 							"containerChangeable": true,
 							"left": 3064,
 							"top": 736,
-							"width": 241.587890625,
+							"width": 226,
 							"height": 87,
 							"autoResize": true,
 							"stereotypeDisplay": "icon",
@@ -1947,7 +1947,7 @@
 							"tail": {
 								"$ref": "AAAAAAFr9kCLmkxBr5c="
 							},
-							"points": "3184:1176;3184:759",
+							"points": "3177.28:1176;3177.28:759",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFr9kIy0U0iF+M="
@@ -3550,7 +3550,7 @@
 											"font": "Arial;13;1",
 											"left": 1517,
 											"top": 1246,
-											"width": 388.34326171875,
+											"width": 368,
 											"height": 13,
 											"text": "BeanFactory"
 										},
@@ -3588,7 +3588,7 @@
 									"font": "Arial;13;0",
 									"left": 1512,
 									"top": 1239,
-									"width": 398.34326171875,
+									"width": 378,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFr9kZbNU6lSxM="
@@ -3664,7 +3664,7 @@
 											"font": "Arial;13;0",
 											"left": 1517,
 											"top": 1269,
-											"width": 388.34326171875,
+											"width": 368,
 											"height": 13,
 											"text": "+Object getBean(String name)",
 											"horizontalAlignment": 0
@@ -3682,7 +3682,7 @@
 											"font": "Arial;13;0",
 											"left": 1517,
 											"top": 1284,
-											"width": 388.34326171875,
+											"width": 368,
 											"height": 13,
 											"text": "+boolean containsBean(String name)",
 											"horizontalAlignment": 0
@@ -3700,7 +3700,7 @@
 											"font": "Arial;13;0",
 											"left": 1517,
 											"top": 1299,
-											"width": 388.34326171875,
+											"width": 368,
 											"height": 13,
 											"text": "+boolean isSingleton(String name)",
 											"horizontalAlignment": 0
@@ -3718,7 +3718,7 @@
 											"font": "Arial;13;0",
 											"left": 1517,
 											"top": 1314,
-											"width": 388.34326171875,
+											"width": 368,
 											"height": 13,
 											"text": "+void addPropertyEditorRegistrar(PropertyEditorRegistrar registrar)",
 											"horizontalAlignment": 0
@@ -3771,7 +3771,7 @@
 							"containerChangeable": true,
 							"left": 1512,
 							"top": 1216,
-							"width": 398.34326171875,
+							"width": 378,
 							"height": 117,
 							"autoResize": true,
 							"stereotypeDisplay": "icon",
@@ -3873,7 +3873,7 @@
 							"tail": {
 								"$ref": "AAAAAAFr9kYQ/U5mf/8="
 							},
-							"points": "1957:1158;1957:1278;1909:1278",
+							"points": "1957:1158;1957:1278;1889:1278",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFr9kZ72k7O574="
@@ -4883,7 +4883,7 @@
 											"font": "Arial;13;1",
 											"left": 2357,
 											"top": 774,
-											"width": 158.9580078125,
+											"width": 143.76513671875,
 											"height": 13,
 											"text": "ResourcePatternResolver"
 										},
@@ -5022,7 +5022,7 @@
 							"containerChangeable": true,
 							"left": 2352,
 							"top": 744,
-							"width": 168.9580078125,
+							"width": 153.76513671875,
 							"height": 49,
 							"autoResize": true,
 							"stereotypeDisplay": "icon",
@@ -7570,7 +7570,7 @@
 											"font": "Arial;13;1",
 											"left": 1101,
 											"top": 415,
-											"width": 388.05126953125,
+											"width": 370.21923828125,
 											"height": 13,
 											"text": "StandardEnvironment"
 										},
@@ -7605,7 +7605,7 @@
 									"font": "Arial;13;0",
 									"left": 1096,
 									"top": 408,
-									"width": 398.05126953125,
+									"width": 380.21923828125,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFr/ZmZ+QN8HxI="
@@ -7642,7 +7642,7 @@
 											"font": "Arial;13;0",
 											"left": 1101,
 											"top": 438,
-											"width": 388.05126953125,
+											"width": 370.21923828125,
 											"height": 13,
 											"underline": true,
 											"text": "+String SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME",
@@ -7660,7 +7660,7 @@
 											"font": "Arial;13;0",
 											"left": 1101,
 											"top": 453,
-											"width": 388.05126953125,
+											"width": 370.21923828125,
 											"height": 13,
 											"underline": true,
 											"text": "+String SYSTEM_PROPERTIES_PROPERTY_SOURCE_NAME",
@@ -7726,7 +7726,7 @@
 							"containerChangeable": true,
 							"left": 1096,
 							"top": 408,
-							"width": 398.05126953125,
+							"width": 380.21923828125,
 							"height": 63,
 							"autoResize": true,
 							"nameCompartment": {
@@ -8302,7 +8302,7 @@
 											"font": "Arial;13;1",
 											"left": 2277,
 											"top": 166,
-											"width": 104.76171875,
+											"width": 94.5302734375,
 											"height": 13,
 											"text": "PropertySources"
 										},
@@ -8459,7 +8459,7 @@
 							"containerChangeable": true,
 							"left": 2272,
 							"top": 136,
-							"width": 114.76171875,
+							"width": 104.5302734375,
 							"height": 49,
 							"autoResize": true,
 							"stereotypeDisplay": "icon",
@@ -9229,7 +9229,7 @@
 											"font": "Arial;13;1",
 											"left": 3077,
 											"top": 95,
-											"width": 123.53173828125,
+											"width": 115.5302734375,
 											"height": 13,
 											"text": "MapPropertySource"
 										},
@@ -9348,7 +9348,7 @@
 							"containerChangeable": true,
 							"left": 3072,
 							"top": 88,
-							"width": 133.53173828125,
+							"width": 125.5302734375,
 							"height": 25,
 							"autoResize": true,
 							"nameCompartment": {
@@ -10364,7 +10364,7 @@
 											"font": "Arial;13;3",
 											"left": 965,
 											"top": 791,
-											"width": 300.955078125,
+											"width": 287.5302734375,
 											"height": 13,
 											"text": "PlaceholderConfigurerSupport"
 										},
@@ -10399,7 +10399,7 @@
 									"font": "Arial;13;0",
 									"left": 960,
 									"top": 784,
-									"width": 310.955078125,
+									"width": 297.5302734375,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFr/fnRhwtNioA="
@@ -10452,7 +10452,7 @@
 											"font": "Arial;13;0",
 											"left": 965,
 											"top": 814,
-											"width": 300.955078125,
+											"width": 287.5302734375,
 											"height": 13,
 											"text": "+void setPlaceholderPrefix(String placeholderPrefix)",
 											"horizontalAlignment": 0
@@ -10469,7 +10469,7 @@
 											"font": "Arial;13;0",
 											"left": 965,
 											"top": 829,
-											"width": 300.955078125,
+											"width": 287.5302734375,
 											"height": 13,
 											"text": "+void setPlaceholderSuffix(String placeholderSuffix)",
 											"horizontalAlignment": 0
@@ -10486,7 +10486,7 @@
 											"font": "Arial;13;0",
 											"left": 965,
 											"top": 844,
-											"width": 300.955078125,
+											"width": 287.5302734375,
 											"height": 13,
 											"text": "+void setValueSeparator(String valueSeparator)",
 											"horizontalAlignment": 0
@@ -10535,7 +10535,7 @@
 							"containerChangeable": true,
 							"left": 960,
 							"top": 784,
-							"width": 310.955078125,
+							"width": 297.5302734375,
 							"height": 78,
 							"autoResize": true,
 							"nameCompartment": {
@@ -10637,7 +10637,7 @@
 								"$ref": "AAAAAAFr/fDR2QsDdZQ="
 							},
 							"lineStyle": 1,
-							"points": "1113:959;1114:862",
+							"points": "1112:959;1109:862",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFr/fnnsgt3yJA="
@@ -13602,7 +13602,7 @@
 							"tail": {
 								"$ref": "AAAAAAFr9kg9Tk+lUXQ="
 							},
-							"points": "2520:752;3064:752",
+							"points": "2505:752;3064:752",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFsAtYDVQ17yTc="
@@ -14072,7 +14072,7 @@
 											"font": "Arial;13;1",
 											"left": 3669,
 											"top": 1831,
-											"width": 275.65966796875,
+											"width": 256,
 											"height": 13,
 											"text": "AnnotatedBeanDefinitionReader"
 										},
@@ -14107,7 +14107,7 @@
 									"font": "Arial;13;0",
 									"left": 3664,
 									"top": 1824,
-									"width": 285.65966796875,
+									"width": 266,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFsAukGzw5mcM4="
@@ -14144,7 +14144,7 @@
 											"font": "Arial;13;0",
 											"left": 3669,
 											"top": 1854,
-											"width": 275.65966796875,
+											"width": 256,
 											"height": 13,
 											"text": "+ConditionEvaluator conditionEvaluator",
 											"horizontalAlignment": 0
@@ -14153,7 +14153,7 @@
 									"font": "Arial;13;0",
 									"left": 3664,
 									"top": 1849,
-									"width": 285.65966796875,
+									"width": 266,
 									"height": 23
 								},
 								{
@@ -14178,7 +14178,7 @@
 											"font": "Arial;13;0",
 											"left": 3669,
 											"top": 1877,
-											"width": 275.65966796875,
+											"width": 256,
 											"height": 13,
 											"text": "+public void register(Class... annotatedClasses)",
 											"horizontalAlignment": 0
@@ -14227,7 +14227,7 @@
 							"containerChangeable": true,
 							"left": 3664,
 							"top": 1824,
-							"width": 285.65966796875,
+							"width": 266,
 							"height": 71,
 							"autoResize": true,
 							"nameCompartment": {
@@ -16177,7 +16177,7 @@
 											"font": "Arial;13;1",
 											"left": 2997,
 											"top": 2079,
-											"width": 341.4404296875,
+											"width": 311,
 											"height": 13,
 											"text": "SimpleMetadataReaderFactory"
 										},
@@ -16212,7 +16212,7 @@
 									"font": "Arial;13;0",
 									"left": 2992,
 									"top": 2072,
-									"width": 351.4404296875,
+									"width": 321,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFsAyRPvRHMFHI="
@@ -16249,7 +16249,7 @@
 											"font": "Arial;13;0",
 											"left": 2997,
 											"top": 2102,
-											"width": 341.4404296875,
+											"width": 311,
 											"height": 13,
 											"text": "+ResourceLoader resourceLoader",
 											"horizontalAlignment": 0
@@ -16258,7 +16258,7 @@
 									"font": "Arial;13;0",
 									"left": 2992,
 									"top": 2097,
-									"width": 351.4404296875,
+									"width": 321,
 									"height": 23
 								},
 								{
@@ -16283,7 +16283,7 @@
 											"font": "Arial;13;0",
 											"left": 2997,
 											"top": 2125,
-											"width": 341.4404296875,
+											"width": 311,
 											"height": 13,
 											"text": "+MetadataReader getMetadataReader(String className)",
 											"horizontalAlignment": 0
@@ -16300,7 +16300,7 @@
 											"font": "Arial;13;0",
 											"left": 2997,
 											"top": 2140,
-											"width": 341.4404296875,
+											"width": 311,
 											"height": 13,
 											"text": "+MetadataReader getMetadataReader(Resource resource)",
 											"horizontalAlignment": 0
@@ -16349,7 +16349,7 @@
 							"containerChangeable": true,
 							"left": 2992,
 							"top": 2072,
-							"width": 351.4404296875,
+							"width": 321,
 							"height": 86,
 							"autoResize": true,
 							"nameCompartment": {
@@ -17013,7 +17013,7 @@
 											"font": "Arial;13;1",
 											"left": 2053,
 											"top": 1871,
-											"width": 178.876953125,
+											"width": 176,
 											"height": 13,
 											"text": "BeanDefinitionHolder"
 										},
@@ -17048,7 +17048,7 @@
 									"font": "Arial;13;0",
 									"left": 2048,
 									"top": 1864,
-									"width": 188.876953125,
+									"width": 186,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFsA5QbyRNQWco="
@@ -17085,7 +17085,7 @@
 											"font": "Arial;13;0",
 											"left": 2053,
 											"top": 1894,
-											"width": 178.876953125,
+											"width": 176,
 											"height": 13,
 											"text": "+BeanDefinition beanDefinition",
 											"horizontalAlignment": 0
@@ -17102,7 +17102,7 @@
 											"font": "Arial;13;0",
 											"left": 2053,
 											"top": 1909,
-											"width": 178.876953125,
+											"width": 176,
 											"height": 13,
 											"text": "+String[] aliases",
 											"horizontalAlignment": 0
@@ -17119,7 +17119,7 @@
 											"font": "Arial;13;0",
 											"left": 2053,
 											"top": 1924,
-											"width": 178.876953125,
+											"width": 176,
 											"height": 13,
 											"text": "+String beanName",
 											"horizontalAlignment": 0
@@ -17184,7 +17184,7 @@
 							"containerChangeable": true,
 							"left": 2048,
 							"top": 1864,
-							"width": 188.876953125,
+							"width": 186,
 							"height": 78,
 							"autoResize": true,
 							"nameCompartment": {
@@ -17286,7 +17286,7 @@
 							"tail": {
 								"$ref": "AAAAAAFsAui/Vw45TuM="
 							},
-							"points": "3416:1909;3416:2008;2568:2008;2568:1912;2236:1912",
+							"points": "3416:1909;3416:2008;2568:2008;2568:1912;2233:1912",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFsA5c/HBOn/Nw="
@@ -17339,7 +17339,7 @@
 											"font": "Arial;13;1",
 											"left": 3757,
 											"top": 2039,
-											"width": 90.669921875,
+											"width": 85,
 											"height": 13,
 											"text": "Conditional"
 										},
@@ -17374,7 +17374,7 @@
 									"font": "Arial;13;0",
 									"left": 3752,
 									"top": 2032,
-									"width": 100.669921875,
+									"width": 95,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFsBB1Y3xPgQmM="
@@ -17427,7 +17427,7 @@
 											"font": "Arial;13;0",
 											"left": 3757,
 											"top": 2062,
-											"width": 90.669921875,
+											"width": 85,
 											"height": 13,
 											"text": "+Class[] value()",
 											"horizontalAlignment": 0
@@ -17476,7 +17476,7 @@
 							"containerChangeable": true,
 							"left": 3752,
 							"top": 2032,
-							"width": 100.669921875,
+							"width": 95,
 							"height": 48,
 							"autoResize": true,
 							"nameCompartment": {
@@ -18269,7 +18269,7 @@
 											"font": "Arial;13;1",
 											"left": 3829,
 											"top": 2335,
-											"width": 101.09912109375,
+											"width": 94.76513671875,
 											"height": 13,
 											"text": "ProfileCondition"
 										},
@@ -18388,7 +18388,7 @@
 							"containerChangeable": true,
 							"left": 3824,
 							"top": 2328,
-							"width": 111.09912109375,
+							"width": 104.76513671875,
 							"height": 25,
 							"autoResize": true,
 							"nameCompartment": {
@@ -19608,7 +19608,7 @@
 											"font": "Arial;13;1",
 											"left": 1613,
 											"top": 1711,
-											"width": 153.8798828125,
+											"width": 142.76513671875,
 											"height": 13,
 											"text": "ResourceEditorRegistrar"
 										},
@@ -19727,7 +19727,7 @@
 							"containerChangeable": true,
 							"left": 1608,
 							"top": 1704,
-							"width": 163.8798828125,
+							"width": 152.76513671875,
 							"height": 25,
 							"autoResize": true,
 							"nameCompartment": {
@@ -20552,7 +20552,7 @@
 											"font": "Arial;13;1",
 											"left": 1573,
 											"top": 2199,
-											"width": 351.57763671875,
+											"width": 340,
 											"height": 13,
 											"text": "BeanMetadataAttributeAccessor"
 										},
@@ -20587,7 +20587,7 @@
 									"font": "Arial;13;0",
 									"left": 1568,
 									"top": 2192,
-									"width": 361.57763671875,
+									"width": 350,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFsCXvrpwrZaSA="
@@ -20640,7 +20640,7 @@
 											"font": "Arial;13;0",
 											"left": 1573,
 											"top": 2222,
-											"width": 351.57763671875,
+											"width": 340,
 											"height": 13,
 											"text": "+void addMetadataAttribute(BeanMetadataAttribute attribute)",
 											"horizontalAlignment": 0
@@ -20657,7 +20657,7 @@
 											"font": "Arial;13;0",
 											"left": 1573,
 											"top": 2237,
-											"width": 351.57763671875,
+											"width": 340,
 											"height": 13,
 											"text": "+BeanMetadataAttribute getMetadataAttribute(String name)",
 											"horizontalAlignment": 0
@@ -20706,7 +20706,7 @@
 							"containerChangeable": true,
 							"left": 1568,
 							"top": 2192,
-							"width": 361.57763671875,
+							"width": 350,
 							"height": 63,
 							"autoResize": true,
 							"nameCompartment": {
@@ -20862,7 +20862,7 @@
 											"font": "Arial;13;1",
 											"left": 1229,
 											"top": 2326,
-											"width": 329.18310546875,
+											"width": 314,
 											"height": 13,
 											"text": "BeanDefinition"
 										},
@@ -20897,7 +20897,7 @@
 									"font": "Arial;13;0",
 									"left": 1224,
 									"top": 2319,
-									"width": 339.18310546875,
+									"width": 324,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFsCX3iUgurpJY="
@@ -20934,7 +20934,7 @@
 											"font": "Arial;13;0",
 											"left": 1229,
 											"top": 2349,
-											"width": 329.18310546875,
+											"width": 314,
 											"height": 13,
 											"text": "+String SCOPE_SINGLETON",
 											"horizontalAlignment": 0
@@ -20951,7 +20951,7 @@
 											"font": "Arial;13;0",
 											"left": 1229,
 											"top": 2364,
-											"width": 329.18310546875,
+											"width": 314,
 											"height": 13,
 											"text": "+String SCOPE_PROTOTYPE",
 											"horizontalAlignment": 0
@@ -20968,7 +20968,7 @@
 											"font": "Arial;13;0",
 											"left": 1229,
 											"top": 2379,
-											"width": 329.18310546875,
+											"width": 314,
 											"height": 13,
 											"text": "+int ROLE_APPLICATION",
 											"horizontalAlignment": 0
@@ -20985,7 +20985,7 @@
 											"font": "Arial;13;0",
 											"left": 1229,
 											"top": 2394,
-											"width": 329.18310546875,
+											"width": 314,
 											"height": 13,
 											"text": "+int ROLE_SUPPORT",
 											"horizontalAlignment": 0
@@ -21002,7 +21002,7 @@
 											"font": "Arial;13;0",
 											"left": 1229,
 											"top": 2409,
-											"width": 329.18310546875,
+											"width": 314,
 											"height": 13,
 											"text": "+int ROLE_INFRASTRUCTURE",
 											"horizontalAlignment": 0
@@ -21011,7 +21011,7 @@
 									"font": "Arial;13;0",
 									"left": 1224,
 									"top": 2344,
-									"width": 339.18310546875,
+									"width": 324,
 									"height": 83
 								},
 								{
@@ -21036,7 +21036,7 @@
 											"font": "Arial;13;0",
 											"left": 1229,
 											"top": 2432,
-											"width": 329.18310546875,
+											"width": 314,
 											"height": 13,
 											"text": "+void setParentName(String parentName)",
 											"horizontalAlignment": 0
@@ -21053,7 +21053,7 @@
 											"font": "Arial;13;0",
 											"left": 1229,
 											"top": 2447,
-											"width": 329.18310546875,
+											"width": 314,
 											"height": 13,
 											"text": "+String getParentName()",
 											"horizontalAlignment": 0
@@ -21070,7 +21070,7 @@
 											"font": "Arial;13;0",
 											"left": 1229,
 											"top": 2462,
-											"width": 329.18310546875,
+											"width": 314,
 											"height": 13,
 											"text": "+void setBeanClassName(String beanClassName)",
 											"horizontalAlignment": 0
@@ -21087,7 +21087,7 @@
 											"font": "Arial;13;0",
 											"left": 1229,
 											"top": 2477,
-											"width": 329.18310546875,
+											"width": 314,
 											"height": 13,
 											"text": "+void setScope(String scope)",
 											"horizontalAlignment": 0
@@ -21104,7 +21104,7 @@
 											"font": "Arial;13;0",
 											"left": 1229,
 											"top": 2492,
-											"width": 329.18310546875,
+											"width": 314,
 											"height": 13,
 											"text": "+void setLazyInit(boolean lazyInit)",
 											"horizontalAlignment": 0
@@ -21121,7 +21121,7 @@
 											"font": "Arial;13;0",
 											"left": 1229,
 											"top": 2507,
-											"width": 329.18310546875,
+											"width": 314,
 											"height": 13,
 											"text": "+void setDependsOn(String... dependsOn)",
 											"horizontalAlignment": 0
@@ -21138,7 +21138,7 @@
 											"font": "Arial;13;0",
 											"left": 1229,
 											"top": 2522,
-											"width": 329.18310546875,
+											"width": 314,
 											"height": 13,
 											"text": "+void setAutowireCandidate(boolean autowireCandidate)",
 											"horizontalAlignment": 0
@@ -21155,7 +21155,7 @@
 											"font": "Arial;13;0",
 											"left": 1229,
 											"top": 2537,
-											"width": 329.18310546875,
+											"width": 314,
 											"height": 13,
 											"text": "+void setFactoryBeanName(String factoryBeanName)",
 											"horizontalAlignment": 0
@@ -21172,7 +21172,7 @@
 											"font": "Arial;13;0",
 											"left": 1229,
 											"top": 2552,
-											"width": 329.18310546875,
+											"width": 314,
 											"height": 13,
 											"text": "+BeanDefinition getOriginatingBeanDefinition()",
 											"horizontalAlignment": 0
@@ -21221,7 +21221,7 @@
 							"containerChangeable": true,
 							"left": 1224,
 							"top": 2296,
-							"width": 339.18310546875,
+							"width": 324,
 							"height": 275,
 							"autoResize": true,
 							"stereotypeDisplay": "icon",
@@ -21322,7 +21322,7 @@
 							"tail": {
 								"$ref": "AAAAAAFsCXto5wpAEQ8="
 							},
-							"points": "1640:2368;1640:2307;1404.591552734375:2307",
+							"points": "1640:2368;1640:2307;1397:2307",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFsCX9eMgyp0K4="
@@ -22488,7 +22488,7 @@
 											"font": "Arial;13;1",
 											"left": 2037,
 											"top": 2223,
-											"width": 142.29541015625,
+											"width": 134,
 											"height": 13,
 											"text": "BeanMetadataAttribute"
 										},
@@ -22560,7 +22560,7 @@
 											"font": "Arial;13;0",
 											"left": 2037,
 											"top": 2246,
-											"width": 142.29541015625,
+											"width": 134,
 											"height": 13,
 											"text": "+String name",
 											"horizontalAlignment": 0
@@ -22577,7 +22577,7 @@
 											"font": "Arial;13;0",
 											"left": 2037,
 											"top": 2261,
-											"width": 142.29541015625,
+											"width": 134,
 											"height": 13,
 											"text": "+Object value",
 											"horizontalAlignment": 0
@@ -22594,7 +22594,7 @@
 											"font": "Arial;13;0",
 											"left": 2037,
 											"top": 2276,
-											"width": 142.29541015625,
+											"width": 134,
 											"height": 13,
 											"text": "+Object source",
 											"horizontalAlignment": 0
@@ -22603,7 +22603,7 @@
 									"font": "Arial;13;0",
 									"left": 2032,
 									"top": 2241,
-									"width": 152.29541015625,
+									"width": 144,
 									"height": 53
 								},
 								{
@@ -22659,7 +22659,7 @@
 							"containerChangeable": true,
 							"left": 2032,
 							"top": 2216,
-							"width": 152.29541015625,
+							"width": 144,
 							"height": 78,
 							"autoResize": true,
 							"nameCompartment": {
@@ -22760,7 +22760,7 @@
 							"tail": {
 								"$ref": "AAAAAAFsCXvrpwrX+s0="
 							},
-							"points": "1929:2238;2032:2238",
+							"points": "1917:2238;2032:2238",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFsCY2NCBOXq1k="
@@ -23912,7 +23912,7 @@
 											"font": "Arial;13;3",
 											"left": 581,
 											"top": 1727,
-											"width": 131.4853515625,
+											"width": 120,
 											"height": 13,
 											"text": "AbstractBeanFactory"
 										},
@@ -24031,7 +24031,7 @@
 							"containerChangeable": true,
 							"left": 576,
 							"top": 1720,
-							"width": 141.4853515625,
+							"width": 130,
 							"height": 25,
 							"autoResize": true,
 							"nameCompartment": {
@@ -24186,7 +24186,7 @@
 											"font": "Arial;13;1",
 											"left": 317,
 											"top": 1847,
-											"width": 700.62890625,
+											"width": 666.24462890625,
 											"height": 13,
 											"text": "AbstractAutowireCapableBeanFactory"
 										},
@@ -24221,7 +24221,7 @@
 									"font": "Arial;13;0",
 									"left": 312,
 									"top": 1840,
-									"width": 710.62890625,
+									"width": 676.24462890625,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFsHK/uYVaDG2M="
@@ -24274,7 +24274,7 @@
 											"font": "Arial;13;0",
 											"left": 317,
 											"top": 1870,
-											"width": 700.62890625,
+											"width": 666.24462890625,
 											"height": 13,
 											"text": "#BeanWrapper autowireConstructor(String beanName, RootBeanDefinition mbd, Constructor[] ctors, Object[] explicitArgs)",
 											"horizontalAlignment": 0
@@ -24323,7 +24323,7 @@
 							"containerChangeable": true,
 							"left": 312,
 							"top": 1840,
-							"width": 710.62890625,
+							"width": 676.24462890625,
 							"height": 48,
 							"autoResize": true,
 							"nameCompartment": {
@@ -24822,7 +24822,7 @@
 											"font": "Arial;13;1",
 											"left": 69,
 											"top": 1399,
-											"width": 330.23046875,
+											"width": 310,
 											"height": 13,
 											"text": "BeanWrapperImpl"
 										},
@@ -24857,7 +24857,7 @@
 									"font": "Arial;13;0",
 									"left": 64,
 									"top": 1392,
-									"width": 340.23046875,
+									"width": 320,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFsHL1c8FohPIs="
@@ -24894,7 +24894,7 @@
 											"font": "Arial;13;0",
 											"left": 69,
 											"top": 1422,
-											"width": 330.23046875,
+											"width": 310,
 											"height": 13,
 											"text": "-CachedIntrospectionResults cachedIntrospectionResults",
 											"horizontalAlignment": 0
@@ -24959,7 +24959,7 @@
 							"containerChangeable": true,
 							"left": 64,
 							"top": 1392,
-							"width": 340.23046875,
+							"width": 320,
 							"height": 48,
 							"autoResize": true,
 							"nameCompartment": {
@@ -30365,9 +30365,9 @@
 										"$ref": "AAAAAAFsCD/vbwPfmQA="
 									},
 									"font": "Arial;13;0",
-									"left": 1260,
+									"left": 1259,
 									"top": 1290,
-									"width": 88.91796875,
+									"width": 85.76513671875,
 									"height": 26,
 									"text": "输入beanName, RootBeanDefinition,args",
 									"wordWrap": true
@@ -30376,7 +30376,7 @@
 							"font": "Arial;13;0",
 							"left": 1224,
 							"top": 1280,
-							"width": 160.91796875,
+							"width": 155.76513671875,
 							"height": 46,
 							"autoResize": true,
 							"nameLabel": {
@@ -30729,7 +30729,7 @@
 									"font": "Arial;13;0",
 									"left": 1146,
 									"top": 1586,
-									"width": 302.7451171875,
+									"width": 287.76513671875,
 									"height": 13,
 									"text": "调用applyMergedBeanDefinitionPostProcessors方法",
 									"wordWrap": true
@@ -30738,7 +30738,7 @@
 							"font": "Arial;13;0",
 							"left": 1136,
 							"top": 1576,
-							"width": 322.7451171875,
+							"width": 307.76513671875,
 							"height": 33,
 							"autoResize": true,
 							"nameLabel": {
@@ -30773,7 +30773,7 @@
 								"$ref": "AAAAAAFsCEpmbASpXXU="
 							},
 							"lineStyle": 1,
-							"points": "1459:1580;1598:1569"
+							"points": "1444:1580;1596:1569"
 						},
 						{
 							"_type": "FCFlowView",
@@ -31345,9 +31345,9 @@
 										"$ref": "AAAAAAFsCIALvAWkQ4M="
 									},
 									"font": "Arial;13;0",
-									"left": 1164.53466796875,
+									"left": 1153.4033203125,
 									"top": 2111.5,
-									"width": 249.0693359375,
+									"width": 226.806640625,
 									"height": 15,
 									"text": "hasInstantiationAwareBeanPostProcessors",
 									"wordWrap": true
@@ -31356,7 +31356,7 @@
 							"font": "Arial;13;0",
 							"left": 1040,
 							"top": 2104,
-							"width": 498.138671875,
+							"width": 453.61328125,
 							"height": 30,
 							"autoResize": true,
 							"nameLabel": {
@@ -37948,7 +37948,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1055,
+									"left": 952,
 									"top": 809,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -37969,7 +37969,7 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 1070,
+									"left": 967,
 									"top": 809,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -37990,7 +37990,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1025,
+									"left": 922,
 									"top": 810,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -38008,7 +38008,7 @@
 							"tail": {
 								"$ref": "AAAAAAFsLET/b0PCCMc="
 							},
-							"points": "1168:816;1040:816;1040:1008",
+							"points": "1168:816;937:816;937:1008",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFsLEmjrkS9YA4="
@@ -43007,7 +43007,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFsPGXQwaMiGw8="
 									},
-									"name": "request"
+									"name": "request",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -43015,7 +43016,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFsPGXQwaMiGw8="
 									},
-									"name": "response"
+									"name": "response",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
@@ -43023,7 +43025,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFsPGXQwaMiGw8="
 									},
-									"name": "Object handler"
+									"name": "Object handler",
+									"type": ""
 								}
 							]
 						},
@@ -43264,7 +43267,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFsKF9k3bsPuAw="
 					},
-					"name": "Flowchart1",
+					"name": "MVC处理流程",
 					"ownedElements": [
 						{
 							"_type": "FCFlowchartDiagram",
@@ -43272,7 +43275,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFsPMKkCa35s2o="
 							},
-							"name": "FlowchartDiagram1",
+							"name": "MVC流程图",
 							"ownedViews": [
 								{
 									"_type": "FCProcessView",

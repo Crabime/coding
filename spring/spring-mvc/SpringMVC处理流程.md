@@ -51,6 +51,15 @@ protected void initHandlerMethods() {
 * `HandlerExecutionChain`：
 
 
+### `Spring MVC`启动时默认加载的五个`HandlerMapping`
+1. `RequestMappingHandlerMapping`：将`@RequestMapping`注解对应的方法转换为`RequestMappingInfo`
+2. `viewControllerHandlerMapping -> WebMvcConfigurationSupport$EmptyHandlerMapping`：将URL直接映射为视图名字
+3. `BeanNameUrlHandlerMapping`：传入URL找到对应`Bean`
+4. `resourceHandlerMapping`：处理静态资源映射
+5. `defaultServletHandlerMapping`：用来处理静态资源，处理方式将请求转发给servlet容器中**default** servlet。注意它可以映射"/"，
+也就是说它可以映射所有路径，但是由于它的优先级最低，所以当前面`handlerMapping`均映射失败时才会转交给它。
+
+
 ### 如何在一个`controller`中找到合适的`HandlerMethod`
 因为一个`@Controller`标注的类里面可能会有很多的方法，但并不是每一个方法都有`@RequestMapping`注解标识，也就是说并不是每个方法都是一个
 `HandlerMethod`，那Spring如何确定一个`HandlerMethod`呢？先看如下发现`HandlerMethod`方法：

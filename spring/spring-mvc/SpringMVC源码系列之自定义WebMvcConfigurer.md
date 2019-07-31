@@ -8,7 +8,7 @@ Spring MVC WebMvcConfigurer如何解析
 
 ### 那其中有哪些组件呢？
 1. [路径匹配转换器`PathMatchConfigurer`](#1)
-2. []
+2. [`ContentNegotiationStrategy`配置](#2)
 
 
 #### <span id="1">路径匹配转换器`PathMatchConfigurer`</span>
@@ -31,3 +31,5 @@ public void configurePathMatch(PathMatchConfigurer configurer) {
 获取`PathMatchConfigurer`中配置的`PathMatcher`/`URLPathHelper`，如果没有配置，那它会new一个新的对象并存入spring容器中。
 其它选项（`suffixPattern`/`trailingSlash`）默认值配置你会发现`PathMatchConfigurer`中并没有设置，他们默认值设置参考`RequestMappingHandlerMapping`.
 
+#### <span id="2">`ContentNegotiationStrategy`配置</span>
+什么是`ContentNegotiationStrategy`？它在Spring MVC中起到什么作用呢？

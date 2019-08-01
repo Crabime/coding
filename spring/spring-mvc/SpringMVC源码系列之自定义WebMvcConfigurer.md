@@ -34,7 +34,7 @@ public void configurePathMatch(PathMatchConfigurer configurer) {
 #### <span id="2">`ContentNegotiationStrategy`配置</span>
 什么是`ContentNegotiationStrategy`？它在Spring MVC中起到什么作用呢？
 为了更好的看到spring报错信息，这里引入log4j框架。注意：由于spring使用的日志框架是`commons-logging`，这里我用的是`slf4j`，所以这里
-需要导入如下三个包，对这块不了解可以参考[java日志组件介绍（common-logging，log4j，slf4j，logback ）]("https://blog.csdn.net/yycdaizi/article/details/8276265")：
+需要导入如下三个包，对这块不了解可以参考[java日志组件介绍（common-logging，log4j，slf4j，logback ）](https://blog.csdn.net/yycdaizi/article/details/8276265)：
 ```
 <!-- slf4j核心包 -->
 <dependency>
@@ -70,11 +70,15 @@ $("#get-random-json").click(function () {
 })
 ```
 返回结果如下图：
+
 <img src="http://pv89or3o8.bkt.clouddn.com/mvcconfigurer%E6%AD%A3%E5%B8%B8%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE.png" />
-**注意**：上面请求的URL没有带任何尾缀。
-**URL:http://localhost:8080/mvc/grb.xml**。
+
+<strong>注意</strong>：上面请求的URL没有带任何尾缀。
+<strong>URL:http://localhost:8080/mvc/grb.xml</strong>。
 返回结果如下图：
+
 <img src="http://pv89or3o8.bkt.clouddn.com/unacceptable-header-406.png" />
+
 可以看出，spring这个时候已经报错了，那这个URL是如何解析的呢？这里是spring mvc请求流程堆栈：
 ```
 org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:184)  // 使用MessageConverter将返回值转换为Accept格式
@@ -244,4 +248,7 @@ protected final void addDefaultHttpMessageConverters(List<HttpMessageConverter<?
 ```
 综上所述：tomcat 406错误体现就是spring mvc中没有xml对应转换器，换句话说没有`jackson-dataformat-xml`依赖，这个时候将该依赖添加到pom.xml中，
 并添加到tomcat classpath中，redeploy后会发现，接口又返回成功了，前面`Ajax`返回结果如下：
+
 <img src="http://pv89or3o8.bkt.clouddn.com/spring-mvc-xml-converter.png" />
+
+那`ContentNegotiationConfigurer`能做哪些自定义配置呢？

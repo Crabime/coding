@@ -16,7 +16,7 @@
 <script type="text/javascript">
     $("#get-random-json").click(function () {
         $.ajax({
-            url: "${pageContext.servletContext.contextPath}/grb.xml",
+            url: "${pageContext.servletContext.contextPath}/grb.crabime",
             type: "GET",
             success: function (data) {
                 var name = data.name;

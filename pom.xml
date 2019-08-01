@@ -57,6 +57,7 @@
         <msgpack.version>0.6.12</msgpack.version>
         <cglib.version>3.2.5</cglib.version>
         <javax.inject.version>1</javax.inject.version>
+        <lowagie.version>2.1.7</lowagie.version>
     </properties>
 
 
@@ -345,6 +346,12 @@
                 <groupId>cglib</groupId>
                 <artifactId>cglib</artifactId>
                 <version>${cglib.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.lowagie</groupId>
+                <artifactId>itext</artifactId>
+                <version>${lowagie.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

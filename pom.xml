@@ -29,6 +29,8 @@
         <spring.security.core.version>5.0.12.RELEASE</spring.security.core.version>  
         <slf4j.version>1.7.7</slf4j.version>
         <log4j.version>1.2.12</log4j.version>
+        <jcl-over-self4j>1.7.22</jcl-over-self4j>
+        <commongs.logging.version>1.2</commongs.logging.version>
         <mybatis.version>3.4.3</mybatis.version>
         <mybatis-spring.version>1.2.2</mybatis-spring.version>
         <jstl.version>1.2</jstl.version>
@@ -233,6 +235,16 @@
                 <groupId>log4j</groupId>
                 <artifactId>log4j</artifactId>
                 <version>${log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${jcl-over-self4j}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>${commongs.logging.version}</version>
             </dependency>
             <dependency>
                 <groupId>redis.clients</groupId>

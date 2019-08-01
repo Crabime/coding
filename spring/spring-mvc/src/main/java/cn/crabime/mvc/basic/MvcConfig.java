@@ -24,6 +24,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+        // 我们classpath中此时并不存在xml转换器
         super.configureContentNegotiation(configurer);
     }
 

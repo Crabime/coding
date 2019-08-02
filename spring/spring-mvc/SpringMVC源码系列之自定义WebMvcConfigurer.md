@@ -251,4 +251,5 @@ protected final void addDefaultHttpMessageConverters(List<HttpMessageConverter<?
 
 <img src="http://pv89or3o8.bkt.clouddn.com/spring-mvc-xml-converter.png" />
 
-那`ContentNegotiationConfigurer`能做哪些自定义配置呢？
+那`ContentNegotiationConfigurer`能做哪些自定义配置呢？这里我写了一个自定义消息转换器DEMO，源码及解释参考两一篇文章：
+[<strong>Spring MVC实现yaml格式交换</strong>](SpringMVC之yaml数据交换格式实现.md)

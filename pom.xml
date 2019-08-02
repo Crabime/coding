@@ -58,6 +58,7 @@
         <cglib.version>3.2.5</cglib.version>
         <javax.inject.version>1</javax.inject.version>
         <lowagie.version>2.1.7</lowagie.version>
+        <snakeyaml.version>1.17</snakeyaml.version>
     </properties>
 
 
@@ -348,10 +349,16 @@
                 <version>${cglib.version}</version>
             </dependency>
 
+            <!-- 生成pdf文档 -->
             <dependency>
                 <groupId>com.lowagie</groupId>
                 <artifactId>itext</artifactId>
                 <version>${lowagie.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+                <version>${snakeyaml.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

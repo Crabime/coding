@@ -2,12 +2,10 @@ package cn.crabime.mvc.basic;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.servlet.config.annotation.*;
-import org.springframework.web.servlet.view.XmlViewResolver;
 
 import java.util.List;
 
@@ -30,23 +28,17 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
-        // 以.crabime结尾的URL也将被解析为json
-        configurer.mediaType("crabime", MediaType.APPLICATION_JSON);
+        configurer.mediaType("yml", MediaType.valueOf("text/yaml"));
     }
 
     @Override
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-
-//        converters.add(xxx);
+        converters.add(new YamlMessageConverter<>());
     }
 
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
-
-        XmlViewResolver xvr = new XmlViewResolver();
-        xvr.setLocation(new ClassPathResource("views.xml"));
-        registry.viewResolver(xvr);
-//        registry.jsp("/WEB-INF/views/", ".jsp");
+        registry.jsp("/WEB-INF/views/", ".jsp");
     }
 
     @Override

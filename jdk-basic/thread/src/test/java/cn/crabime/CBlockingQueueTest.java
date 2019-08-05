@@ -8,7 +8,7 @@ import java.util.TimerTask;
 
 public class CBlockingQueueTest extends TestCase {
 
-    private static CBlockingQueue queue;
+    private static CBlockingQueue<Integer> queue;
 
     private static final int BASIC_SEED = 1000;
 
@@ -17,14 +17,26 @@ public class CBlockingQueueTest extends TestCase {
 
     @Override
     protected void setUp() {
-        queue = new CBlockingQueue(2);
+        queue = new CBlockingQueue<>(2);
     }
 
     @Test
-    public void testInsertAndGetItemsFromBlockingQueue() throws InterruptedException {
+    public void testPutAndTakeItemsFromBlockingQueue() throws InterruptedException {
         producerTimer.schedule(new Producer(), 0, 1000);
         consumerTimer.schedule(new Consumer(), 3000, 1000);
         Thread.sleep(10000);
+    }
+
+    @Test
+    public void testOfferElementTimeout() {
+
+    }
+
+    @Test
+    public void testOfferFailed() {
+        assertTrue(queue.offer(1));
+        assertTrue(queue.offer(2));
+        assertFalse(queue.offer(3));
     }
 
     @Test
@@ -51,7 +63,7 @@ public class CBlockingQueueTest extends TestCase {
 
             queue.put(number);
             System.out.println(Thread.currentThread().getName() + "生产数字" + number +
-                    "当前大小为：" + queue.remainingCapacity());
+                    "，当前大小为：" + queue.size());
         }
     }
 
@@ -60,7 +72,7 @@ public class CBlockingQueueTest extends TestCase {
         public void run() {
             Object result = queue.take();
             System.out.println(Thread.currentThread().getName() + "取出数字" + result +
-                    "当前大小为：" + queue.remainingCapacity());
+                    "，当前大小为：" + queue.size());
         }
     }
 }

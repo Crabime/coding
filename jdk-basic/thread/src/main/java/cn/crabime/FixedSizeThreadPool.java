@@ -9,7 +9,8 @@ import java.util.concurrent.TimeUnit;
 public class FixedSizeThreadPool {
 
     public static void main(String[] args) {
-        ThreadPoolExecutor fixedPoolExecutor = new ThreadPoolExecutor(1, 5, 60, TimeUnit.SECONDS, new CBlockingQueue<Runnable>(10));
+        CBlockingQueue<Runnable> blockingQueue = new CBlockingQueue<>(10);
+        ThreadPoolExecutor fixedPoolExecutor = new ThreadPoolExecutor(1, 5, 60, TimeUnit.SECONDS, blockingQueue);
         for (int i = 0; i < 100; i++) {
             fixedPoolExecutor.submit(new Runnable() {
                 public void run() {

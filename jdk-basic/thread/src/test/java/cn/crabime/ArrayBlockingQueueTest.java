@@ -42,4 +42,15 @@ public class ArrayBlockingQueueTest extends TestCase {
     public void testTakeIntoQueueOutOfCapacity() {
         assertFalse(queue.offer(5));
     }
+
+    /**
+     * 使用Timer测试jdk阻塞队列效果
+     * @throws InterruptedException
+     */
+    @Test
+    public void testMultiInsertAndGetFromBlockingQueue() throws InterruptedException {
+
+
+        Thread.sleep(10000);
+    }
 }

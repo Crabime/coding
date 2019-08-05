@@ -28,7 +28,7 @@ public class CBlockingQueueTest extends TestCase {
     }
 
     @Test
-    public void testMultiInsertAndGetFromBlockingQueue() throws InterruptedException {
+    public void testMultiInsertAndGetFromJDKBlockingQueue() throws InterruptedException {
         Producer[] producers = new Producer[10];
         Consumer[] consumers = new Consumer[10];
         for (int i = 0; i < producers.length; i++) {

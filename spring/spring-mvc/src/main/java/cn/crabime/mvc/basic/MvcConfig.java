@@ -4,6 +4,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.scheduling.concurrent.ConcurrentTaskExecutor;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.servlet.config.annotation.*;
 
@@ -44,5 +45,10 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
+    }
+
+    @Override
+    public void configureAsyncSupport(AsyncSupportConfigurer configurer) {
+        configurer.setDefaultTimeout(2500).setTaskExecutor(new ConcurrentTaskExecutor());
     }
 }

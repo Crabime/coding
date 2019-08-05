@@ -14,7 +14,7 @@ public class TimeLock implements Runnable {
             if (lock.tryLock(5, TimeUnit.SECONDS)){
                 Thread.sleep(6000);  // 故意让该线程睡眠6s,第二个线程因为无法获取到锁而返回false
             }else {
-                System.out.println("get lock failed");
+                System.out.println("take lock failed");
             }
         } catch (InterruptedException e) {
             e.printStackTrace();

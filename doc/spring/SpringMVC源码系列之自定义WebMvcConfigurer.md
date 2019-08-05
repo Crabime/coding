@@ -3,7 +3,7 @@ Spring MVC WebMvcConfigurer如何解析
 
 ### `Spring MVC`中所有组件集中注册中心
 *组件集中注册中心*是什么意思？说白了就是如果使用纯注解的方式启动项目，那注册在xml中的组件就转移到`WebMvcConfigurer`类的实现上了。
-下面结合源码和实例一一解释，所有的组件的配置参见[MvcConfig.java](src/main/java/cn/crabime/mvc/basic)，详细源码见
+下面结合源码和实例一一解释，所有的组件的配置参见[MvcConfig.java](/spring/spring-mvc/src/main/java/cn/crabime/mvc/basic)，详细源码见
 当前目录下`spring-mvc`模块
 
 ### 那其中有哪些组件呢？
@@ -53,8 +53,8 @@ public void configurePathMatch(PathMatchConfigurer configurer) {
 </dependency>
 ```
 同时记着把这些包放到tomcat `classpath`下，`Idea`为`artifact`中。
-在[`IndexController`](src/main/java/cn/crabime/mvc/basic/IndexController.java)中增加一个返回`json`格式数据的接口.
-在[前台页面](src/main/webapp/WEB-INF/views/index.jsp)中增加一个`Ajax`请求接口，用于自定义请求。
+在[`IndexController`](/spring/spring-mvc/src/main/java/cn/crabime/mvc/basic/IndexController.java)中增加一个返回`json`格式数据的接口.
+在[前台页面](/spring/spring-mvc/src/main/webapp/WEB-INF/views/index.jsp)中增加一个`Ajax`请求接口，用于自定义请求。
 正常`Ajax`请求如下，**URL:http://localhost:8080/mvc/grb**：
 ```
 $("#get-random-json").click(function () {

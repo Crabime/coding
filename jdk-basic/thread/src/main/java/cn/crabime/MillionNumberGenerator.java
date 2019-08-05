@@ -1,7 +1,6 @@
 package cn.crabime;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -12,11 +11,12 @@ public class MillionNumberGenerator {
 
     private final static int times = 1000 * 1000 * 10;
 
+    private static Random random = new Random();
+
     public static List<Integer> generateNumbers(int nums) {
         if (nums <= 0) {
             nums = times;
         }
-        Random random = new Random();
         List<Integer> list = new ArrayList<>();
         int num;
         for (int i = 0; i < nums; i++) {
@@ -24,5 +24,12 @@ public class MillionNumberGenerator {
             list.add(num);
         }
         return list;
+    }
+
+    /**
+     * 生成一个随机数
+     */
+    public static Integer generateSingleNumber(int nums) {
+        return random.nextInt(nums);
     }
 }

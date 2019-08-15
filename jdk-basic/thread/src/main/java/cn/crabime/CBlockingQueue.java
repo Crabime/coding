@@ -6,8 +6,8 @@ import java.util.Iterator;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.function.Consumer;
 
 /**
  * 手把手实现阻塞队列
@@ -15,7 +15,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class CBlockingQueue<T> extends AbstractQueue<T> implements BlockingQueue<T> {
 
-    private Lock lock = new ReentrantLock();
+    private ReentrantLock lock = new ReentrantLock();
 
     /**
      * 非空
@@ -55,6 +55,10 @@ public class CBlockingQueue<T> extends AbstractQueue<T> implements BlockingQueue
     public CBlockingQueue(int size) {
         this.size = size;
         items = new Object[this.size];
+    }
+
+    private T itemAt(int i) {
+        return (T) items[i];
     }
 
     /**
@@ -240,5 +244,79 @@ public class CBlockingQueue<T> extends AbstractQueue<T> implements BlockingQueue
         count--;
         notFull.signal();
         return t;
+    }
+
+    // TODO: 2019/8/6 待完成
+    private class Itr implements Iterator<T> {
+        private int cursor;
+
+        private T nextItem;
+
+        private int nextIndex;
+
+        private T lastItem;
+
+        /** lastItem索引，如果没有上一个元素，返回DETACHED */
+        private int lastRet;
+
+        private int prevTakeIndex;
+
+        private static final int NONE = -1;
+
+        private static final int REMOVED = -2;
+
+        private static final int DETACHED = -3;
+
+        Itr() {
+            lastRet = NONE;
+            ReentrantLock lock = CBlockingQueue.this.lock;
+            lock.lock();
+            try {
+                // 如果当前数组中没有值
+                if (count == 0) {
+                    cursor = NONE;
+                    nextIndex = NONE;
+                    prevTakeIndex = DETACHED;
+                } else {
+                    final int takeIndex = CBlockingQueue.this.takeIndex;
+                    prevTakeIndex = takeIndex;
+                    nextIndex = takeIndex;
+                    nextItem = itemAt(nextIndex);
+                    cursor = incCursor(takeIndex);
+
+                }
+            } finally {
+                lock.unlock();
+            }
+        }
+
+        // 游标下一位
+        private int incCursor(int index) {
+            if (++index == items.length)
+                index = 0;
+            if (index == putIndex)
+                index = NONE;
+            return index;
+        }
+
+        @Override
+        public void remove() {
+
+        }
+
+        @Override
+        public void forEachRemaining(Consumer<? super T> action) {
+
+        }
+
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        @Override
+        public T next() {
+            return null;
+        }
     }
 }

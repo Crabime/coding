@@ -19,6 +19,7 @@
         <module>spring-security</module>
         <module>netty-practice</module>
         <module>cglib</module>
+        <module>dubbo</module>
     </modules>
 
     <properties>
@@ -59,6 +60,8 @@
         <javax.inject.version>1</javax.inject.version>
         <lowagie.version>2.1.7</lowagie.version>
         <snakeyaml.version>1.17</snakeyaml.version>
+        <dubbo.version>2.5.2</dubbo.version>
+        <zkclient.version>0.1</zkclient.version>
     </properties>
 
 
@@ -359,6 +362,16 @@
                 <groupId>org.yaml</groupId>
                 <artifactId>snakeyaml</artifactId>
                 <version>${snakeyaml.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.sgroschupf</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>${zkclient.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "cn.crabime.dubbo.server")
-@ImportResource("classpath:spring-mvc.xml")
+@ImportResource("classpath:spring-dubbo.xml")
 public class DubboServerMvcConfig extends WebMvcConfigurerAdapter {
 
     @Override

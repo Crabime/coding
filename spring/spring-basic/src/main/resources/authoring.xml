@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:df="http://www.gooalgene.com/schema/dateformat"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.gooalgene.com/schema/dateformat http://www.gooalgene.com/schema/dateformat.xsd">
+
+    <df:dateformat id="df" pattern="yyyy-MM-dd HH:mm" lenient="true" />
+
+    <bean id="df1" class="java.text.SimpleDateFormat">
+        <constructor-arg value="yyyy-MM-dd HH:mm" />
+        <property name="lenient" value="true" />
+    </bean>
+
+    <df:component id="mc1" name="grandpa">
+        <df:component name="father">
+            <df:component name="boy" />
+            <df:component name="girl" />
+        </df:component>
+        <df:component name="aunt" />
+    </df:component>
+</beans>

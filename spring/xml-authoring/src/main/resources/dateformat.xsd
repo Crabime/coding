@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://www.gooalgene.com/schema/dateformat"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:beans="http://www.springframework.org/schema/beans"
+        targetNamespace="http://www.gooalgene.com/schema/dateformat"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <xsd:import namespace="http://www.springframework.org/schema/beans" />
+
+    <xsd:element name="dateformat">
+        <xsd:complexType>
+            <xsd:complexContent>
+                <!-- 该实例需要有一个唯一的id属性 -->
+                <xsd:extension base="beans:identifiedType">
+                    <xsd:attribute name="lenient" type="xsd:boolean" />
+                    <xsd:attribute name="pattern" type="xsd:string" use="required" />
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="component">
+        <xsd:complexType>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element ref="component" />
+            </xsd:choice>
+            <xsd:attribute name="id" type="xsd:ID" />
+            <xsd:attribute name="name" use="required" type="xsd:string" />
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

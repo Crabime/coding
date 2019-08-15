@@ -88,6 +88,12 @@
             <groupId>javax.inject</groupId>
             <artifactId>javax.inject</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>cn.crabime</groupId>
+            <artifactId>xml.authoring</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>

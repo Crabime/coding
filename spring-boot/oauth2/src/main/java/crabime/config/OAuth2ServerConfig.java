@@ -26,7 +26,7 @@ public class OAuth2ServerConfig {
 
     @Configuration
     @EnableResourceServer
-    public static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter{
+    public static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
         @Override
         public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
@@ -50,7 +50,7 @@ public class OAuth2ServerConfig {
 
     @Configuration
     @EnableAuthorizationServer
-    public static class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter{
+    public static class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
         @Autowired
         private AuthenticationManager authenticationManager;

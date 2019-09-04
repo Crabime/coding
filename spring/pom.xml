@@ -17,6 +17,7 @@
         <module>spring-basic</module>
         <module>spring-mvc</module>
         <module>xml-authoring</module>
+        <module>spring-mvc-multiscan</module>
     </modules>
 
 

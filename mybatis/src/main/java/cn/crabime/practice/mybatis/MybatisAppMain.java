@@ -9,16 +9,20 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
 @Configuration
+@EnableTransactionManagement
 @MapperScan(basePackages = "cn.crabime.practice.mybatis.dao", sqlSessionFactoryRef = "sqlSessionFactory")
 @ComponentScan(basePackages = "cn.crabime.practice.mybatis")
 public class MybatisAppMain {
 
-    @Bean("sqlSessionFactory")
-    public SqlSessionFactory sqlSessionFactoryBean() throws Exception {
+    @Bean
+    public SqlSessionFactory sqlSessionFactory() throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(druidDataSource());
         SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBean.getObject();
@@ -35,6 +39,11 @@ public class MybatisAppMain {
         dataSource.setUsername("root");
         dataSource.setPassword("yuanqin");
         return dataSource;
+    }
+
+    @Bean
+    public PlatformTransactionManager platformTransactionManager() {
+        return new DataSourceTransactionManager(druidDataSource());
     }
 
     public static void main(String[] args) {

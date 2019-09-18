@@ -18,6 +18,7 @@
         <module>regular-expression</module>
         <module>proxy</module>
         <module>design-mode</module>
+        <module>jdbc</module>
     </modules>
 
 

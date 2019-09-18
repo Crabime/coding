@@ -3,23 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>coding</artifactId>
+        <artifactId>jdk-basic</artifactId>
         <groupId>cn.crabime</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>spring</artifactId>
-    <packaging>pom</packaging>
-    <description>spring模块学习笔记</description>
-
-    <modules>
-        <module>spring-basic</module>
-        <module>spring-mvc</module>
-        <module>xml-authoring</module>
-        <module>spring-mvc-multiscan</module>
-        <module>spring-transaction</module>
-    </modules>
-
+    <artifactId>jdbc</artifactId>
+    <description>Mysql如何处理QPS达10k次访问</description>
 
 </project>

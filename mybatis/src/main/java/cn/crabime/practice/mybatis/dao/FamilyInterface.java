@@ -11,4 +11,7 @@ public interface FamilyInterface {
     @Insert("insert into family(name, grade) value (#{name}, #{grade})")
     @Options(useGeneratedKeys = true)
     void insertFamily(Family family);
+
+    @Insert("insert into family(name, grade) value (#{name}, #{grade})")
+    void insertFamilyWithoutIdReturn(Family family);
 }

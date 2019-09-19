@@ -50,7 +50,10 @@ public class MybatisAppMain {
         AnnotationConfigApplicationContext atx = new AnnotationConfigApplicationContext(MybatisAppMain.class);
         FamilyService familyService = atx.getBean(FamilyService.class);
         Family family = new Family("Crabime", Grade.FATHER);
-        familyService.insertFamily(family);
+
+        Education education = new Education("english", 1200d);
+        family.setEducation(education);
+        familyService.insertFamilyUsingRequiredNewPropagation(family);
         System.out.println("插入主键为：" + family.getId());
     }
 }

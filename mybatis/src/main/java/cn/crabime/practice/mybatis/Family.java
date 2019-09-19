@@ -8,6 +8,8 @@ public class Family {
 
     private Grade grade;
 
+    private Education education;
+
     public Family() {
     }
 
@@ -38,5 +40,13 @@ public class Family {
 
     public void setGrade(Grade grade) {
         this.grade = grade;
+    }
+
+    public Education getEducation() {
+        return education;
+    }
+
+    public void setEducation(Education education) {
+        this.education = education;
     }
 }

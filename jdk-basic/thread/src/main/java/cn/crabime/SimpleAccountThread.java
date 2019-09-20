@@ -26,7 +26,7 @@ public class SimpleAccountThread extends Thread {
     }
 
     private void incOps() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
             int money = random.nextInt(30);
             synchronized (lock) {
                 int account = this.simpleAccountOps.incAccount(money);
@@ -36,7 +36,7 @@ public class SimpleAccountThread extends Thread {
     }
 
     private void decOps() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
             int money = random.nextInt(30);
             synchronized (lock) {
                 int account = this.simpleAccountOps.decAccount(money);

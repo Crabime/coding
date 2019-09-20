@@ -19,6 +19,7 @@
         <module>proxy</module>
         <module>design-mode</module>
         <module>jdbc</module>
+        <module>collections</module>
     </modules>
 
 

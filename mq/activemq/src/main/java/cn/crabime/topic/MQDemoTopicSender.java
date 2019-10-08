@@ -22,19 +22,11 @@ public class MQDemoTopicSender {
         Destination destination = new ActiveMQTopic(topicToSend);
 
         jmsTemplate.send(destination, (Session session) -> {
-            logger.info("消息{}已经广播出去了，请注意查收！", msg);
             return session.createTextMessage(msg);
         });
     }
 
-    /**
-     * 将对象信息发送到mq中，与当前应用进行解耦合
-     *
-     * @param object      待保存的对象
-     * @param topicToSend 注册的topic
-     */
     public void sendSerializableMessage(Serializable object, String topicToSend) {
-        logger.info("消息{}已经广播出去了，请注意查收！", object);
         Destination destination = new ActiveMQTopic(topicToSend);
         jmsTemplate.convertAndSend(destination, object);
     }

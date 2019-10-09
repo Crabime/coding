@@ -23,12 +23,10 @@ public class MQDemoTopicListener implements MessageListener {
 	@Override
 	public void onMessage(Message arg0) {
 	    String topicToReceive = null;
-	    logger.info("来导监听器中");
         try {
             if(arg0 instanceof TextMessage){
                 TextMessage textMessage = (TextMessage) arg0;
                 String receiveText = textMessage.getText();
-                logger.info("接受到消息：" + receiveText);
 
             } else if (arg0 instanceof ObjectMessage) {
                 ObjectMessage objectMessage = (ObjectMessage) arg0;
@@ -36,15 +34,13 @@ public class MQDemoTopicListener implements MessageListener {
                 topicToReceive = ((ActiveMQObjectMessage)objectMessage).getDestination().getPhysicalName();
                 if (topicToReceive.equals(Constants.TOPICOBJECT)) {
                     List<Order> orderList = (List<Order>) serializable;
-                    logger.info("接收到的订单为：{}", orderList);
                     for (Order order : orderList) {
-                        // 数据库中插入订单
                         orderDao.insertOneOrder(order);
                     }
                 }
             }
         } catch (JMSException e) {
-            logger.error("接受消息异常");
+
         }
 	}
 

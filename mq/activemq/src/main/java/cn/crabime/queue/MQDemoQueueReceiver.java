@@ -1,19 +1,10 @@
 package cn.crabime.queue;
 
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageListener;
-import javax.jms.Queue;
-import javax.jms.QueueConnection;
-import javax.jms.QueueReceiver;
-import javax.jms.QueueSession;
-import javax.jms.Session;
-import javax.jms.TextMessage;
+import cn.crabime.common.Constants;
 import cn.crabime.utils.TimeUtils;
-
 import org.apache.activemq.ActiveMQConnectionFactory;
 
-import cn.crabime.common.Constants;
+import javax.jms.*;
 
 public class MQDemoQueueReceiver implements MessageListener {
 	private ActiveMQConnectionFactory factory;
@@ -22,10 +13,8 @@ public class MQDemoQueueReceiver implements MessageListener {
 	
 	public MQDemoQueueReceiver() {
 		System.out.println("==============");
-		System.out.println("我是线程:" + Thread.currentThread().getName() + "我开始接收消息了");
 		factory = new ActiveMQConnectionFactory(Constants.broker);
 		try {
-			//创建 一个点对点式连接
 			connection = factory.createQueueConnection();
 			connection.start();
 			queueSession = connection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
@@ -34,9 +23,6 @@ public class MQDemoQueueReceiver implements MessageListener {
 		}
 	}
 	
-	/**
-	 * 接收到queue中的消息
-	 */
 	public void receiveString(){
 		try {
 			Queue queue = queueSession.createQueue(Constants.QUEUESELFPROPOGATION);

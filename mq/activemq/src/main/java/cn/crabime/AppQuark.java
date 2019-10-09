@@ -1,26 +1,17 @@
 package cn.crabime;
 
-import javax.jms.Connection;
-import javax.jms.DeliveryMode;
-import javax.jms.Destination;
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageConsumer;
-import javax.jms.MessageProducer;
-import javax.jms.Session;
-import javax.jms.TextMessage;
-
 import org.apache.activemq.ActiveMQConnectionFactory;
 
+import javax.jms.*;
+
 /**
- * ÕâÊÇÒ»¸ö²âÊÔdemo
  *
  * @author Crabime
  */
 public class AppQuark {
     public static void access(String[] args) throws InterruptedException {
         if (args.length != 2) {
-            System.out.println("±ØÐëÒª´øÓÐÁ½¸ö²ÎÊý£ºÒ»¸öÉú²úÕß£¬Ò»¸öÏû·ÑÕß");
+            System.out.println("ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß£ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         }
         String msgText = args[0];
         String destinationName = args[1];

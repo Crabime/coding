@@ -12,5 +12,10 @@
     <artifactId>design-mode</artifactId>
     <description>Java中设计模式学习</description>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
 </project>

@@ -10,6 +10,7 @@
     <dubbo:registry address="zookeeper://localhost:2181" timeout="3000" />
     <!-- 用dubbo协议在20880端口暴露服务 -->
     <dubbo:protocol name="dubbo" port="20881" threads="10" />
+
     <!-- 声明需要暴露的服务接口，对应的具体实现类是自定义bean -->
     <dubbo:service interface="cn.crabime.dubbo.server.service.DemoService" ref="demoService" timeout="3000" />
 

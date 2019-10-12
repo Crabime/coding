@@ -29,17 +29,17 @@ public class WaitAndSleep {
         t1.start();
         t2.start();
 
-        try {
-            Thread.sleep(3000);
-            t1.interrupt();
-            t2.interrupt();
-            t1.join();
-            t2.join();
-            int index = obj.getIndex();
-            System.out.println("当前值为：" + index);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Thread.sleep(3000);
+//            t1.interrupt();
+//            t2.interrupt();
+//            t1.join();
+//            t2.join();
+//            int index = obj.getIndex();
+//            System.out.println("当前值为：" + index);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public static void main(String[] args) {
@@ -103,18 +103,21 @@ public class WaitAndSleep {
 
         @Override
         public void run() {
-            synchronized (lock) {
-                while (!sign) {
-                    try {
-                        lock.wait();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                        break;
+            while (true) {
+                synchronized (lock) {
+                    while (!sign) {
+                        try {
+                            lock.wait();
+                        } catch (InterruptedException e) {
+                            logger.error("出错了", e);
+                            break;
+                        }
                     }
+                    sign = false;
+                    obj.inc();
+                    logger.info("当前index=" + obj.getIndex());
+                    lock.notify();
                 }
-                sign = true;
-                obj.inc();
-                lock.notify();
             }
         }
     }
@@ -123,18 +126,21 @@ public class WaitAndSleep {
 
         @Override
         public void run() {
-            synchronized (lock) {
-                while (sign) {
-                    try {
-                        lock.wait();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                        break;
+            while (true) {
+                synchronized (lock) {
+                    while (sign) {
+                        try {
+                            lock.wait();
+                        } catch (InterruptedException e) {
+                            logger.error("出错了", e);
+                            break;
+                        }
                     }
+                    sign = true;
+                    obj.dec();
+                    logger.info("当前index=" + obj.getIndex());
+                    lock.notify();
                 }
-                sign = false;
-                obj.dec();
-                lock.notify();
             }
         }
     }

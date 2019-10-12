@@ -16,7 +16,7 @@ public class ArrayListEnsureCapacityDemo {
 
     private final Logger logger = LoggerFactory.getLogger(ArrayListEnsureCapacityDemo.class);
 
-   private List<Integer> list = new ArrayList<>(8);
+   private List<Integer> list = new ArrayList<Integer>(8);
 
    private int getListLength() {
        Class<? extends List> listClass = list.getClass();
@@ -25,7 +25,9 @@ public class ArrayListEnsureCapacityDemo {
            data.setAccessible(true);
            Object[] elementData = (Object[]) data.get(list);
            return elementData.length;
-       } catch (NoSuchFieldException | IllegalAccessException e) {
+       } catch (NoSuchFieldException e) {
+           e.printStackTrace();
+       } catch (IllegalAccessException e) {
            e.printStackTrace();
        }
        return -1;

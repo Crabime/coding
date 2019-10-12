@@ -12,7 +12,7 @@ public class StringOOMLeak {
     static String str = "hello";
 
     static void appendStr() {
-        List<String> list = new ArrayList<>();
+        List<String> list = new ArrayList<String>();
         String as = "world";
         for (int i = 0; i < Integer.MAX_VALUE; i++) {
             str = str + as;

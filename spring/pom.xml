@@ -18,6 +18,7 @@
         <module>spring-mvc</module>
         <module>xml-authoring</module>
         <module>spring-mvc-multiscan</module>
+        <module>spring-aop</module>
     </modules>
 
 </project>

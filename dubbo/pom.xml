@@ -11,9 +11,11 @@
 
     <artifactId>dubbo</artifactId>
     <packaging>pom</packaging>
+    <description>使用dubbo模拟服务治理，客户端发红包，调用红包服务，红包服务调用扣款服务</description>
     <modules>
-        <module>dubbo-client</module>
-        <module>dubbo-server</module>
+        <module>app</module>
+        <module>red-envelope</module>
+        <module>pay</module>
     </modules>
 
     <dependencies>

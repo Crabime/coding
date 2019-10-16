@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd     http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 提供方应用信息，用于计算依赖 -->
+    <dubbo:application name="dubbo-service" />
+    <!-- 使用zookeeper注册中心暴露服务地址：部署zookeeper控制台的电脑ip -->
+    <dubbo:registry address="zookeeper://localhost:2181" timeout="3000" />
+    <!-- 用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="20881" threads="10" />
+
+    <!-- 声明需要暴露的服务接口，对应的具体实现类是自定义bean -->
+    <dubbo:service interface="cn.crabime.dubbo.server.service.DemoService" ref="demoService" timeout="3000" />
+    <dubbo:service interface="cn.crabime.dubbo.server.service.EnvelopeService" ref="envelopeService" timeout="3000" />
+
+    <dubbo:reference interface="cn.crabime.dubbo.pay.service.PayService" id="payService" />
+
+    <!-- 服务实现 -->
+    <bean id="demoService" class="cn.crabime.dubbo.server.service.impl.DemoServiceImpl" />
+    <bean id="envelopeService" class="cn.crabime.dubbo.server.service.impl.EnvelopeServiceImpl" />
+</beans>

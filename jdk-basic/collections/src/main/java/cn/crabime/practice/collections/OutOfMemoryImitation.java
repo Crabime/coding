@@ -7,7 +7,7 @@ package cn.crabime.practice.collections;
 public class OutOfMemoryImitation {
 
     // 创建一个4Mb字节数组
-    private byte[] obj = new byte[1024 * 1024 * 4];
+    private byte[] obj = new byte[1024 * 1024 * 10];
 
     public void addIntoObj() {
         System.out.println("程序是否还能正常工作？");

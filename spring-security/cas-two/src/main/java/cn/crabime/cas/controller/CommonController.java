@@ -1,6 +1,5 @@
 package cn.crabime.cas.controller;
 
-import org.jasig.cas.client.util.CommonUtils;
 import org.springframework.security.cas.authentication.CasAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +22,7 @@ public class CommonController {
         System.out.println("CAS two -> CAS one proxy ticket为：" + proxyTicket);
 
         final String serviceUrl = targetUrl + "?ticket=" + URLEncoder.encode(proxyTicket, "UTF-8");
-        String proxyResponse = CommonUtils.getResponseFromServer(serviceUrl, "UTF-8");
+//        String proxyResponse = CommonUtils.getResponseFromServer(serviceUrl, "UTF-8");
         return "common";
     }
 

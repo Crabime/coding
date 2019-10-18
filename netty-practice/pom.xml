@@ -12,7 +12,7 @@
     <description>Netty权威指南学习篇</description>
     <modules>
         <module>chat</module>
-        <module>netty.basic</module>
+        <module>netty-basic</module>
     </modules>
     <artifactId>netty.practice</artifactId>
 

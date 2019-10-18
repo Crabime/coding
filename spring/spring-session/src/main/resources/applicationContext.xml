@@ -12,7 +12,5 @@
     <bean class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration" />
 
     <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
-        p:hostName="127.0.0.1" p:port="6379" p:timeout="10000" />
-
-
+        p:hostName="47.103.3.149" p:port="63791" p:timeout="10000" />
 </beans>

@@ -19,6 +19,7 @@
         <module>xml-authoring</module>
         <module>spring-mvc-multiscan</module>
         <module>spring-aop</module>
+        <module>spring-session</module>
     </modules>
 
 </project>

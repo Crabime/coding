@@ -10,8 +10,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>mq</artifactId>
+    <packaging>pom</packaging>
 
     <modules>
         <module>activemq</module>
+        <module>rocketmq</module>
     </modules>
 </project>

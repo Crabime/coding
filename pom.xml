@@ -51,6 +51,7 @@
         <mongo.version>1.10.4.RELEASE</mongo.version>
         <mongo.driver.version>3.4.2</mongo.driver.version>
         <activemq.version>5.8.0</activemq.version>
+        <rocketmq.version>4.3.2</rocketmq.version>
         <webapi.version>7.0</webapi.version>
         <jackson.version>2.7.8</jackson.version>
         <jackson.databind.version>2.9.9</jackson.databind.version>
@@ -315,6 +316,11 @@
                 <groupId>org.apache.activemq</groupId>
                 <artifactId>activemq-pool</artifactId>
                 <version>${activemq.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-client</artifactId>
+                <version>${rocketmq.version}</version>
             </dependency>
 
             <!-- spring cn.crabime.security -->

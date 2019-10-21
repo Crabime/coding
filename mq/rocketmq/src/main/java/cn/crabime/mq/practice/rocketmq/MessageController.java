@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping("/message")
 public class MessageController {
@@ -39,9 +42,15 @@ public class MessageController {
     public String produceMessageConcurrently(@RequestParam("mes") String message) throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
         // TODO: 2019/10/21 增加消息事务管理，优化jmeter参数，保证后续cpu能达到100%
         String topic = "orders";
-        Message mg = new Message(topic, message.getBytes());
+
+        List<Message> messageList = new ArrayList<>(10);
+        String[] allMessageArray = message.split(":");
+        for (String res : allMessageArray) {
+            messageList.add(new Message(topic, res.getBytes()));
+        }
+
         MessageQueue messageQueue = new MessageQueue(topic, "broker-a", 1);
-        producer.send(mg, messageQueue);
+        producer.send(messageList, messageQueue, 2000);
         return "Request Success";
     }
 }

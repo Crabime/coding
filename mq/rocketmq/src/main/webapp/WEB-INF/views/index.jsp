@@ -5,16 +5,24 @@
     <title>RocketMQ测试首页</title>
 </head>
 <body>
-<textarea id="mes" placeholder="输入要发送的消息" title="消息域"></textarea>
-<button id="st" title="提交"></button>
+<textarea id="mes" placeholder="输入要发送的消息"></textarea>
+<button id="st" title="提交">提交</button>
 </body>
 <script type="text/javascript">
-    var content = $("#mes");
-    $("#st").click(function () {
 
+    $("#st").click(function () {
+        var content = $("#mes").val();
+        console.log("消息为：" + content);
         $.ajax({
-            url: "${pageContext.servletContext.contextPath}/message/con?mes=" + content,
-            type: "GET"
+            type: "GET",
+            url: "${pageContext.servletContext.contextPath}/message/con",
+            dataType: "JSON",
+            data: {
+                "mes": content
+            },
+            success: function() {
+                console.log("success")
+            }
         })
     });
 </script>

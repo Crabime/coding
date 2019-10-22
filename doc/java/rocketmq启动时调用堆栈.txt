@@ -1,0 +1,580 @@
+topicRouteData2TopicPublishInfo:197, MQClientInstance (org.apache.rocketmq.client.impl.factory)
+updateTopicRouteInfoFromNameServer:625, MQClientInstance (org.apache.rocketmq.client.impl.factory)
+updateTopicRouteInfoFromNameServer:492, MQClientInstance (org.apache.rocketmq.client.impl.factory)
+updateTopicRouteInfoFromNameServer:361, MQClientInstance (org.apache.rocketmq.client.impl.factory)
+run:278, MQClientInstance$3 (org.apache.rocketmq.client.impl.factory)
+call:511, Executors$RunnableAdapter (java.util.concurrent)
+runAndReset$$$capture:308, FutureTask (java.util.concurrent)
+runAndReset:-1, FutureTask (java.util.concurrent)
+ - Async stack trace
+<init>:151, FutureTask (java.util.concurrent)
+<init>:219, ScheduledThreadPoolExecutor$ScheduledFutureTask (java.util.concurrent)
+scheduleAtFixedRate:570, ScheduledThreadPoolExecutor (java.util.concurrent)
+scheduleAtFixedRate:735, Executors$DelegatedScheduledExecutorService (java.util.concurrent)
+startScheduledTask:273, MQClientInstance (org.apache.rocketmq.client.impl.factory)
+start:236, MQClientInstance (org.apache.rocketmq.client.impl.factory)
+start:173, DefaultMQProducerImpl (org.apache.rocketmq.client.impl.producer)
+start:146, DefaultMQProducerImpl (org.apache.rocketmq.client.impl.producer)
+start:172, DefaultMQProducer (org.apache.rocketmq.client.producer)
+createProducer:33, RocketMQConfig (cn.crabime.mq.practice.rocketmq)
+CGLIB$createProducer$0:-1, RocketMQConfig$$EnhancerBySpringCGLIB$$7f51ff19 (cn.crabime.mq.practice.rocketmq)
+invoke:-1, RocketMQConfig$$EnhancerBySpringCGLIB$$7f51ff19$$FastClassBySpringCGLIB$$3f72d665 (cn.crabime.mq.practice.rocketmq)
+invokeSuper:228, MethodProxy (org.springframework.cglib.proxy)
+intercept:358, ConfigurationClassEnhancer$BeanMethodInterceptor (org.springframework.context.annotation)
+createProducer:-1, RocketMQConfig$$EnhancerBySpringCGLIB$$7f51ff19 (cn.crabime.mq.practice.rocketmq)
+invoke0:-2, NativeMethodAccessorImpl (sun.reflect)
+invoke:62, NativeMethodAccessorImpl (sun.reflect)
+invoke:43, DelegatingMethodAccessorImpl (sun.reflect)
+invoke:498, Method (java.lang.reflect)
+instantiate:162, SimpleInstantiationStrategy (org.springframework.beans.factory.support)
+instantiateUsingFactoryMethod:588, ConstructorResolver (org.springframework.beans.factory.support)
+instantiateUsingFactoryMethod:1173, AbstractAutowireCapableBeanFactory (org.springframework.beans.factory.support)
+createBeanInstance:1067, AbstractAutowireCapableBeanFactory (org.springframework.beans.factory.support)
+doCreateBean:513, AbstractAutowireCapableBeanFactory (org.springframework.beans.factory.support)
+createBean:483, AbstractAutowireCapableBeanFactory (org.springframework.beans.factory.support)
+getObject:306, AbstractBeanFactory$1 (org.springframework.beans.factory.support)
+getSingleton:230, DefaultSingletonBeanRegistry (org.springframework.beans.factory.support)
+doGetBean:302, AbstractBeanFactory (org.springframework.beans.factory.support)
+getBean:202, AbstractBeanFactory (org.springframework.beans.factory.support)
+resolveCandidate:208, DependencyDescriptor (org.springframework.beans.factory.config)
+doResolveDependency:1138, DefaultListableBeanFactory (org.springframework.beans.factory.support)
+resolveDependency:1066, DefaultListableBeanFactory (org.springframework.beans.factory.support)
+inject:585, AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement (org.springframework.beans.factory.annotation)
+inject:88, InjectionMetadata (org.springframework.beans.factory.annotation)
+postProcessPropertyValues:366, AutowiredAnnotationBeanPostProcessor (org.springframework.beans.factory.annotation)
+populateBean:1264, AbstractAutowireCapableBeanFactory (org.springframework.beans.factory.support)
+doCreateBean:553, AbstractAutowireCapableBeanFactory (org.springframework.beans.factory.support)
+createBean:483, AbstractAutowireCapableBeanFactory (org.springframework.beans.factory.support)
+getObject:306, AbstractBeanFactory$1 (org.springframework.beans.factory.support)
+getSingleton:230, DefaultSingletonBeanRegistry (org.springframework.beans.factory.support)
+doGetBean:302, AbstractBeanFactory (org.springframework.beans.factory.support)
+getBean:197, AbstractBeanFactory (org.springframework.beans.factory.support)
+preInstantiateSingletons:761, DefaultListableBeanFactory (org.springframework.beans.factory.support)
+finishBeanFactoryInitialization:867, AbstractApplicationContext (org.springframework.context.support)
+refresh:543, AbstractApplicationContext (org.springframework.context.support)
+configureAndRefreshWebApplicationContext:443, ContextLoader (org.springframework.web.context)
+initWebApplicationContext:325, ContextLoader (org.springframework.web.context)
+contextInitialized:107, ContextLoaderListener (org.springframework.web.context)
+listenerStart:4714, StandardContext (org.apache.catalina.core)
+startInternal:5178, StandardContext (org.apache.catalina.core)
+start:152, LifecycleBase (org.apache.catalina.util)
+addChildInternal:724, ContainerBase (org.apache.catalina.core)
+addChild:700, ContainerBase (org.apache.catalina.core)
+addChild:734, StandardHost (org.apache.catalina.core)
+manageApp:1702, HostConfig (org.apache.catalina.startup)
+invoke0:-2, NativeMethodAccessorImpl (sun.reflect)
+invoke:62, NativeMethodAccessorImpl (sun.reflect)
+invoke:43, DelegatingMethodAccessorImpl (sun.reflect)
+invoke:498, Method (java.lang.reflect)
+invoke:300, BaseModelMBean (org.apache.tomcat.util.modeler)
+invoke:819, DefaultMBeanServerInterceptor (com.sun.jmx.interceptor)
+invoke:801, JmxMBeanServer (com.sun.jmx.mbeanserver)
+createStandardContext:482, MBeanFactory (org.apache.catalina.mbeans)
+createStandardContext:431, MBeanFactory (org.apache.catalina.mbeans)
+invoke0:-2, NativeMethodAccessorImpl (sun.reflect)
+invoke:62, NativeMethodAccessorImpl (sun.reflect)
+invoke:43, DelegatingMethodAccessorImpl (sun.reflect)
+invoke:498, Method (java.lang.reflect)
+invoke:300, BaseModelMBean (org.apache.tomcat.util.modeler)
+invoke:819, DefaultMBeanServerInterceptor (com.sun.jmx.interceptor)
+invoke:801, JmxMBeanServer (com.sun.jmx.mbeanserver)
+doOperation:1468, RMIConnectionImpl (javax.management.remote.rmi)
+access$300:76, RMIConnectionImpl (javax.management.remote.rmi)
+run:1309, RMIConnectionImpl$PrivilegedOperation (javax.management.remote.rmi)
+doPrivilegedOperation:1401, RMIConnectionImpl (javax.management.remote.rmi)
+invoke:829, RMIConnectionImpl (javax.management.remote.rmi)
+invoke0:-2, NativeMethodAccessorImpl (sun.reflect)
+invoke:62, NativeMethodAccessorImpl (sun.reflect)
+invoke:43, DelegatingMethodAccessorImpl (sun.reflect)
+invoke:498, Method (java.lang.reflect)
+dispatch:324, UnicastServerRef (sun.rmi.server)
+run:200, Transport$1 (sun.rmi.transport)
+run:197, Transport$1 (sun.rmi.transport)
+doPrivileged:-2, AccessController (java.security)
+serviceCall:196, Transport (sun.rmi.transport)
+handleMessages:568, TCPTransport (sun.rmi.transport.tcp)
+run0:826, TCPTransport$ConnectionHandler (sun.rmi.transport.tcp)
+lambda$run$0:683, TCPTransport$ConnectionHandler (sun.rmi.transport.tcp)
+doPrivileged:-2, AccessController (java.security)
+run:682, TCPTransport$ConnectionHandler (sun.rmi.transport.tcp)
+runWorker:1142, ThreadPoolExecutor (java.util.concurrent)
+run:617, ThreadPoolExecutor$Worker (java.util.concurrent)
+run:745, Thread (java.lang)
+
+
+
+
+
+"RMI TCP Connection(2)-127.0.0.1@1731" daemon prio=5 tid=0x13 nid=NA waiting
+  java.lang.Thread.State: WAITING
+	  at sun.misc.Unsafe.park(Unsafe.java:-1)
+	  at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:215)
+	  at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireNanos(AbstractQueuedSynchronizer.java:934)
+	  at java.util.concurrent.locks.AbstractQueuedSynchronizer.tryAcquireNanos(AbstractQueuedSynchronizer.java:1247)
+	  at java.util.concurrent.locks.ReentrantLock.tryLock(ReentrantLock.java:442)
+	  at org.apache.rocketmq.client.impl.factory.MQClientInstance.updateTopicRouteInfoFromNameServer(MQClientInstance.java:591)
+	  at org.apache.rocketmq.client.impl.factory.MQClientInstance.updateTopicRouteInfoFromNameServer(MQClientInstance.java:492)
+	  at org.apache.rocketmq.client.impl.consumer.DefaultMQPushConsumerImpl.updateTopicSubscribeInfoWhenSubscriptionChanged(DefaultMQPushConsumerImpl.java:851)
+	  at org.apache.rocketmq.client.impl.consumer.DefaultMQPushConsumerImpl.start(DefaultMQPushConsumerImpl.java:632)
+	  - locked <0x1337> (a org.apache.rocketmq.client.impl.consumer.DefaultMQPushConsumerImpl)
+	  at org.apache.rocketmq.client.consumer.DefaultMQPushConsumer.start(DefaultMQPushConsumer.java:520)
+	  at cn.crabime.mq.practice.rocketmq.RocketMQConfig.createPullConsumer(RocketMQConfig.java:52)
+	  at cn.crabime.mq.practice.rocketmq.RocketMQConfig$$EnhancerBySpringCGLIB$$acb01702.CGLIB$createPullConsumer$1(<generated>:-1)
+	  at cn.crabime.mq.practice.rocketmq.RocketMQConfig$$EnhancerBySpringCGLIB$$acb01702$$FastClassBySpringCGLIB$$f854b56a.invoke(<generated>:-1)
+	  at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	  at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:358)
+	  at cn.crabime.mq.practice.rocketmq.RocketMQConfig$$EnhancerBySpringCGLIB$$acb01702.createPullConsumer(<generated>:-1)
+	  at sun.reflect.NativeMethodAccessorImpl.invoke0(NativeMethodAccessorImpl.java:-1)
+	  at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	  at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	  at java.lang.reflect.Method.invoke(Method.java:498)
+	  at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:162)
+	  at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:588)
+	  at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173)
+	  at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067)
+	  at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	  at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	  at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	  at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	  - locked <0x1338> (a java.util.concurrent.ConcurrentHashMap)
+	  at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	  at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	  at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	  at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867)
+	  at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543)
+	  - locked <0x1339> (a java.lang.Object)
+	  at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:443)
+	  at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:325)
+	  at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:107)
+	  at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4714)
+	  at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5178)
+	  - locked <0x133a> (a org.apache.catalina.core.StandardContext)
+	  at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:152)
+	  at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:724)
+	  at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:700)
+	  at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:734)
+	  at org.apache.catalina.startup.HostConfig.manageApp(HostConfig.java:1702)
+	  at sun.reflect.NativeMethodAccessorImpl.invoke0(NativeMethodAccessorImpl.java:-1)
+	  at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	  at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	  at java.lang.reflect.Method.invoke(Method.java:498)
+	  at org.apache.tomcat.util.modeler.BaseModelMBean.invoke(BaseModelMBean.java:300)
+	  at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:819)
+	  at com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801)
+	  at org.apache.catalina.mbeans.MBeanFactory.createStandardContext(MBeanFactory.java:482)
+	  at org.apache.catalina.mbeans.MBeanFactory.createStandardContext(MBeanFactory.java:431)
+	  at sun.reflect.NativeMethodAccessorImpl.invoke0(NativeMethodAccessorImpl.java:-1)
+	  at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	  at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	  at java.lang.reflect.Method.invoke(Method.java:498)
+	  at org.apache.tomcat.util.modeler.BaseModelMBean.invoke(BaseModelMBean.java:300)
+	  at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:819)
+	  at com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801)
+	  at javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1468)
+	  at javax.management.remote.rmi.RMIConnectionImpl.access$300(RMIConnectionImpl.java:76)
+	  at javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1309)
+	  at javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1401)
+	  at javax.management.remote.rmi.RMIConnectionImpl.invoke(RMIConnectionImpl.java:829)
+	  at sun.reflect.NativeMethodAccessorImpl.invoke0(NativeMethodAccessorImpl.java:-1)
+	  at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	  at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	  at java.lang.reflect.Method.invoke(Method.java:498)
+	  at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:324)
+	  at sun.rmi.transport.Transport$1.run(Transport.java:200)
+	  at sun.rmi.transport.Transport$1.run(Transport.java:197)
+	  at java.security.AccessController.doPrivileged(AccessController.java:-1)
+	  at sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+	  at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:568)
+	  at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:826)
+	  at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:683)
+	  at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler$$Lambda$1.1067200395.run(Unknown Source:-1)
+	  at java.security.AccessController.doPrivileged(AccessController.java:-1)
+	  at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:682)
+	  at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	  at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"ContainerBackgroundProcessor[StandardEngine[Catalina]]@2530" daemon prio=5 tid=0x1e nid=NA waiting
+  java.lang.Thread.State: WAITING
+	  at sun.misc.Unsafe.park(Unsafe.java:-1)
+	  at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+	  at java.util.concurrent.FutureTask.awaitDone(FutureTask.java:429)
+	  at java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	  at org.apache.catalina.startup.HostConfig.deployDirectories(HostConfig.java:1025)
+	  at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:409)
+	  at org.apache.catalina.startup.HostConfig.check(HostConfig.java:1595)
+	  at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:280)
+	  at org.apache.catalina.util.LifecycleBase.fireLifecycleEvent(LifecycleBase.java:94)
+	  at org.apache.catalina.core.ContainerBase.backgroundProcess(ContainerBase.java:1136)
+	  at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1372)
+	  at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.processChildren(ContainerBase.java:1376)
+	  at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1344)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"MQClientFactoryScheduledThread@3988" daemon prio=5 tid=0x35 nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+	  at org.apache.rocketmq.client.impl.factory.MQClientInstance.topicRouteData2TopicPublishInfo(MQClientInstance.java:197)
+	  at org.apache.rocketmq.client.impl.factory.MQClientInstance.updateTopicRouteInfoFromNameServer(MQClientInstance.java:625)
+	  at org.apache.rocketmq.client.impl.factory.MQClientInstance.updateTopicRouteInfoFromNameServer(MQClientInstance.java:492)
+	  at org.apache.rocketmq.client.impl.factory.MQClientInstance.updateTopicRouteInfoFromNameServer(MQClientInstance.java:361)
+	  at org.apache.rocketmq.client.impl.factory.MQClientInstance$3.run(MQClientInstance.java:278)
+	  at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	  at java.util.concurrent.FutureTask.runAndReset$$$capture(FutureTask.java:308)
+	  at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:-1)
+	  at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	  at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	  at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	  at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"NettyClientSelector_1@4149" daemon prio=5 tid=0x32 nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+	  at sun.nio.ch.KQueueArrayWrapper.kevent0(KQueueArrayWrapper.java:-1)
+	  at sun.nio.ch.KQueueArrayWrapper.poll(KQueueArrayWrapper.java:198)
+	  at sun.nio.ch.KQueueSelectorImpl.doSelect(KQueueSelectorImpl.java:117)
+	  at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:86)
+	  - locked <0x1312> (a sun.nio.ch.KQueueSelectorImpl)
+	  - locked <0x1313> (a java.util.Collections$UnmodifiableSet)
+	  - locked <0x1314> (a io.netty.channel.nio.SelectedSelectionKeySet)
+	  at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:97)
+	  at io.netty.channel.nio.NioEventLoop.select(NioEventLoop.java:760)
+	  at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:401)
+	  at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:140)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"ajp-nio-8009-ClientPoller-1@2554" daemon prio=5 tid=0x28 nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+	  at sun.nio.ch.KQueueArrayWrapper.kevent0(KQueueArrayWrapper.java:-1)
+	  at sun.nio.ch.KQueueArrayWrapper.poll(KQueueArrayWrapper.java:198)
+	  at sun.nio.ch.KQueueSelectorImpl.doSelect(KQueueSelectorImpl.java:117)
+	  at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:86)
+	  - locked <0x1319> (a sun.nio.ch.KQueueSelectorImpl)
+	  - locked <0x131a> (a java.util.Collections$UnmodifiableSet)
+	  - locked <0x131b> (a sun.nio.ch.Util$2)
+	  at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:97)
+	  at org.apache.tomcat.util.net.NioEndpoint$Poller.run(NioEndpoint.java:791)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"ajp-nio-8009-ClientPoller-0@2553" daemon prio=5 tid=0x27 nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+	  at sun.nio.ch.KQueueArrayWrapper.kevent0(KQueueArrayWrapper.java:-1)
+	  at sun.nio.ch.KQueueArrayWrapper.poll(KQueueArrayWrapper.java:198)
+	  at sun.nio.ch.KQueueSelectorImpl.doSelect(KQueueSelectorImpl.java:117)
+	  at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:86)
+	  - locked <0x131c> (a sun.nio.ch.KQueueSelectorImpl)
+	  - locked <0x131d> (a java.util.Collections$UnmodifiableSet)
+	  - locked <0x131e> (a sun.nio.ch.Util$2)
+	  at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:97)
+	  at org.apache.tomcat.util.net.NioEndpoint$Poller.run(NioEndpoint.java:791)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"https-jsse-nio-8443-ClientPoller-1@2550" daemon prio=5 tid=0x24 nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+	  at sun.nio.ch.KQueueArrayWrapper.kevent0(KQueueArrayWrapper.java:-1)
+	  at sun.nio.ch.KQueueArrayWrapper.poll(KQueueArrayWrapper.java:198)
+	  at sun.nio.ch.KQueueSelectorImpl.doSelect(KQueueSelectorImpl.java:117)
+	  at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:86)
+	  - locked <0x1320> (a sun.nio.ch.KQueueSelectorImpl)
+	  - locked <0x1321> (a java.util.Collections$UnmodifiableSet)
+	  - locked <0x1322> (a sun.nio.ch.Util$2)
+	  at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:97)
+	  at org.apache.tomcat.util.net.NioEndpoint$Poller.run(NioEndpoint.java:791)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"https-jsse-nio-8443-ClientPoller-0@2549" daemon prio=5 tid=0x23 nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+	  at sun.nio.ch.KQueueArrayWrapper.kevent0(KQueueArrayWrapper.java:-1)
+	  at sun.nio.ch.KQueueArrayWrapper.poll(KQueueArrayWrapper.java:198)
+	  at sun.nio.ch.KQueueSelectorImpl.doSelect(KQueueSelectorImpl.java:117)
+	  at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:86)
+	  - locked <0x1323> (a sun.nio.ch.KQueueSelectorImpl)
+	  - locked <0x1324> (a java.util.Collections$UnmodifiableSet)
+	  - locked <0x1325> (a sun.nio.ch.Util$2)
+	  at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:97)
+	  at org.apache.tomcat.util.net.NioEndpoint$Poller.run(NioEndpoint.java:791)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"http-nio-8080-ClientPoller-1@2541" daemon prio=5 tid=0x20 nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+	  at sun.nio.ch.KQueueArrayWrapper.kevent0(KQueueArrayWrapper.java:-1)
+	  at sun.nio.ch.KQueueArrayWrapper.poll(KQueueArrayWrapper.java:198)
+	  at sun.nio.ch.KQueueSelectorImpl.doSelect(KQueueSelectorImpl.java:117)
+	  at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:86)
+	  - locked <0x1327> (a sun.nio.ch.KQueueSelectorImpl)
+	  - locked <0x1328> (a java.util.Collections$UnmodifiableSet)
+	  - locked <0x1329> (a sun.nio.ch.Util$2)
+	  at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:97)
+	  at org.apache.tomcat.util.net.NioEndpoint$Poller.run(NioEndpoint.java:791)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"http-nio-8080-ClientPoller-0@2540" daemon prio=5 tid=0x1f nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+	  at sun.nio.ch.KQueueArrayWrapper.kevent0(KQueueArrayWrapper.java:-1)
+	  at sun.nio.ch.KQueueArrayWrapper.poll(KQueueArrayWrapper.java:198)
+	  at sun.nio.ch.KQueueSelectorImpl.doSelect(KQueueSelectorImpl.java:117)
+	  at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:86)
+	  - locked <0x132a> (a sun.nio.ch.KQueueSelectorImpl)
+	  - locked <0x132b> (a java.util.Collections$UnmodifiableSet)
+	  - locked <0x132c> (a sun.nio.ch.Util$2)
+	  at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:97)
+	  at org.apache.tomcat.util.net.NioEndpoint$Poller.run(NioEndpoint.java:791)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"CleanExpireMsgScheduledThread_1@4101" prio=5 tid=0x3a nid=NA waiting
+  java.lang.Thread.State: WAITING
+	  at sun.misc.Unsafe.park(Unsafe.java:-1)
+	  at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:215)
+	  at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2078)
+	  at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1093)
+	  at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:809)
+	  at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1067)
+	  at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1127)
+	  at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"NioBlockingSelector.BlockPoller-3@2458" daemon prio=5 tid=0x1c nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+	  at sun.nio.ch.KQueueArrayWrapper.kevent0(KQueueArrayWrapper.java:-1)
+	  at sun.nio.ch.KQueueArrayWrapper.poll(KQueueArrayWrapper.java:198)
+	  at sun.nio.ch.KQueueSelectorImpl.doSelect(KQueueSelectorImpl.java:117)
+	  at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:86)
+	  - locked <0x132d> (a sun.nio.ch.KQueueSelectorImpl)
+	  - locked <0x132e> (a java.util.Collections$UnmodifiableSet)
+	  - locked <0x132f> (a sun.nio.ch.Util$2)
+	  at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:97)
+	  at org.apache.tomcat.util.net.NioBlockingSelector$BlockPoller.run(NioBlockingSelector.java:339)
+
+"NioBlockingSelector.BlockPoller-2@2457" daemon prio=5 tid=0x1b nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+	  at sun.nio.ch.KQueueArrayWrapper.kevent0(KQueueArrayWrapper.java:-1)
+	  at sun.nio.ch.KQueueArrayWrapper.poll(KQueueArrayWrapper.java:198)
+	  at sun.nio.ch.KQueueSelectorImpl.doSelect(KQueueSelectorImpl.java:117)
+	  at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:86)
+	  - locked <0x1330> (a sun.nio.ch.KQueueSelectorImpl)
+	  - locked <0x1331> (a java.util.Collections$UnmodifiableSet)
+	  - locked <0x1332> (a sun.nio.ch.Util$2)
+	  at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:97)
+	  at org.apache.tomcat.util.net.NioBlockingSelector$BlockPoller.run(NioBlockingSelector.java:339)
+
+"NioBlockingSelector.BlockPoller-1@2227" daemon prio=5 tid=0x19 nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+	  at sun.nio.ch.KQueueArrayWrapper.kevent0(KQueueArrayWrapper.java:-1)
+	  at sun.nio.ch.KQueueArrayWrapper.poll(KQueueArrayWrapper.java:198)
+	  at sun.nio.ch.KQueueSelectorImpl.doSelect(KQueueSelectorImpl.java:117)
+	  at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:86)
+	  - locked <0x1333> (a sun.nio.ch.KQueueSelectorImpl)
+	  - locked <0x1334> (a java.util.Collections$UnmodifiableSet)
+	  - locked <0x1335> (a sun.nio.ch.Util$2)
+	  at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:97)
+	  at org.apache.tomcat.util.net.NioBlockingSelector$BlockPoller.run(NioBlockingSelector.java:339)
+
+"RMI Scheduler(0)@1774" daemon prio=5 tid=0x14 nid=NA waiting
+  java.lang.Thread.State: WAITING
+	  at sun.misc.Unsafe.park(Unsafe.java:-1)
+	  at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:215)
+	  at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2078)
+	  at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1093)
+	  at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:809)
+	  at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1067)
+	  at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1127)
+	  at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"NettyClientWorkerThread_1@4179" daemon prio=5 tid=0x36 nid=NA waiting
+  java.lang.Thread.State: WAITING
+	  at sun.misc.Unsafe.park(Unsafe.java:-1)
+	  at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:215)
+	  at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2078)
+	  at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:467)
+	  at io.netty.util.concurrent.SingleThreadEventExecutor.takeTask(SingleThreadEventExecutor.java:269)
+	  at io.netty.util.concurrent.DefaultEventExecutor.run(DefaultEventExecutor.java:39)
+	  at io.netty.util.concurrent.SingleThreadEventExecutor$2.run(SingleThreadEventExecutor.java:140)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"RebalanceService@4017" daemon prio=5 tid=0x34 nid=NA waiting
+  java.lang.Thread.State: WAITING
+	  at sun.misc.Unsafe.park(Unsafe.java:-1)
+	  at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:215)
+	  at java.util.concurrent.locks.AbstractQueuedSynchronizer.doAcquireSharedNanos(AbstractQueuedSynchronizer.java:1037)
+	  at java.util.concurrent.locks.AbstractQueuedSynchronizer.tryAcquireSharedNanos(AbstractQueuedSynchronizer.java:1328)
+	  at org.apache.rocketmq.common.CountDownLatch2.await(CountDownLatch2.java:114)
+	  at org.apache.rocketmq.common.ServiceThread.waitForRunning(ServiceThread.java:116)
+	  at org.apache.rocketmq.client.impl.consumer.RebalanceService.run(RebalanceService.java:40)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"PullMessageService@4016" daemon prio=5 tid=0x33 nid=NA waiting
+  java.lang.Thread.State: WAITING
+	  at sun.misc.Unsafe.park(Unsafe.java:-1)
+	  at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+	  at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+	  at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+	  at org.apache.rocketmq.client.impl.consumer.PullMessageService.run(PullMessageService.java:95)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"ajp-nio-8009-Acceptor-0@2555" daemon prio=5 tid=0x29 nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+	  at sun.nio.ch.ServerSocketChannelImpl.accept0(ServerSocketChannelImpl.java:-1)
+	  at sun.nio.ch.ServerSocketChannelImpl.accept(ServerSocketChannelImpl.java:422)
+	  at sun.nio.ch.ServerSocketChannelImpl.accept(ServerSocketChannelImpl.java:250)
+	  - locked <0x1318> (a java.lang.Object)
+	  at org.apache.tomcat.util.net.NioEndpoint$Acceptor.run(NioEndpoint.java:457)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"https-jsse-nio-8443-Acceptor-0@2551" daemon prio=5 tid=0x25 nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+	  at sun.nio.ch.ServerSocketChannelImpl.accept0(ServerSocketChannelImpl.java:-1)
+	  at sun.nio.ch.ServerSocketChannelImpl.accept(ServerSocketChannelImpl.java:422)
+	  at sun.nio.ch.ServerSocketChannelImpl.accept(ServerSocketChannelImpl.java:250)
+	  - locked <0x131f> (a java.lang.Object)
+	  at org.apache.tomcat.util.net.NioEndpoint$Acceptor.run(NioEndpoint.java:457)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"http-nio-8080-Acceptor-0@2545" daemon prio=5 tid=0x21 nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+	  at sun.nio.ch.ServerSocketChannelImpl.accept0(ServerSocketChannelImpl.java:-1)
+	  at sun.nio.ch.ServerSocketChannelImpl.accept(ServerSocketChannelImpl.java:422)
+	  at sun.nio.ch.ServerSocketChannelImpl.accept(ServerSocketChannelImpl.java:250)
+	  - locked <0x1326> (a java.lang.Object)
+	  at org.apache.tomcat.util.net.NioEndpoint$Acceptor.run(NioEndpoint.java:457)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"AsyncFileHandlerWriter-668849042@504" daemon prio=5 tid=0xe nid=NA waiting
+  java.lang.Thread.State: WAITING
+	  at sun.misc.Unsafe.park(Unsafe.java:-1)
+	  at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:215)
+	  at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2078)
+	  at java.util.concurrent.LinkedBlockingDeque.pollFirst(LinkedBlockingDeque.java:522)
+	  at java.util.concurrent.LinkedBlockingDeque.poll(LinkedBlockingDeque.java:684)
+	  at org.apache.juli.AsyncFileHandler$LoggerThread.run(AsyncFileHandler.java:152)
+
+"AsyncAppender-Dispatcher-Thread-14@3824" daemon prio=5 tid=0x2f nid=NA waiting
+  java.lang.Thread.State: WAITING
+	  at java.lang.Object.wait(Object.java:-1)
+	  at java.lang.Object.wait(Object.java:502)
+	  at org.apache.rocketmq.logging.inner.LoggingBuilder$AsyncAppender$Dispatcher.run(LoggingBuilder.java:386)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"JMX server connection timeout 46@2560" daemon prio=5 tid=0x2e nid=NA waiting
+  java.lang.Thread.State: WAITING
+	  at java.lang.Object.wait(Object.java:-1)
+	  at com.sun.jmx.remote.internal.ServerCommunicatorAdmin$Timeout.run(ServerCommunicatorAdmin.java:168)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"GC Daemon@1943" daemon prio=2 tid=0x17 nid=NA waiting
+  java.lang.Thread.State: WAITING
+	  at java.lang.Object.wait(Object.java:-1)
+	  at sun.misc.GC$Daemon.run(GC.java:117)
+
+"RMI TCP Connection(1)-127.0.0.1@1517" daemon prio=5 tid=0x12 nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+	  at java.net.SocketInputStream.socketRead0(SocketInputStream.java:-1)
+	  at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+	  at java.net.SocketInputStream.read(SocketInputStream.java:170)
+	  at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	  at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	  at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	  - locked <0x133b> (a java.io.BufferedInputStream)
+	  at java.io.FilterInputStream.read(FilterInputStream.java:83)
+	  at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:550)
+	  at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:826)
+	  at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:683)
+	  at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler$$Lambda$1.1067200395.run(Unknown Source:-1)
+	  at java.security.AccessController.doPrivileged(AccessController.java:-1)
+	  at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:682)
+	  at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	  at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"RMI TCP Accept-0@1272" daemon prio=5 tid=0x11 nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+	  at java.net.PlainSocketImpl.socketAccept(PlainSocketImpl.java:-1)
+	  at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:409)
+	  at java.net.ServerSocket.implAccept(ServerSocket.java:545)
+	  at java.net.ServerSocket.accept(ServerSocket.java:513)
+	  at sun.management.jmxremote.LocalRMIServerSocketFactory$1.accept(LocalRMIServerSocketFactory.java:52)
+	  at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:400)
+	  at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:372)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"RMI TCP Accept-1099@1228" daemon prio=5 tid=0x10 nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+	  at java.net.PlainSocketImpl.socketAccept(PlainSocketImpl.java:-1)
+	  at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:409)
+	  at java.net.ServerSocket.implAccept(ServerSocket.java:545)
+	  at java.net.ServerSocket.accept(ServerSocket.java:513)
+	  at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:400)
+	  at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:372)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"RMI TCP Accept-0@1155" daemon prio=5 tid=0xf nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+	  at java.net.PlainSocketImpl.socketAccept(PlainSocketImpl.java:-1)
+	  at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:409)
+	  at java.net.ServerSocket.implAccept(ServerSocket.java:545)
+	  at java.net.ServerSocket.accept(ServerSocket.java:513)
+	  at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:400)
+	  at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:372)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"main@1" prio=5 tid=0x1 nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+	  at java.net.PlainSocketImpl.socketAccept(PlainSocketImpl.java:-1)
+	  at java.net.AbstractPlainSocketImpl.accept(AbstractPlainSocketImpl.java:409)
+	  at java.net.ServerSocket.implAccept(ServerSocket.java:545)
+	  at java.net.ServerSocket.accept(ServerSocket.java:513)
+	  at org.apache.catalina.core.StandardServer.await(StandardServer.java:466)
+	  at org.apache.catalina.startup.Catalina.await(Catalina.java:743)
+	  at org.apache.catalina.startup.Catalina.start(Catalina.java:689)
+	  at sun.reflect.NativeMethodAccessorImpl.invoke0(NativeMethodAccessorImpl.java:-1)
+	  at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	  at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	  at java.lang.reflect.Method.invoke(Method.java:498)
+	  at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:355)
+	  at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:495)
+
+"ajp-nio-8009-AsyncTimeout@2556" daemon prio=5 tid=0x2a nid=NA sleeping
+  java.lang.Thread.State: TIMED_WAITING
+	  at java.lang.Thread.sleep(Thread.java:-1)
+	  at org.apache.coyote.AbstractProtocol$AsyncTimeout.run(AbstractProtocol.java:1120)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"https-jsse-nio-8443-AsyncTimeout@2552" daemon prio=5 tid=0x26 nid=NA sleeping
+  java.lang.Thread.State: TIMED_WAITING
+	  at java.lang.Thread.sleep(Thread.java:-1)
+	  at org.apache.coyote.AbstractProtocol$AsyncTimeout.run(AbstractProtocol.java:1120)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"http-nio-8080-AsyncTimeout@2546" daemon prio=5 tid=0x22 nid=NA sleeping
+  java.lang.Thread.State: TIMED_WAITING
+	  at java.lang.Thread.sleep(Thread.java:-1)
+	  at org.apache.coyote.AbstractProtocol$AsyncTimeout.run(AbstractProtocol.java:1120)
+	  at java.lang.Thread.run(Thread.java:745)
+
+"ClientHouseKeepingService@3877" daemon prio=5 tid=0x31 nid=NA waiting
+  java.lang.Thread.State: WAITING
+	  at java.lang.Object.wait(Object.java:-1)
+	  at java.util.TimerThread.mainLoop(Timer.java:552)
+	  at java.util.TimerThread.run(Timer.java:505)
+
+"Finalizer@4880" daemon prio=8 tid=0x3 nid=NA waiting
+  java.lang.Thread.State: WAITING
+	  at java.lang.Object.wait(Object.java:-1)
+	  at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+	  at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:164)
+	  at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:209)
+
+"Reference Handler@4881" daemon prio=10 tid=0x2 nid=NA waiting
+  java.lang.Thread.State: WAITING
+	  at java.lang.Object.wait(Object.java:-1)
+	  at java.lang.Object.wait(Object.java:502)
+	  at java.lang.ref.Reference.tryHandlePending(Reference.java:191)
+	  at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:153)
+
+"localhost-startStop-1@4878" daemon prio=5 tid=0x3b nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher@4879" daemon prio=9 tid=0x4 nid=NA runnable
+  java.lang.Thread.State: RUNNABLE
+
+
+

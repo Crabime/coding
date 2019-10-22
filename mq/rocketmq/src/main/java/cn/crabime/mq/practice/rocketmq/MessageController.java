@@ -3,6 +3,7 @@ package cn.crabime.mq.practice.rocketmq;
 import org.apache.rocketmq.client.exception.MQBrokerException;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
+import org.apache.rocketmq.client.producer.MessageQueueSelector;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.common.message.MessageQueue;
 import org.apache.rocketmq.remoting.exception.RemotingException;
@@ -15,8 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
+import java.nio.charset.Charset;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Controller
 @RequestMapping("/message")
@@ -26,6 +28,8 @@ public class MessageController {
 
     @Autowired
     private DefaultMQProducer producer;
+
+    private volatile AtomicInteger id = new AtomicInteger(0);
 
     @RequestMapping(value = "/con", method = RequestMethod.GET)
     @ResponseBody
@@ -40,17 +44,20 @@ public class MessageController {
     @RequestMapping(value = "/produce", method = RequestMethod.GET)
     @ResponseBody
     public String produceMessageConcurrently(@RequestParam("mes") String message) throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
-        // TODO: 2019/10/21 增加消息事务管理，优化jmeter参数，保证后续cpu能达到100%
+        // TODO: 10/22/19 增加传过来消息ID设置
         String topic = "orders";
 
-        List<Message> messageList = new ArrayList<>(10);
-        String[] allMessageArray = message.split(":");
-        for (String res : allMessageArray) {
-            messageList.add(new Message(topic, res.getBytes()));
-        }
+        Message mg = new Message(topic, "mes", message.getBytes(Charset.defaultCharset()));
 
-        MessageQueue messageQueue = new MessageQueue(topic, "broker-a", 1);
-        producer.send(messageList, messageQueue, 2000);
+        producer.send(mg, new MessageQueueSelector() {
+
+            @Override
+            public MessageQueue select(List<MessageQueue> mqs, Message msg, Object arg) {
+                Integer index = (Integer) arg;
+                int queueIndex = index % mqs.size();
+                return mqs.get(queueIndex);
+            }
+        }, id.addAndGet(1));
         return "Request Success";
     }
 }

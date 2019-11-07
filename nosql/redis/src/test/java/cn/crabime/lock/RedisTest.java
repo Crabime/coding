@@ -21,10 +21,17 @@ public class RedisTest extends TestCase {
         lock = new RedisLock(jedisPool);
     }
 
+    @Test
+    public void testSingleThreadAddLock() throws InterruptedException {
+        String lockKey = "l1";
+        String mainLV = UUID.randomUUID().toString();
+        lock.lock(lockKey, mainLV);
+    }
 
     @Test
     public void testShouldWaitWhenOneLockAndAnotherShouldWait() throws InterruptedException {
         String lockKey1 = "l1";
+        // 生成lock key
         String mainLV = UUID.randomUUID().toString();
         Thread t = new Thread(() -> {
             try {
@@ -38,6 +45,7 @@ public class RedisTest extends TestCase {
                 e.printStackTrace();
             }
         });
+        t.setName("自定义线程一");
         t.start();
 
         lock.lock(lockKey1, mainLV, 3000);

@@ -29,7 +29,11 @@ public class MessageController {
     @Autowired
     private DefaultMQProducer producer;
 
-    private volatile AtomicInteger id = new AtomicInteger(0);
+    private final Object lock = new Object();
+
+    private AtomicInteger id = new AtomicInteger(0);
+
+    private int queueSize = 0;
 
     @RequestMapping(value = "/con", method = RequestMethod.GET)
     @ResponseBody
@@ -54,7 +58,14 @@ public class MessageController {
             @Override
             public MessageQueue select(List<MessageQueue> mqs, Message msg, Object arg) {
                 Integer index = (Integer) arg;
-                int queueIndex = index % mqs.size();
+                int messageQueueSize = mqs.size();
+                synchronized (lock) {
+                    if (messageQueueSize != queueSize) {
+                        logger.info("当前队列大小为{}", messageQueueSize);
+                        queueSize++;
+                    }
+                }
+                int queueIndex = index % messageQueueSize;
                 return mqs.get(queueIndex);
             }
         }, id.addAndGet(1));

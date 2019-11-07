@@ -18,8 +18,10 @@ public class RedisLock {
     private static final String LOCK_PREFIX = "dlock_";
     private static final String LOCK_MSG = "OK";
     private static final Long UNLOCK_MSG = 1L;
+    // 锁默认超时时间
     private static final int DEFAULT_EXPIRE_TIME = 5 * 1000;
-    private static final long DEFAULT_SLEEP_TIME = 100;
+    // 每秒钟尝试加锁一次
+    private static final long DEFAULT_SLEEP_TIME = 1000;
 
     private JedisPool jedisPool;
 
@@ -58,6 +60,7 @@ public class RedisLock {
             return true;
         }
 
+        // 隔一秒钟重新获取一次锁
         Thread.sleep(DEFAULT_SLEEP_TIME);
         return false;
     }

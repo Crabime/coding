@@ -1,4 +1,4 @@
-package cn.crabime.practice.collections;
+package cn.crabime.jvm.gc;
 
 /**
  * 模拟内存溢出场景

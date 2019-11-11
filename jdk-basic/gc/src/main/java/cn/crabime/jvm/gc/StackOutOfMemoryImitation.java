@@ -1,4 +1,4 @@
-package cn.crabime.practice.collections;
+package cn.crabime.jvm.gc;
 
 /**
  * 模拟栈中无法继续扩展内存时抛出的OutOfMemoryError问题，这里只能得到StackOverflowError错误

@@ -1,4 +1,4 @@
-package cn.crabime.practice.collections;
+package cn.crabime.jvm.gc;
 
 import java.util.ArrayList;
 import java.util.List;

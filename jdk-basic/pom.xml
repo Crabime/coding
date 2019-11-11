@@ -20,6 +20,7 @@
         <module>design-mode</module>
         <module>jdbc</module>
         <module>collections</module>
+        <module>gc</module>
     </modules>
 
 

@@ -1,4 +1,4 @@
-package cn.crabime.mq.practice.rocketmq;
+package cn.crabime.mq.practice.rocketmq.core;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

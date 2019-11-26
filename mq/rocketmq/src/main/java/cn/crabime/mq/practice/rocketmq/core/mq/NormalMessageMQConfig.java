@@ -1,4 +1,4 @@
-package cn.crabime.mq.practice.rocketmq;
+package cn.crabime.mq.practice.rocketmq.core.mq;
 
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
@@ -17,28 +17,30 @@ import org.springframework.context.annotation.PropertySource;
 
 import java.util.List;
 
+import static cn.crabime.mq.practice.rocketmq.core.Constant.*;
+
 @Configuration
 @PropertySource("classpath:rocketmq.properties")
-public class RocketMQConfig {
+public class NormalMessageMQConfig {
 
-    private final static Logger logger = LoggerFactory.getLogger(RocketMQConfig.class);
+    private final static Logger logger = LoggerFactory.getLogger(NormalMessageMQConfig.class);
 
     @Value("${mq.namesrv}")
     private String namesrvAddr;
 
     @Bean("MQProducer")
     public DefaultMQProducer createProducer() throws MQClientException {
-        DefaultMQProducer defaultMQProducer = new DefaultMQProducer("producer");
+        DefaultMQProducer defaultMQProducer = new DefaultMQProducer(NORMAL_PRODUCER);
         defaultMQProducer.setNamesrvAddr(namesrvAddr);
         defaultMQProducer.start();
         return defaultMQProducer;
     }
 
     @Bean("MQConsumer")
-    public DefaultMQPushConsumer createPullConsumer() throws MQClientException {
-        DefaultMQPushConsumer defaultMQPushConsumer = new DefaultMQPushConsumer("consumer");
+    public DefaultMQPushConsumer createPushConsumer() throws MQClientException {
+        DefaultMQPushConsumer defaultMQPushConsumer = new DefaultMQPushConsumer(NORMAL_CONSUMER);
         defaultMQPushConsumer.setNamesrvAddr(namesrvAddr);
-        defaultMQPushConsumer.subscribe("orders", "*");
+        defaultMQPushConsumer.subscribe(TOPIC_NORMAL_ORDER, TOPIC_TAG_SUBSCRIPTION);
         defaultMQPushConsumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
         defaultMQPushConsumer.registerMessageListener(new MessageListenerConcurrently() {
             @Override

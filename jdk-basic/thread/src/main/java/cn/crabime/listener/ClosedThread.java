@@ -1,11 +1,17 @@
 package cn.crabime.listener;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Created by crabime on 12/20/17.
  */
 public class ClosedThread extends AbstractNotifyingThread implements ThreadCompleteListener {
+
+    private final static Logger logger = LoggerFactory.getLogger(ClosedThread.class);
+
     public void doRun() {
-        System.out.println("执行ClosedThread的doRun方法");
+        logger.info("执行ClosedThread的doRun方法");
         try {
             Thread.sleep(2000); // 睡眠两秒钟
         } catch (InterruptedException e) {
@@ -14,7 +20,6 @@ public class ClosedThread extends AbstractNotifyingThread implements ThreadCompl
     }
 
     public void notifyOfComplete(Runnable runnable) {
-
-        System.out.println(Thread.currentThread().getName() + "收到了通知");
+        logger.info("收到通知了");
     }
 }

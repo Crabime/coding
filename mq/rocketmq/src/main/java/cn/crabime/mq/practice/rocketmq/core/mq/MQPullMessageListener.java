@@ -1,9 +1,11 @@
 package cn.crabime.mq.practice.rocketmq.core.mq;
 
+import cn.crabime.mq.practice.rocketmq.core.mq.hook.DefaultConsumeMessageHook;
 import org.apache.rocketmq.client.consumer.DefaultMQPullConsumer;
 import org.apache.rocketmq.client.consumer.PullResult;
 import org.apache.rocketmq.client.exception.MQBrokerException;
 import org.apache.rocketmq.client.exception.MQClientException;
+import org.apache.rocketmq.client.impl.consumer.DefaultMQPullConsumerImpl;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.apache.rocketmq.common.message.MessageQueue;
 import org.apache.rocketmq.remoting.exception.RemotingException;
@@ -35,6 +37,8 @@ public class MQPullMessageListener implements InitializingBean {
         try {
             pullConsumer = new DefaultMQPullConsumer(NORMAL_PULL_CONSUMER);
             pullConsumer.setNamesrvAddr("47.103.3.149:9876");
+            DefaultMQPullConsumerImpl defaultMQPullConsumerImpl = pullConsumer.getDefaultMQPullConsumerImpl();
+            defaultMQPullConsumerImpl.registerConsumeMessageHook(new DefaultConsumeMessageHook());
             // consumer必须先启动
             pullConsumer.start();
         } catch (MQClientException e) {
@@ -45,7 +49,7 @@ public class MQPullMessageListener implements InitializingBean {
     @Override
     public void afterPropertiesSet() {
         Timer timer = new Timer("PullTimer", true);
-        timer.scheduleAtFixedRate(new PullTask(), 0L, 30000L);
+        // timer.scheduleAtFixedRate(new PullTask(), 0L, 30000L);
     }
 
 

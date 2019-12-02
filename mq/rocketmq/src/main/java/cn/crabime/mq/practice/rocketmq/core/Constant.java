@@ -23,4 +23,6 @@ public class Constant {
     public final static String TOPIC_PULL_NORMAL_ORDER = "pull_order";
 
     public final static String TAG_TRANSACTION_PREFIX = "Transaction";
+
+    public final static String HOOK_PULL_CONSUME_MESSAGE = "consume_hook";
 }

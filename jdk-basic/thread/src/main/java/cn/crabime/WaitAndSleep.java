@@ -12,11 +12,14 @@ public class WaitAndSleep {
 
     private final static Logger logger = LoggerFactory.getLogger(WaitAndSleep.class);
 
-    protected final Object lock = new Object();
+    /**
+     * 接受wait/notify消息对象
+     */
+    private final Object lock = new Object();
 
     protected StubObj obj = new StubObj();
 
-    private boolean sign = false;
+    private volatile boolean emptySign = true;
 
     private void startWork() {
         Thread t1 = new Thread(new Worker(), "工作线程一");
@@ -25,21 +28,12 @@ public class WaitAndSleep {
 
     private void startProducerThenConsumer() {
         Thread t1 = new Thread(new Producer(), "生产者");
-        Thread t2 = new Thread(new Consumer(), "消费者");
+        Thread t2 = new Thread(new Consumer(), "消费者一");
+        // 通过notify应该直接唤醒一个线程
+        Thread t3 = new Thread(new Consumer(), "消费者二");
         t1.start();
         t2.start();
-
-//        try {
-//            Thread.sleep(3000);
-//            t1.interrupt();
-//            t2.interrupt();
-//            t1.join();
-//            t2.join();
-//            int index = obj.getIndex();
-//            System.out.println("当前值为：" + index);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+        t3.start();
     }
 
     public static void main(String[] args) {
@@ -103,20 +97,29 @@ public class WaitAndSleep {
 
         @Override
         public void run() {
-            while (true) {
-                synchronized (lock) {
-                    while (!sign) {
-                        try {
-                            lock.wait();
-                        } catch (InterruptedException e) {
-                            logger.error("出错了", e);
-                            break;
-                        }
+            synchronized (lock) {
+                if (!emptySign) {
+                    try {
+                        lock.wait();
+                    } catch (InterruptedException e) {
+                        logger.error("出错了", e);
                     }
-                    sign = false;
-                    obj.inc();
-                    logger.info("当前index=" + obj.getIndex());
-                    lock.notify();
+                }
+                emptySign = false;
+                logger.info("通知消费者线程开始消费了，这里我还要先休息3s");
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    logger.error("睡眠过程中被打断了，fuck!", e);
+                }
+                lock.notifyAll();
+                obj.inc();
+                logger.info("当前index=" + obj.getIndex());
+                logger.info("模拟生产者线程执行完任务后注销过程，该过程持续2s");
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    logger.error("生产者线程注销过程被打断了，fuck fuck!", e);
                 }
             }
         }
@@ -126,21 +129,19 @@ public class WaitAndSleep {
 
         @Override
         public void run() {
-            while (true) {
-                synchronized (lock) {
-                    while (sign) {
-                        try {
-                            lock.wait();
-                        } catch (InterruptedException e) {
-                            logger.error("出错了", e);
-                            break;
-                        }
+            synchronized (lock) {
+                if (emptySign) {
+                    try {
+                        lock.wait(3000);
+                        logger.info("我的等待到极限了");
+                    } catch (InterruptedException e) {
+                        logger.error("出错了", e);
                     }
-                    sign = true;
-                    obj.dec();
-                    logger.info("当前index=" + obj.getIndex());
-                    lock.notify();
                 }
+                emptySign = true;
+                obj.dec();
+                logger.info("当前index=" + obj.getIndex());
+                lock.notify();
             }
         }
     }

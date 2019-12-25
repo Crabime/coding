@@ -1,4 +1,4 @@
-package autowire;
+package autowire.a;
 
 public class Student {
 

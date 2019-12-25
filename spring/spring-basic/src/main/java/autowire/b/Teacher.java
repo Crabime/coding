@@ -1,5 +1,6 @@
-package autowire;
+package autowire.b;
 
+import autowire.a.Student;
 import org.springframework.stereotype.Component;
 
 import javax.inject.Inject;

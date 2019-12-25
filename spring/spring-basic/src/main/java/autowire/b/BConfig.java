@@ -1,12 +1,13 @@
-package autowire;
+package autowire.b;
 
+import autowire.a.Student;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan("autowire")
-public class AutowireConfig {
+@ComponentScan("autowire.b")
+public class BConfig {
 
     @Bean
     public Student student() {

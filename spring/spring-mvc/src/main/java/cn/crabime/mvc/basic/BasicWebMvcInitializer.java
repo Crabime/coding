@@ -1,17 +1,18 @@
 package cn.crabime.mvc.basic;
 
+import cn.crabime.mvc.basic.parent.ParentConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class BasicWebMvcInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[] {MvcConfig.class};
+        return new Class[] {ParentConfig.class};
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return null;
+        return new Class[]{MvcConfig.class};
     }
 
     @Override

@@ -1,7 +1,10 @@
-package cn.crabime.mvc.basic;
+package cn.crabime.mvc.basic.controller;
 
+import cn.crabime.mvc.basic.PdfBean;
+import cn.crabime.mvc.basic.service.SimpleCacheService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 public class IndexController {
 
     private final static Logger logger = LoggerFactory.getLogger(IndexController.class);
+
+    @Autowired
+    private SimpleCacheService simpleCacheService;
 
     @RequestMapping("/")
     public String index() {
@@ -32,7 +38,10 @@ public class IndexController {
     public ContentBean getRandomBean(HttpServletRequest request) {
         StringBuffer requestURL = request.getRequestURL();
         logger.info("当前URL为：{}", requestURL.toString());
-        return new ContentBean("张三", 25);
+        String key = request.getParameter("key");
+        ContentBean ct = new ContentBean("张三", 25);
+        simpleCacheService.put(key, ct);
+        return ct;
     }
 
     @RequestMapping(value = "gyrb", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = "text/yaml")

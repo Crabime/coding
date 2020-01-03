@@ -1,5 +1,6 @@
-package cn.crabime.mvc.basic;
+package cn.crabime.mvc.basic.controller;
 
+import cn.crabime.mvc.basic.PdfBean;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Table;

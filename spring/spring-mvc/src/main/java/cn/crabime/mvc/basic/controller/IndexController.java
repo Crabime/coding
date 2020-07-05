@@ -7,12 +7,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
+import java.util.Enumeration;
+import java.util.Optional;
 
 @Controller
 public class IndexController {
@@ -33,15 +36,64 @@ public class IndexController {
         return "hello world";
     }
 
-    @RequestMapping(value = "/grb", method = RequestMethod.GET)
+    @RequestMapping(value = "/grb", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
-    public ContentBean getRandomBean(HttpServletRequest request) {
+    public ContentBean getRandomBean(HttpServletRequest request, HttpServletResponse response) {
+        String bizCode = request.getHeader("bizCode");
+        if (StringUtils.isEmpty(bizCode)) {
+            throw new IllegalArgumentException("未携带用户身份");
+        }
+
         StringBuffer requestURL = request.getRequestURL();
         logger.info("当前URL为：{}", requestURL.toString());
-        String key = request.getParameter("key");
-        ContentBean ct = new ContentBean("张三", 25);
-        simpleCacheService.put(key, ct);
+        String name = request.getParameter("name");
+
+        if (simpleCacheService.get(name) != null) {
+            name = simpleCacheService.getProperName(name);
+        }
+        Cookie[] cookies = request.getCookies();
+        Cookie cookie = null;
+        if (cookies != null) {
+            Optional<Cookie> nameCookie = Arrays.stream(cookies).filter(c -> "name".equals(c.getName())).findFirst();
+            if (!nameCookie.isPresent()) {
+                cookie = new Cookie("name", name);
+            }
+        } else {
+            cookie = new Cookie("name", name);
+        }
+        response.addCookie(cookie);
+        String value = request.getParameter("age");
+        int age = 0;
+        try {
+            age = Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("val只能为数字");
+        }
+        ContentBean ct = new ContentBean(name, age);
+        simpleCacheService.put(name, ct);
         return ct;
+    }
+
+    @RequestMapping(value = "grk", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ResponseBody
+    public ContentBean getSearchedKey(@RequestParam(name = "name", required = false)String name, HttpServletRequest request) {
+        if (StringUtils.isEmpty(name)) {
+            Cookie[] cookies = request.getCookies();
+            if (cookies != null) {
+                Optional<Cookie> nameCookie = Arrays.stream(cookies).filter(c -> c.getName().equals("name")).findFirst();
+                if (nameCookie.isPresent()) {
+                    name = nameCookie.get().getValue();
+                }
+            }
+        }
+        if (StringUtils.isEmpty(name)) {
+            throw new IllegalArgumentException("用户名不能为空");
+        }
+        Object result = simpleCacheService.get(name);
+        if (null != result) {
+            return (ContentBean) result;
+        }
+        return null;
     }
 
     @RequestMapping(value = "gyrb", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = "text/yaml")

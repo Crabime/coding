@@ -7,7 +7,7 @@ public class BasicWebMvcInitializer extends AbstractAnnotationConfigDispatcherSe
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[] {ParentConfig.class};
+        return new Class[] {MvcConfig.class};
     }
 
     @Override

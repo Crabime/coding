@@ -35,9 +35,9 @@ public class MybatisAppMain {
     public DataSource druidDataSource() {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://47.103.3.149:8080/genedb");
+        dataSource.setUrl("jdbc:mysql://47.103.3.149:3306/testdb?characterEncoding=utf-8");
         dataSource.setUsername("root");
-        dataSource.setPassword("yuanqin");
+        dataSource.setPassword("songsx");
         return dataSource;
     }
 

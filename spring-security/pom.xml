@@ -12,7 +12,7 @@
     <artifactId>spring-security</artifactId>
 
     <properties>
-        <c3p0.version>0.9.5.2</c3p0.version>
+        <c3p0.version>0.9.5.4</c3p0.version>
         <cas.client.version>3.4.1</cas.client.version>
         <ehcache.version>2.10.5</ehcache.version>
     </properties>

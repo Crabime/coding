@@ -21,6 +21,7 @@
         <module>cglib</module>
         <module>dubbo</module>
         <module>mock</module>
+        <module>groovy</module>
     </modules>
 
     <properties>
@@ -67,6 +68,7 @@
         <zkclient.version>0.1</zkclient.version>
         <mockito.version>1.9.5</mockito.version>
         <powermock.version>1.6.1</powermock.version>
+        <groovy.version>2.4.0</groovy.version>
 
         <!-- plugin version management -->
         <compiler.plugin.version>3.5.1</compiler.plugin.version>
@@ -260,6 +262,11 @@
                 <groupId>javax.servlet.jsp</groupId>
                 <artifactId>jsp-api</artifactId>
                 <version>${jsp-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.groovy</groupId>
+                <artifactId>groovy-all</artifactId>
+                <version>${groovy.version}</version>
             </dependency>
             <!-- LOGGING begin -->
             <dependency>

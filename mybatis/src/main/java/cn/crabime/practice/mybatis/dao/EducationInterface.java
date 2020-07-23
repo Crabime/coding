@@ -2,7 +2,6 @@ package cn.crabime.practice.mybatis.dao;
 
 import cn.crabime.practice.mybatis.Education;
 import cn.crabime.practice.mybatis.vo.SimpleMapEntry;
-import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.ResultType;
 import org.apache.ibatis.annotations.Select;
@@ -23,5 +22,7 @@ public interface EducationInterface {
     @ResultType(SimpleMapEntry.class)
     List<SimpleMapEntry> getAllMappings();
 
-
+    @Select("select * from education where type = #{param1} and family_id = #{param2}")
+    @ResultType(Education.class)
+    List<Education> getByType(String type, int familyId);
 }

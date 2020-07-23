@@ -1,7 +1,6 @@
 package cn.crabime.practice.mybatis;
 
 import cn.crabime.practice.mybatis.vo.SimpleMapEntry;
-import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,5 +31,11 @@ public class MybatisAppTest {
     public void testImmutablePair() {
         List<SimpleMapEntry> allMappings = educationService.getAllMappings();
         Assert.assertEquals(2, allMappings.size());
+    }
+
+    @Test
+    public void testGetByType() {
+        List<Education> educationList = educationService.getByType("张三", 1);
+        Assert.assertEquals(1, educationList.size());
     }
 }

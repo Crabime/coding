@@ -54,4 +54,8 @@ public class EducationService {
     public List<SimpleMapEntry> getAllMappings() {
         return educationInterface.getAllMappings();
     }
+
+    public List<Education> getByType(String type, int familyId) {
+        return educationInterface.getByType(type, familyId);
+    }
 }

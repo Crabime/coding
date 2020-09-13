@@ -1,6 +1,7 @@
 package cn.crabime.practice.mybatis;
 
 import junit.framework.TestCase;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +17,13 @@ public class FamilyServiceTest extends TestCase {
     @Autowired
     private FamilyService familyService;
 
+    @Autowired
+    private EducationService educationService;
+
     private Family family = new Family("Crabime", Grade.FATHER);;
 
     @Test(expected = RuntimeException.class)
     public void testInsertFamilyError() {
-
         doThrow(new RuntimeException()).when(familyService).insertFamily(family);
         familyService.insertFamily(family);
     }
@@ -28,8 +31,15 @@ public class FamilyServiceTest extends TestCase {
     @Test
     public void testInsertFamilyWithEducationNormally() {
         Education education = new Education("english", 1200d);
+        education.setUsername("Crabime");
         family.setEducation(education);
-        familyService.insertFamily(family);
+        try {
+            familyService.insertFamily(family);
+        } catch (RuntimeException e) {
+
+        }
+        Education e = educationService.getByTypeAndUsername("english", "Crabime");
+        assertNotNull(e);
     }
 
     @Test(expected = RuntimeException.class)
@@ -60,5 +70,10 @@ public class FamilyServiceTest extends TestCase {
         family.setEducation(education);
         doThrow(new RuntimeException()).when(familyService).insertFamilyWithNonEducationTransaction(family);
         familyService.insertFamilyUsingSupportsPropagation(family);
+    }
+
+    @After
+    public void release() {
+        familyService.truncateFamily();
     }
 }

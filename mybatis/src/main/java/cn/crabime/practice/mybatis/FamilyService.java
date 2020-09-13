@@ -27,7 +27,7 @@ public class FamilyService {
         if (education != null) {
             education.setFamilyId(family.getId());
             // 使用SUPPORTS传播特性，依附在当前事务上
-            educationService.insertOneEducationWithoutOwnTransaction(education);
+            educationService.insertOneEducationUsingRequiresNewTransaction(education);
         }
         throw new RuntimeException("插入异常");
     }
@@ -67,7 +67,7 @@ public class FamilyService {
     }
 
     // familyService插入异常，但educationService插入正常
-//    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional
     public void insertFamilyUsingRequiredNewPropagation(Family family) {
         TransactionTemplate template = new TransactionTemplate(transactionManager);
         template.execute(ac -> {
@@ -111,5 +111,10 @@ public class FamilyService {
         }
 
         throw new RuntimeException("Nested异常");
+    }
+
+    public void truncateFamily() {
+        familyInterface.truncateFamily();
+        educationService.truncateEdu();
     }
 }

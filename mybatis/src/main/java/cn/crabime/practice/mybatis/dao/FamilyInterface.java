@@ -3,6 +3,7 @@ package cn.crabime.practice.mybatis.dao;
 import cn.crabime.practice.mybatis.Family;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -14,4 +15,7 @@ public interface FamilyInterface {
 
     @Insert("insert into family(name, grade) value (#{name}, #{grade})")
     void insertFamilyWithoutIdReturn(Family family);
+
+    @Update("truncate table family")
+    void truncateFamily();
 }

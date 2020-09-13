@@ -10,6 +10,8 @@ public class Education {
 
     private double charge;
 
+    private String username;
+
     public Education() {
     }
 
@@ -48,5 +50,13 @@ public class Education {
 
     public void setFamilyId(int familyId) {
         this.familyId = familyId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

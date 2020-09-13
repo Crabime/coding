@@ -51,11 +51,19 @@ public class EducationService {
         educationInterface.insertEducation(education);
     }
 
+    public void truncateEdu() {
+        educationInterface.truncateEdu();
+    }
+
     public List<SimpleMapEntry> getAllMappings() {
         return educationInterface.getAllMappings();
     }
 
     public List<Education> getByType(String type, int familyId) {
         return educationInterface.getByType(type, familyId);
+    }
+
+    public Education getByTypeAndUsername(String type, String username) {
+        return educationInterface.getByTypeAndUsername(type, username);
     }
 }

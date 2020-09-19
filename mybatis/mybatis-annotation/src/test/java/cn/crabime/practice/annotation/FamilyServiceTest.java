@@ -1,6 +1,6 @@
-package cn.crabime.practice.mybatis;
+package cn.crabime.practice.annotation;
 
-import cn.crabime.practice.mybatis.dao.FamilyInterface;
+import cn.crabime.practice.annotation.dao.FamilyInterface;
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Test;

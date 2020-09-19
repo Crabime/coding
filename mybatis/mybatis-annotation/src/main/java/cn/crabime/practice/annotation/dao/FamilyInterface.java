@@ -1,7 +1,7 @@
-package cn.crabime.practice.mybatis.dao;
+package cn.crabime.practice.annotation.dao;
 
-import cn.crabime.practice.mybatis.AutoEnumTypeHandler;
-import cn.crabime.practice.mybatis.Family;
+import cn.crabime.practice.annotation.AutoEnumTypeHandler;
+import cn.crabime.practice.annotation.Family;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 

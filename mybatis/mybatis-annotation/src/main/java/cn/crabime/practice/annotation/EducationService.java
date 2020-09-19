@@ -1,6 +1,6 @@
-package cn.crabime.practice.mybatis;
+package cn.crabime.practice.annotation;
 
-import cn.crabime.practice.mybatis.dao.EducationInterface;
+import cn.crabime.practice.annotation.dao.EducationInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

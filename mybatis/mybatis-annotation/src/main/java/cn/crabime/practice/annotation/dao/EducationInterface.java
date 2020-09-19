@@ -1,7 +1,7 @@
-package cn.crabime.practice.mybatis.dao;
+package cn.crabime.practice.annotation.dao;
 
-import cn.crabime.practice.mybatis.Education;
-import cn.crabime.practice.mybatis.SimpleMapEntry;
+import cn.crabime.practice.annotation.Education;
+import cn.crabime.practice.annotation.SimpleMapEntry;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.ResultType;
 import org.apache.ibatis.annotations.Select;

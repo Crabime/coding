@@ -1,4 +1,4 @@
-package cn.crabime.practice.mybatis;
+package cn.crabime.practice.annotation;
 
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;

@@ -2,24 +2,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <packaging>pom</packaging>
-
     <parent>
-        <groupId>cn.crabime</groupId>
         <artifactId>coding</artifactId>
+        <groupId>cn.crabime</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>mybatis</artifactId>
-    <description>mybatis学习笔记</description>
-    <modules>
-        <module>mybatis-annotation</module>
-        <module>mybatis-xml</module>
-        <module>mybatis-common</module>
-    </modules>
+    <artifactId>mybatis-annotation</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>cn.crabime</groupId>
+            <artifactId>mybatis-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -81,15 +78,4 @@
             <artifactId>log4j</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <testResources>
-            <testResource>
-                <directory>${project.build.testSourceDirectory}</directory>
-                <excludes>
-                    <exclude>**/*.java</exclude>
-                </excludes>
-            </testResource>
-        </testResources>
-    </build>
 </project>

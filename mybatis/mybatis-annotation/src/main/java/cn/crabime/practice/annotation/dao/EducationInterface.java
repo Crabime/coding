@@ -1,16 +1,14 @@
 package cn.crabime.practice.annotation.dao;
 
-import cn.crabime.practice.annotation.Education;
-import cn.crabime.practice.annotation.SimpleMapEntry;
+import cn.crabime.practice.mybatis.Education;
+import cn.crabime.practice.mybatis.SimpleMapEntry;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.ResultType;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface EducationInterface {
 
     @Insert("insert into education(type, charge, family_id, username) value(#{type}, #{charge}, #{familyId}, #{username})")

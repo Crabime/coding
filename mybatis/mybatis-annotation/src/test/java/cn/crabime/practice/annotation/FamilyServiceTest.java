@@ -1,6 +1,9 @@
 package cn.crabime.practice.annotation;
 
 import cn.crabime.practice.annotation.dao.FamilyInterface;
+import cn.crabime.practice.mybatis.Education;
+import cn.crabime.practice.mybatis.Family;
+import cn.crabime.practice.mybatis.Grade;
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Test;
@@ -40,7 +43,7 @@ public class FamilyServiceTest extends TestCase {
         family.setGrade(Grade.FATHER);
         familyInterface.insertFamily(family);
         Family result = familyInterface.getFamilyByNameUsingAutoMapping("Crabime");
-        assertEquals("杭州周边旅行", result.getFamilyPlan());
+        assertEquals("Crabime", result.getName());
     }
 
     @Test

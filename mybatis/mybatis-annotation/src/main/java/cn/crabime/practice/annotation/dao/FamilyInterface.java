@@ -1,13 +1,11 @@
 package cn.crabime.practice.annotation.dao;
 
-import cn.crabime.practice.annotation.AutoEnumTypeHandler;
-import cn.crabime.practice.annotation.Family;
+import cn.crabime.practice.mybatis.Family;
+import cn.crabime.practice.mybatis.handler.AutoEnumTypeHandler;
 import org.apache.ibatis.annotations.*;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface FamilyInterface {
 
     @Insert("insert into family(name, grade) value (#{name}, #{grade})")

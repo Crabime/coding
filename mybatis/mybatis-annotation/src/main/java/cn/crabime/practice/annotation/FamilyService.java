@@ -1,6 +1,8 @@
 package cn.crabime.practice.annotation;
 
 import cn.crabime.practice.annotation.dao.FamilyInterface;
+import cn.crabime.practice.mybatis.Education;
+import cn.crabime.practice.mybatis.Family;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;

@@ -1,5 +1,7 @@
-package cn.crabime.practice.annotation;
+package cn.crabime.practice.mybatis.handler;
 
+import cn.crabime.practice.mybatis.EnumCode;
+import cn.crabime.practice.mybatis.Grade;
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.MappedJdbcTypes;

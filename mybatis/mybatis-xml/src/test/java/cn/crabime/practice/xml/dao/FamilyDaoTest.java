@@ -1,5 +1,6 @@
 package cn.crabime.practice.xml.dao;
 
+import cn.crabime.practice.mybatis.Education;
 import cn.crabime.practice.mybatis.Family;
 import cn.crabime.practice.mybatis.Grade;
 import cn.crabime.practice.xml.MybatisXmlConf;
@@ -20,6 +21,9 @@ public class FamilyDaoTest {
 
     @Autowired
     private FamilyDao familyDao;
+
+    @Autowired
+    private EducationDao educationDao;
 
     @Test
     public void testInsertFamilyNormally() {
@@ -54,8 +58,24 @@ public class FamilyDaoTest {
         assertEquals(1, t.size());
     }
 
-    @After
+    @Test
+    public void insertFamilyWithEducation() {
+        Family family = new Family("Crabime", Grade.FATHER);
+        family.setFamilyPlan("旅行");
+        familyDao.insertFamily(family);
+
+        Education education = new Education("english", 1200d);
+        education.setUsername("我是谁");
+        education.setFamilyId(family.getId());
+        educationDao.insertEducation(education);
+
+        Family newFamily = familyDao.getFamilyByName("Crabime");
+        assertEquals("我是谁", newFamily.getEducation().getUsername());
+    }
+
+    // @After
     public void tearDown() {
         familyDao.truncateFamily();
+        educationDao.truncateEducation();
     }
 }

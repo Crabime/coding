@@ -12,12 +12,14 @@
         <association property="education" javaType="cn.crabime.practice.mybatis.Education" autoMapping="true" />
     </resultMap>
 
-    <insert id="insertFamily" parameterType="cn.crabime.practice.mybatis.Family">
+    <insert id="insertFamily" parameterType="cn.crabime.practice.mybatis.Family" useGeneratedKeys="true" keyProperty="id">
         insert into family (name, grade, family_plan) values (#{name}, #{grade}, #{familyPlan})
     </insert>
 
     <select id="getFamilyByName" resultMap="familyMap">
-        select * from family where name = #{arg0}
+        select a.*, b.id as bid, b.type, b.charge, b.username from family a
+            left join education b on a.id = b.family_id
+        where a.name = #{arg0} limit 1
     </select>
 
     <update id="updateFamilyPlanByName" flushCache="false">

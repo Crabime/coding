@@ -1,6 +1,9 @@
 package cn.crabime.practice.mybatis;
 
-public class Family {
+import java.io.Serializable;
+import java.util.Date;
+
+public class Family implements Serializable {
 
     private int id;
 
@@ -11,6 +14,10 @@ public class Family {
     private Grade grade;
 
     private Education education;
+
+    private Date gmtCreate;
+
+    private Date gmtModified;
 
     public Family() {
     }
@@ -58,5 +65,21 @@ public class Family {
 
     public void setFamilyPlan(String familyPlan) {
         this.familyPlan = familyPlan;
+    }
+
+    public Date getGmtCreate() {
+        return gmtCreate;
+    }
+
+    public void setGmtCreate(Date gmtCreate) {
+        this.gmtCreate = gmtCreate;
+    }
+
+    public Date getGmtModified() {
+        return gmtModified;
+    }
+
+    public void setGmtModified(Date gmtModified) {
+        this.gmtModified = gmtModified;
     }
 }

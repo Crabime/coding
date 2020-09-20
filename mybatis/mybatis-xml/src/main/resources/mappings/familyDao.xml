@@ -2,7 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.crabime.practice.xml.dao.FamilyDao">
 
-    <resultMap id="familyMap" type="cn.crabime.practice.mybatis.Family" autoMapping="true" />
+    <cache size="10" />
+
+    <resultMap id="familyMap" type="cn.crabime.practice.mybatis.Family" autoMapping="true">
+        <constructor>
+            <arg name="arg0" column="name" javaType="string"/>
+            <arg name="arg1" column="grade" javaType="cn.crabime.practice.mybatis.Grade"/>
+        </constructor>
+        <association property="education" javaType="cn.crabime.practice.mybatis.Education" autoMapping="true" />
+    </resultMap>
 
     <insert id="insertFamily" parameterType="cn.crabime.practice.mybatis.Family">
         insert into family (name, grade, family_plan) values (#{name}, #{grade}, #{familyPlan})
@@ -10,6 +18,24 @@
 
     <select id="getFamilyByName" resultMap="familyMap">
         select * from family where name = #{arg0}
+    </select>
+
+    <update id="updateFamilyPlanByName" flushCache="false">
+        update family set family_plan = #{plan}, gmt_modified = now() where name = #{name}
+    </update>
+
+    <select id="getFamily" resultMap="familyMap">
+        select * from family
+            <where>
+                <trim prefixOverrides="and">
+                    <if test="arg0 != null">
+                        and name = #{arg0}
+                    </if>
+                    <if test="arg1 != null">
+                        and family_plan like concat('%', #{arg1}, '%')
+                    </if>
+                </trim>
+            </where>
     </select>
 
     <update id="truncateFamily">

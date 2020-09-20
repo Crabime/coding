@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -31,7 +33,26 @@ public class FamilyDaoTest {
         assertEquals("出去旅行", f.getFamilyPlan());
     }
 
+    @Test
+    public void testDynamicSql() {
+        Family family = new Family();
+        family.setName("李四");
+        family.setGrade(Grade.FATHER);
+        family.setFamilyPlan("出去旅行");
+        familyDao.insertFamily(family);
+        List<Family> t = familyDao.getFamily("李四", "旅行");
+        assertEquals(1, t.size());
+        // 走缓存
+        t = familyDao.getFamily("李四", "旅行");
+        assertEquals(1, t.size());
 
+        boolean result = familyDao.updateFamilyPlanByName("李四", "去游乐场");
+        assertTrue(result);
+
+        // 更新了后仍走缓存
+        t = familyDao.getFamily("李四", "旅行");
+        assertEquals(1, t.size());
+    }
 
     @After
     public void tearDown() {

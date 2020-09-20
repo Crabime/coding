@@ -1,6 +1,8 @@
 package cn.crabime.practice.mybatis;
 
-public class Education {
+import java.io.Serializable;
+
+public class Education implements Serializable {
 
     private int id;
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.crabime.practice.xml.dao.ChildDao">
+
+    <insert id="insertChildren">
+        insert into child(family_id, name, age) values
+        <trim suffixOverrides=",">
+            <foreach collection="childList" item="item">
+                (#{item.familyId}, #{item.name}, #{item.age}),
+            </foreach>
+        </trim>
+    </insert>
+
+    <update id="truncateEducation">
+        truncate table child
+    </update>
+</mapper>

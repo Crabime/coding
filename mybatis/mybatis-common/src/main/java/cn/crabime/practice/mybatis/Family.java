@@ -2,6 +2,7 @@ package cn.crabime.practice.mybatis;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class Family implements Serializable {
 
@@ -18,6 +19,8 @@ public class Family implements Serializable {
     private Date gmtCreate;
 
     private Date gmtModified;
+
+    private List<Child> childList;
 
     public Family() {
     }
@@ -81,5 +84,13 @@ public class Family implements Serializable {
 
     public void setGmtModified(Date gmtModified) {
         this.gmtModified = gmtModified;
+    }
+
+    public List<Child> getChildList() {
+        return childList;
+    }
+
+    public void setChildList(List<Child> childList) {
+        this.childList = childList;
     }
 }

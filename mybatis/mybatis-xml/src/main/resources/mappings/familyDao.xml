@@ -10,6 +10,9 @@
             <arg name="arg1" column="grade" javaType="cn.crabime.practice.mybatis.Grade"/>
         </constructor>
         <association property="education" javaType="cn.crabime.practice.mybatis.Education" autoMapping="true" />
+        <collection property="childList" ofType="cn.crabime.practice.mybatis.Child" autoMapping="true">
+            <result property="name" column="child_name" javaType="string" />
+        </collection>
     </resultMap>
 
     <insert id="insertFamily" parameterType="cn.crabime.practice.mybatis.Family" useGeneratedKeys="true" keyProperty="id">
@@ -20,6 +23,12 @@
         select a.*, b.id as bid, b.type, b.charge, b.username from family a
             left join education b on a.id = b.family_id
         where a.name = #{arg0} limit 1
+    </select>
+
+    <select id="getFamilyAndChildList" resultMap="familyMap">
+        select a.*, b.id as bid, b.name as child_name, b.age from family a
+            left join child b on a.id = b.family_id
+        where a.name = #{arg0}
     </select>
 
     <update id="updateFamilyPlanByName" flushCache="false">

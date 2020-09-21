@@ -19,6 +19,13 @@ public interface FamilyDao {
 
     Family getFamilyByName(String name);
 
+    /**
+     * mybatis获取一对多方式
+     * @param name 家庭名
+     * @return 家庭具体信息
+     */
+    Family getFamilyAndChildList(String name);
+
     List<Family> getFamily(String name, String familyPlan);
 
     void truncateFamily();

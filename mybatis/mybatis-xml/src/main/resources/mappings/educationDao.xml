@@ -6,6 +6,17 @@
         insert into education (family_id, type, charge, username) values (#{familyId}, #{type}, #{charge}, #{username})
     </insert>
 
+    <insert id="insertCustomizeEducation" keyProperty="education.id" useGeneratedKeys="true">
+        insert into education (family_id, type, charge, username) values (#{education.familyId}, #{education.type}, #{education.charge}, #{name})
+    </insert>
+
+    <insert id="batchInsertEducation" parameterType="cn.crabime.practice.mybatis.Education" useGeneratedKeys="true" keyProperty="id">
+        insert into education (family_id, type, charge, username) values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.familyId}, #{item.type}, #{item.charge}, #{item.username})
+        </foreach>
+    </insert>
+
     <update id="truncateEducation">
         truncate table education
     </update>

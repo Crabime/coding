@@ -36,7 +36,7 @@
         <log4j.version>1.2.12</log4j.version>
         <jcl-over-self4j>1.7.22</jcl-over-self4j>
         <commongs.logging.version>1.2</commongs.logging.version>
-        <mybatis.version>3.4.3</mybatis.version>
+        <mybatis.version>3.5.5</mybatis.version>
         <mybatis-spring.version>1.3.0</mybatis-spring.version>
         <jstl.version>1.2</jstl.version>
         <servlet-api.version>3.1.0</servlet-api.version>

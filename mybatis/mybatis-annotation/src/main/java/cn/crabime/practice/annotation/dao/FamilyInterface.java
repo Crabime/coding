@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface FamilyInterface {
 
-    @Insert("insert into family(name, grade) value (#{name}, #{grade})")
-    @Options(useGeneratedKeys = true)
+    @Insert("insert into family(name, grade, education_id) value (#{name}, #{grade}, #{education.id})")
+    @Options(useGeneratedKeys = true, keyProperty = "id")
     void insertFamily(Family family);
 
     @Insert("insert into family(name, grade) value (#{name}, #{grade})")
@@ -22,7 +22,9 @@ public interface FamilyInterface {
     @Results(id = "familyMap",
             value = {
                 @Result(property = "name", column = "name"),
-                @Result(property = "grade", column = "grade", typeHandler = AutoEnumTypeHandler.class)
+                @Result(property = "grade", column = "grade", typeHandler = AutoEnumTypeHandler.class),
+                    @Result(property = "education", column = "education_id",
+                            one = @One(select = "cn.crabime.practice.annotation.dao.EducationInterface.getById"))
             })
     Family getById(int id);
 

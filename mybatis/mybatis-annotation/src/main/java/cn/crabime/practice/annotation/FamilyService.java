@@ -36,12 +36,11 @@ public class FamilyService {
 
     @Transactional
     public void insertFamilyWithNonEducationTransaction(Family family) {
-        familyInterface.insertFamily(family);
         Education education = family.getEducation();
         if (education != null) {
-            education.setFamilyId(family.getId());
             educationService.insertOneEducationWithoutOwnTransaction(education);
         }
+        familyInterface.insertFamily(family);
     }
 
     // 都没有事务

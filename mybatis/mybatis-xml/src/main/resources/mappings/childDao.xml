@@ -5,7 +5,7 @@
     <insert id="insertChildren">
         insert into child(family_id, name, age) values
         <trim suffixOverrides=",">
-            <foreach collection="childList" item="item">
+            <foreach collection="list" item="item">
                 (#{item.familyId}, #{item.name}, #{item.age}),
             </foreach>
         </trim>

@@ -47,6 +47,16 @@ public class FamilyServiceTest extends TestCase {
     }
 
     @Test
+    public void testMybatisOneAnnotation() {
+        Education education = new Education("English", 1200d);
+        education.setUsername("张三");
+        family.setEducation(education);
+        familyService.insertFamilyWithNonEducationTransaction(family);
+        Family reachedResult = familyInterface.getById(family.getId());
+        assertNotNull(reachedResult.getEducation());
+    }
+
+    @Test
     public void testInsertFamilyWithEducationNormally() {
         Education education = new Education("english", 1200d);
         education.setUsername("Crabime");

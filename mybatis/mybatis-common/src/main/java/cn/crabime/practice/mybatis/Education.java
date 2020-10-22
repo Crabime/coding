@@ -1,7 +1,10 @@
 package cn.crabime.practice.mybatis;
 
+import org.apache.ibatis.type.Alias;
+
 import java.io.Serializable;
 
+@Alias("education")
 public class Education implements Serializable {
 
     private int id;

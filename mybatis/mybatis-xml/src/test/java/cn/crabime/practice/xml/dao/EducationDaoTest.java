@@ -2,6 +2,8 @@ package cn.crabime.practice.xml.dao;
 
 import cn.crabime.practice.mybatis.Education;
 import cn.crabime.practice.xml.MybatisXmlConf;
+import cn.crabime.practice.xml.vo.EducationRequest;
+import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ import static org.junit.Assert.*;
 @ContextConfiguration(classes = MybatisXmlConf.class)
 public class EducationDaoTest {
 
+    private final static Logger logger = Logger.getLogger(EducationDaoTest.class);
+
+    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
     private EducationDao educationDao;
 
@@ -26,7 +31,35 @@ public class EducationDaoTest {
         education1.setType("English");
         education1.setCharge(1200d);
         education1.setFamilyId(12);
-        educationDao.insertCustomizeEducation("张三", education1);
+        String username = "张三";
+        educationDao.insertCustomizeEducation(username, education1);
+        logger.info("username=" + username + ",education_id=" + education1.getId() + ",education.username=" + education1.getUsername());
+    }
+
+    @Test
+    public void testMybatisLevel1Cache() {
+        Education education1 = new Education();
+        education1.setType("English");
+        education1.setCharge(1200d);
+        education1.setFamilyId(12);
+        education1.setUsername("张三");
+        boolean result = educationDao.insertEducation(education1);
+        assertTrue(result);
+
+        int id = education1.getId();
+        Education edu = educationDao.findById(id);
+        assertEquals("English", edu.getType());
+        edu = educationDao.findById(id);
+        assertEquals(1200d, edu.getCharge(), 0);
+    }
+
+    @Test
+    public void testMybatisOgnl() {
+        EducationRequest request = new EducationRequest();
+        request.setType("Biology");
+        request.setLevel(1000);
+        List<Education> educationList = educationDao.findByEdu(request);
+        assertNotNull(educationList);
     }
 
     @Test
@@ -48,5 +81,7 @@ public class EducationDaoTest {
 
         assertNotEquals(0, education1.getId());
         assertNotEquals(0, education2.getId());
+        logger.info("id1=" + education1.getId());
+        logger.info("id2=" + education2.getId());
     }
 }

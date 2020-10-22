@@ -2,11 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.crabime.practice.xml.dao.EducationDao">
 
-    <insert id="insertEducation" parameterType="cn.crabime.practice.mybatis.Education">
+    <resultMap id="eduMap" type="cn.crabime.practice.mybatis.Education" autoMapping="true" />
+    <cache size="10" />
+
+    <select id="findById" resultType="cn.crabime.practice.mybatis.Education" resultMap="eduMap">
+        select * from education where id = #{id}
+    </select>
+
+    <insert id="insertEducation" parameterType="education" keyProperty="id" useGeneratedKeys="true">
         insert into education (family_id, type, charge, username) values (#{familyId}, #{type}, #{charge}, #{username})
     </insert>
 
-    <insert id="insertCustomizeEducation" keyProperty="education.id" useGeneratedKeys="true">
+    <insert id="insertCustomizeEducation" keyColumn="id,username" keyProperty="education.id,education.username" useGeneratedKeys="true">
         insert into education (family_id, type, charge, username) values (#{education.familyId}, #{education.type}, #{education.charge}, #{name})
     </insert>
 
@@ -16,6 +23,15 @@
             (#{item.familyId}, #{item.type}, #{item.charge}, #{item.username})
         </foreach>
     </insert>
+
+    <select id="findByEdu" parameterType="cn.crabime.practice.xml.vo.EducationRequest" resultMap="eduMap">
+        select * from education
+        <where>
+            <if test="req.type != null and req.type in {'Biology', 'Chinese'}">
+                charge <![CDATA[<=]]> #{req.level} and type = #{req.type}
+            </if>
+        </where>
+    </select>
 
     <update id="truncateEducation">
         truncate table education

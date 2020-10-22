@@ -1,10 +1,14 @@
 package cn.crabime.practice.xml;
 
+import cn.crabime.practice.mybatis.Education;
 import cn.crabime.practice.mybatis.handler.AutoEnumTypeHandler;
+import cn.crabime.practice.xml.interceptor.InsertInterceptor;
 import com.alibaba.druid.pool.DruidDataSource;
+import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.type.TypeHandler;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -19,12 +23,12 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableTransactionManagement
-@MapperScan(basePackages = "cn.crabime.practice.xml.dao", sqlSessionFactoryRef = "sqlSessionFactory")
+@MapperScan(basePackages = "cn.crabime.practice.xml.dao", sqlSessionTemplateRef = "sqlSessionTemplate")
 @ComponentScan(basePackages = "cn.crabime.practice.xml")
 public class MybatisXmlConf {
 
     @Bean
-    public SqlSessionFactory sqlSessionFactory() throws Exception {
+    public SqlSessionTemplate sqlSessionTemplate() throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(druidDataSource());
 
@@ -33,12 +37,18 @@ public class MybatisXmlConf {
         typeHandler[0] = new AutoEnumTypeHandler();
         sqlSessionFactoryBean.setTypeHandlers(typeHandler);
 
+        // 注册别名
+        sqlSessionFactoryBean.setTypeAliases(new Class[]{Education.class});
+
+        // 注册拦截器
+        sqlSessionFactoryBean.setPlugins(new Interceptor[]{new InsertInterceptor()});
+
         ResourcePatternResolver patternResolver = new PathMatchingResourcePatternResolver();
         sqlSessionFactoryBean.setMapperLocations(patternResolver.getResources("classpath:mappings/*.xml"));
 
         SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBean.getObject();
         sqlSessionFactory.getConfiguration().setMapUnderscoreToCamelCase(true);
-        return sqlSessionFactory;
+        return new SqlSessionTemplate(sqlSessionFactory);
     }
 
     @Bean

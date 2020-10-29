@@ -3,6 +3,7 @@
 <mapper namespace="cn.crabime.practice.xml.dao.EducationDao">
 
     <resultMap id="eduMap" type="cn.crabime.practice.mybatis.Education" autoMapping="true" />
+
     <cache size="10" />
 
     <select id="findById" resultType="cn.crabime.practice.mybatis.Education" resultMap="eduMap">
@@ -10,14 +11,18 @@
     </select>
 
     <insert id="insertEducation" parameterType="education" keyProperty="id" useGeneratedKeys="true">
-        insert into education (family_id, type, charge, username) values (#{familyId}, #{type}, #{charge}, #{username})
+        insert into education (family_id, type, charge, username, gmt_create) values
+            (#{familyId}, #{type}, #{charge}, #{username}, #{gmtCreate, typeHandler=cn.crabime.practice.mybatis.handler.TruncDateTypeHandler})
     </insert>
 
-    <insert id="insertCustomizeEducation" keyColumn="id,username" keyProperty="education.id,education.username" useGeneratedKeys="true">
-        insert into education (family_id, type, charge, username) values (#{education.familyId}, #{education.type}, #{education.charge}, #{name})
+    <insert id="insertCustomizeEducation" keyColumn="id,username" keyProperty="education.id,education.username"
+            useGeneratedKeys="true">
+        insert into education (family_id, type, charge, username) values
+            (#{education.familyId}, #{education.type}, #{education.charge}, #{name})
     </insert>
 
-    <insert id="batchInsertEducation" parameterType="cn.crabime.practice.mybatis.Education" useGeneratedKeys="true" keyProperty="id">
+    <insert id="batchInsertEducation" parameterType="cn.crabime.practice.mybatis.Education" useGeneratedKeys="true"
+            keyProperty="id">
         insert into education (family_id, type, charge, username) values
         <foreach collection="list" item="item" separator=",">
             (#{item.familyId}, #{item.type}, #{item.charge}, #{item.username})

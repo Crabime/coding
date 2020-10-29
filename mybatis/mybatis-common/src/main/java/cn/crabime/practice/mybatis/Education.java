@@ -3,6 +3,7 @@ package cn.crabime.practice.mybatis;
 import org.apache.ibatis.type.Alias;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Alias("education")
 public class Education implements Serializable {
@@ -16,6 +17,8 @@ public class Education implements Serializable {
     private double charge;
 
     private String username;
+
+    private Date gmtCreate;
 
     public Education() {
     }
@@ -63,5 +66,13 @@ public class Education implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Date getGmtCreate() {
+        return gmtCreate;
+    }
+
+    public void setGmtCreate(Date gmtCreate) {
+        this.gmtCreate = gmtCreate;
     }
 }

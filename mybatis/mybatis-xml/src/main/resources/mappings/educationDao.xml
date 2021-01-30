@@ -38,6 +38,18 @@
         </where>
     </select>
 
+    <select id="findEducationByUsername" resultMap="eduMap">
+        select * from education
+        <choose>
+            <when test="name == '张三'">
+                limit 5
+            </when>
+            <otherwise>
+                limit 2
+            </otherwise>
+        </choose>
+    </select>
+
     <update id="truncateEducation">
         truncate table education
     </update>

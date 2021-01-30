@@ -18,5 +18,12 @@ public interface EducationDao {
 
     List<Education> findByEdu(@Param("req") EducationRequest request);
 
+    /**
+     * 根据name来动态调整limit数量
+     * @param name 教育机构名
+     * @return 教育对象集合
+     */
+    List<Education> findEducationByUsername(@Param("name") String name);
+
     void truncateEducation();
 }

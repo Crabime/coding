@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.crabime.practice.xml.dao.RestaurantDao">
+
+    <parameterMap id="restaurant_map" type="cn.crabime.practice.mybatis.Restaurant">
+        <parameter property="name" />
+        <parameter property="touristNum" javaType="string" jdbcType="VARCHAR" typeHandler="cn.crabime.practice.mybatis.handler.NullToZeroTypeHandler" />
+        <parameter property="open" javaType="boolean" jdbcType="TINYINT" typeHandler="cn.crabime.practice.mybatis.handler.BooleanZeroTypeHandler" />
+    </parameterMap>
+
+    <insert id="registerRestaurant" parameterMap="restaurant_map" keyProperty="id" useGeneratedKeys="true">
+        insert into restaurant(name, tourist_num, open) value (?, ?, ?)
+    </insert>
+
+    <select id="getRestaurantByContext" resultType="cn.crabime.practice.mybatis.Restaurant" fetchSize="50">
+        select * from restaurant where id <![CDATA[>]]> #{bound}
+    </select>
+</mapper>

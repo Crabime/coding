@@ -117,4 +117,12 @@ public class EducationDaoTest {
         logger.info("id1=" + education1.getId());
         logger.info("id2=" + education2.getId());
     }
+
+    @Test
+    public void testFindEducationByUsername() {
+        List<Education> eduList = educationDao.findEducationByUsername("张三");
+        assertEquals(5, eduList.size());
+        eduList = educationDao.findEducationByUsername("李四");
+        assertEquals(2, eduList.size());
+    }
 }

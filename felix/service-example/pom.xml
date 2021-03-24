@@ -8,16 +8,20 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>simple-felix</artifactId>
+    <artifactId>service-example</artifactId>
     <packaging>bundle</packaging>
-    <description>simple felix usage!</description>
 
     <dependencies>
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>osgi.core</artifactId>
             <version>7.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>cn.crabime</groupId>
+            <artifactId>simple-felix</artifactId>
+            <version>1.0-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -32,16 +36,15 @@
                 <configuration>
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-                        <Bundle-Name>simple bundle hello world</Bundle-Name>
+                        <Bundle-Name>bundle service reference hello world</Bundle-Name>
                         <Bundle-Vendor>Alibaba China Software Foundation</Bundle-Vendor>
                         <Bundle-Description>
                             A bundle that demonstrate bundle OSGI principle
                         </Bundle-Description>
                         <Bundle-Activator>
-                            cn.crabime.felix.SimpleActivator
+                            cn.crabime.felix.example.Activator
                         </Bundle-Activator>
-                        <Export-Package>cn.crabime.felix.service</Export-Package>
-                        <Private-Package>cn.crabime.felix.*</Private-Package>
+                        <Private-Package>cn.crabime.felix.example.*</Private-Package>
                     </instructions>
                 </configuration>
             </plugin>

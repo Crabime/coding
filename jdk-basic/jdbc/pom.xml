@@ -12,4 +12,25 @@
     <artifactId>jdbc</artifactId>
     <description>Mysql如何处理QPS达10k次访问</description>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>animal-sniffer-maven-plugin</artifactId>
+                <version>1.18</version>
+                <configuration>
+                    <javaHome>/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/</javaHome>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>sniffer1-test</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

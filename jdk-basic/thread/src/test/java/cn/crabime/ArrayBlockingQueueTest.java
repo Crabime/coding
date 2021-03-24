@@ -2,7 +2,10 @@ package cn.crabime;
 
 import junit.framework.TestCase;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.util.Random;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
@@ -10,6 +13,8 @@ import java.util.concurrent.BlockingQueue;
  * jdk blocking queue测试
  */
 public class ArrayBlockingQueueTest extends TestCase {
+
+    private final static Logger logger = LoggerFactory.getLogger(ArrayBlockingQueueTest.class);
 
     private BlockingQueue<Integer> queue;
 
@@ -49,8 +54,45 @@ public class ArrayBlockingQueueTest extends TestCase {
      */
     @Test
     public void testMultiInsertAndGetFromBlockingQueue() throws InterruptedException {
+        queue.clear();
+        Random r = new Random();
+        Thread[] producers = new Thread[5];
+        Thread[] consumers = new Thread[3];
+        for (int i = 0; i < producers.length; i++) {
+            String pName = "producer" + i;
+            producers[i] = new Thread(() -> {
+                int val = r.nextInt(10);
+                logger.info("simulate producer start and add value {}", val);
+                System.out.println(Thread.currentThread().getName() + "-" + System.currentTimeMillis());
+                queue.add(val);
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                logger.info("simulate producer end!");
+            }, pName);
+            producers[i].start();
+        }
 
+        for (int i = 0; i < consumers.length; i++) {
+            String cName = "consumer" + i;
+            consumers[i] = new Thread(() -> {
+                try {
+                    System.out.println(Thread.currentThread().getName() +  "-" + System.currentTimeMillis());
+                    int val = queue.take();
+                    logger.info("simulate consumer start take value {}", val);
+                    Thread.sleep(5000);
+                    logger.info("simulate consumer end!");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }, cName);
+            consumers[i].start();
+        }
 
-        Thread.sleep(10000);
+        Thread.sleep(5000);
     }
+
+
 }

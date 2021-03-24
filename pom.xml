@@ -13,7 +13,6 @@
         <module>mybatis</module>
         <module>spring</module>
         <module>jdk-basic</module>
-        <module>spring</module>
         <module>nosql</module>
         <module>mq</module>
         <module>spring-security</module>
@@ -22,6 +21,8 @@
         <module>dubbo</module>
         <module>mock</module>
         <module>groovy</module>
+        <module>bundle</module>
+        <module>felix</module>
     </modules>
 
     <properties>

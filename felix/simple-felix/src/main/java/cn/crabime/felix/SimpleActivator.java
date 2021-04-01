@@ -2,6 +2,7 @@ package cn.crabime.felix;
 
 import cn.crabime.felix.service.PersonService;
 import cn.crabime.felix.service.SimplePerson;
+import cn.crabime.felix.service.inner.InnerService;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -12,10 +13,14 @@ import java.util.Hashtable;
 public class SimpleActivator implements BundleActivator {
     @Override
     public void start(BundleContext bundleContext) throws Exception {
-        PersonService personService = new PersonService();
+        PersonService personService = PersonService.getInstance();
         personService.addPerson(new SimplePerson("张三", 27));
         bundleContext.registerService(PersonService.class, personService, new Hashtable<>());
         System.out.println("bundle start already!");
+
+        InnerService innerService = new InnerService();
+        innerService.wrapPerson(new SimplePerson("Trump", 71));
+        System.out.println("register trump already");
     }
 
     @Override

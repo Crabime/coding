@@ -3,15 +3,15 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>felix</artifactId>
+        <artifactId>coding</artifactId>
         <groupId>cn.crabime</groupId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>simple-felix</artifactId>
     <packaging>bundle</packaging>
-    <description>simple felix usage!</description>
+    <artifactId>felix-hello-world</artifactId>
+    <description>felix hello world demo</description>
 
     <dependencies>
         <dependency>
@@ -32,16 +32,14 @@
                 <configuration>
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-                        <Bundle-Name>simple bundle hello world</Bundle-Name>
+                        <Bundle-Name>felix hello world</Bundle-Name>
                         <Bundle-Vendor>Alibaba China Software Foundation</Bundle-Vendor>
                         <Bundle-Description>
                             A bundle that demonstrate bundle OSGI principle
                         </Bundle-Description>
                         <Bundle-Activator>
-                            cn.crabime.felix.SimpleActivator
+                            cn.crabime.felix.example.Activator
                         </Bundle-Activator>
-                        <Export-Package>!cn.crabime.felix.service.inner,cn.crabime.felix.service.*</Export-Package>
-                        <Private-Package>cn.crabime.felix.*</Private-Package>
                     </instructions>
                 </configuration>
             </plugin>

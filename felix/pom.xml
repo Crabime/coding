@@ -15,6 +15,7 @@
     <modules>
         <module>simple-felix</module>
         <module>service-example</module>
+        <module>felix-hello-world</module>
     </modules>
 
 

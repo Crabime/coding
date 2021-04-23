@@ -16,6 +16,7 @@ public class Activator implements BundleActivator {
         PersonService personService = context.getService(serviceReference);
         SimplePerson p = personService.getPerson("张三");
         System.out.println(p.toString());
+        System.out.println("重新更新一个bundle版本试试？");
     }
 
     @Override

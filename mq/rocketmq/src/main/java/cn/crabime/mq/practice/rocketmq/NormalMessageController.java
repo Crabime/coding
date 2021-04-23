@@ -45,8 +45,12 @@ public class NormalMessageController {
                           @RequestParam(name = "topic", defaultValue = TOPIC_NORMAL_ORDER) String topic) throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
         logger.info("生产消息：{}", message);
         Message mg = new Message(topic, message.getBytes());
-        // rocketmq发送同步消息，默认timeout时间为3s，发送方式为CommunicationMode.ASYNC(同步方式)，回调为空
-        producer.send(mg);
+        try {
+            // rocketmq发送同步消息，默认timeout时间为3s，发送方式为CommunicationMode.ASYNC(同步方式)，回调为空
+            producer.send(mg);
+        } catch (Exception e) {
+            logger.error("send message error. ", e);
+        }
         return "Request send normal message Success";
     }
 

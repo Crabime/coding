@@ -48,7 +48,7 @@
         <junit.version>4.12</junit.version>
         <google.trueth.version>0.35</google.trueth.version>
         <jedis.version>2.9.0</jedis.version>
-        <jfinal.version>3.1</jfinal.version>
+        <jfinal.version>4.9.11</jfinal.version>
         <ehcache.version>2.6.6</ehcache.version>
         <lang3.version>3.6</lang3.version>
         <mongo.version>1.10.4.RELEASE</mongo.version>

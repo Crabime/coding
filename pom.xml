@@ -65,7 +65,7 @@
         <javax.inject.version>1</javax.inject.version>
         <lowagie.version>2.1.7</lowagie.version>
         <snakeyaml.version>1.17</snakeyaml.version>
-        <dubbo.version>2.5.7</dubbo.version>
+        <dubbo.version>2.6.9</dubbo.version>
         <zkclient.version>0.1</zkclient.version>
         <mockito.version>1.9.5</mockito.version>
         <powermock.version>1.6.1</powermock.version>

@@ -51,7 +51,7 @@
         <jfinal.version>3.1</jfinal.version>
         <ehcache.version>2.6.6</ehcache.version>
         <lang3.version>3.6</lang3.version>
-        <mongo.version>1.10.4.RELEASE</mongo.version>
+        <mongo.version>3.3.5</mongo.version>
         <mongo.driver.version>3.4.2</mongo.driver.version>
         <activemq.version>5.8.0</activemq.version>
         <rocketmq.version>4.3.2</rocketmq.version>

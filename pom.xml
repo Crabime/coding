@@ -27,7 +27,7 @@
 
     <properties>
         <aspectj.version>1.8.9</aspectj.version>
-        <spring.version>4.3.9.RELEASE</spring.version>
+        <spring.version>5.2.21.RELEASE</spring.version>
         <spring.core.version>4.3.18.RELEASE</spring.core.version>
         <spring.security.version>5.0.6.RELEASE</spring.security.version>
         <spring.security.core.version>5.0.12.RELEASE</spring.security.core.version>

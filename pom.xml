@@ -64,7 +64,7 @@
         <cglib.version>3.2.5</cglib.version>
         <javax.inject.version>1</javax.inject.version>
         <lowagie.version>2.1.7</lowagie.version>
-        <snakeyaml.version>1.17</snakeyaml.version>
+        <snakeyaml.version>1.31</snakeyaml.version>
         <dubbo.version>2.5.7</dubbo.version>
         <zkclient.version>0.1</zkclient.version>
         <mockito.version>1.9.5</mockito.version>

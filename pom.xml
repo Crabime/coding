@@ -57,7 +57,7 @@
         <rocketmq.version>4.3.2</rocketmq.version>
         <webapi.version>7.0</webapi.version>
         <jackson.version>2.7.8</jackson.version>
-        <jackson.databind.version>2.9.9</jackson.databind.version>
+        <jackson.databind.version>2.13.4.1</jackson.databind.version>
         <pageHelper.version>4.2.1</pageHelper.version>
         <netty.version>5.0.0.Alpha1</netty.version>
         <msgpack.version>0.6.12</msgpack.version>
